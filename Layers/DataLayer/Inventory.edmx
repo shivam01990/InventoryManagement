@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="InventoryModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="InventoryModelStoreContainer">
+          <EntitySet Name="category" EntityType="InventoryModel.Store.category" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="dealers" EntityType="InventoryModel.Store.dealers" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="products" EntityType="InventoryModel.Store.products" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="selling_history" EntityType="InventoryModel.Store.selling_history" store:Type="Tables" store:Schema="dbo" store:Name="selling_history">
+            <DefiningQuery>SELECT 
+      [selling_history].[id] AS [id], 
+      [selling_history].[product_id] AS [product_id], 
+      [selling_history].[quantity_credit] AS [quantity_credit], 
+      [selling_history].[quantity_debit] AS [quantity_debit], 
+      [selling_history].[transaction_type] AS [transaction_type], 
+      [selling_history].[customer_info] AS [customer_info], 
+      [selling_history].[payment_type] AS [payment_type], 
+      [selling_history].[payment_date] AS [payment_date], 
+      [selling_history].[customer_name] AS [customer_name], 
+      [selling_history].[dealer_id] AS [dealer_id]
+      FROM [dbo].[selling_history] AS [selling_history]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sub_category" EntityType="InventoryModel.Store.sub_category" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="transaction_type" EntityType="InventoryModel.Store.transaction_type" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="InventoryModel.Store.Users" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="category_name" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="dealers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="dealer_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="dealer_address" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="products">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="product_name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="brand" Type="nvarchar(max)" />
+          <Property Name="category" Type="int" Nullable="false" />
+          <Property Name="sub_category" Type="int" Nullable="false" />
+          <Property Name="weight" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="cost_price" Type="money" Nullable="false" />
+          <Property Name="sell_price" Type="money" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'katyayani_hw.dbo.selling_history' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="selling_history">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="product_id" />
+            <PropertyRef Name="quantity_credit" />
+            <PropertyRef Name="quantity_debit" />
+            <PropertyRef Name="transaction_type" />
+            <PropertyRef Name="payment_type" />
+            <PropertyRef Name="payment_date" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="quantity_credit" Type="int" Nullable="false" />
+          <Property Name="quantity_debit" Type="int" Nullable="false" />
+          <Property Name="transaction_type" Type="int" Nullable="false" />
+          <Property Name="customer_info" Type="nvarchar(max)" />
+          <Property Name="payment_type" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="payment_date" Type="datetime" Nullable="false" />
+          <Property Name="customer_name" Type="nvarchar(max)" />
+          <Property Name="dealer_id" Type="int" />
+        </EntityType>
+        <EntityType Name="sub_category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="subcategory_name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="category" Type="int" />
+        </EntityType>
+        <EntityType Name="transaction_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="transactiontype" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="DOJ" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="InventoryModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="InventoryEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Users" EntityType="InventoryModel.User" />
+          <EntitySet Name="categories" EntityType="InventoryModel.category" />
+          <EntitySet Name="dealers" EntityType="InventoryModel.dealer" />
+          <EntitySet Name="products" EntityType="InventoryModel.product" />
+          <EntitySet Name="selling_history" EntityType="InventoryModel.selling_history" />
+          <EntitySet Name="sub_category" EntityType="InventoryModel.sub_category" />
+          <EntitySet Name="transaction_type" EntityType="InventoryModel.transaction_type" />
+        </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="DOJ" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="category_name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="dealer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="dealer_name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="dealer_address" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="product_name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="brand" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="category" Nullable="false" />
+          <Property Type="Int32" Name="sub_category" Nullable="false" />
+          <Property Type="String" Name="weight" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="cost_price" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="sell_price" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Boolean" Name="status" Nullable="false" />
+        </EntityType>
+        <EntityType Name="selling_history">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="product_id" />
+            <PropertyRef Name="quantity_credit" />
+            <PropertyRef Name="quantity_debit" />
+            <PropertyRef Name="transaction_type" />
+            <PropertyRef Name="payment_type" />
+            <PropertyRef Name="payment_date" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="product_id" Nullable="false" />
+          <Property Type="Int32" Name="quantity_credit" Nullable="false" />
+          <Property Type="Int32" Name="quantity_debit" Nullable="false" />
+          <Property Type="Int32" Name="transaction_type" Nullable="false" />
+          <Property Type="String" Name="customer_info" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="payment_type" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="payment_date" Nullable="false" Precision="3" />
+          <Property Type="String" Name="customer_name" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="dealer_id" />
+        </EntityType>
+        <EntityType Name="sub_category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="subcategory_name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="category" />
+        </EntityType>
+        <EntityType Name="transaction_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="transactiontype" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="InventoryModelStoreContainer" CdmEntityContainer="InventoryEntities">
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="InventoryModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DOJ" ColumnName="DOJ" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categories">
+            <EntityTypeMapping TypeName="InventoryModel.category">
+              <MappingFragment StoreEntitySet="category">
+                <ScalarProperty Name="category_name" ColumnName="category_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dealers">
+            <EntityTypeMapping TypeName="InventoryModel.dealer">
+              <MappingFragment StoreEntitySet="dealers">
+                <ScalarProperty Name="dealer_address" ColumnName="dealer_address" />
+                <ScalarProperty Name="dealer_name" ColumnName="dealer_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="products">
+            <EntityTypeMapping TypeName="InventoryModel.product">
+              <MappingFragment StoreEntitySet="products">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="sell_price" ColumnName="sell_price" />
+                <ScalarProperty Name="cost_price" ColumnName="cost_price" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="sub_category" ColumnName="sub_category" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="brand" ColumnName="brand" />
+                <ScalarProperty Name="product_name" ColumnName="product_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="selling_history">
+            <EntityTypeMapping TypeName="InventoryModel.selling_history">
+              <MappingFragment StoreEntitySet="selling_history">
+                <ScalarProperty Name="dealer_id" ColumnName="dealer_id" />
+                <ScalarProperty Name="customer_name" ColumnName="customer_name" />
+                <ScalarProperty Name="payment_date" ColumnName="payment_date" />
+                <ScalarProperty Name="payment_type" ColumnName="payment_type" />
+                <ScalarProperty Name="customer_info" ColumnName="customer_info" />
+                <ScalarProperty Name="transaction_type" ColumnName="transaction_type" />
+                <ScalarProperty Name="quantity_debit" ColumnName="quantity_debit" />
+                <ScalarProperty Name="quantity_credit" ColumnName="quantity_credit" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sub_category">
+            <EntityTypeMapping TypeName="InventoryModel.sub_category">
+              <MappingFragment StoreEntitySet="sub_category">
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="subcategory_name" ColumnName="subcategory_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="transaction_type">
+            <EntityTypeMapping TypeName="InventoryModel.transaction_type">
+              <MappingFragment StoreEntitySet="transaction_type">
+                <ScalarProperty Name="transactiontype" ColumnName="transactiontype" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,16 @@
+D:\Development Area\inventory\Layers\DataLayer\bin\Debug\DataLayer.dll
+D:\Development Area\inventory\Layers\DataLayer\bin\Debug\DataLayer.pdb
+D:\Development Area\inventory\Layers\DataLayer\obj\Debug\DataLayer.csprojResolveAssemblyReference.cache
+D:\Development Area\inventory\Layers\DataLayer\obj\Debug\DataLayer.dll
+D:\Development Area\inventory\Layers\DataLayer\obj\Debug\DataLayer.pdb
+D:\Development Area\inventory\Layers\DataLayer\bin\Debug\DataLayer.dll.config
+D:\Development Area\inventory\Layers\DataLayer\bin\Debug\EntityFramework.dll
+D:\Development Area\inventory\Layers\DataLayer\bin\Debug\EntityFramework.xml
+G:\Softwares\inventory\Layers\DataLayer\obj\Debug\DataLayer.csprojResolveAssemblyReference.cache
+G:\Softwares\inventory\Layers\DataLayer\obj\Debug\DataLayer.dll
+G:\Softwares\inventory\Layers\DataLayer\bin\Debug\DataLayer.dll.config
+G:\Softwares\inventory\Layers\DataLayer\bin\Debug\DataLayer.dll
+G:\Softwares\inventory\Layers\DataLayer\bin\Debug\DataLayer.pdb
+G:\Softwares\inventory\Layers\DataLayer\bin\Debug\EntityFramework.dll
+G:\Softwares\inventory\Layers\DataLayer\bin\Debug\EntityFramework.xml
+G:\Softwares\inventory\Layers\DataLayer\obj\Debug\DataLayer.pdb

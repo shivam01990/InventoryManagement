@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="InventoryModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="InventoryEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Users" EntityType="InventoryModel.User" />
+    <EntitySet Name="categories" EntityType="InventoryModel.category" />
+    <EntitySet Name="dealers" EntityType="InventoryModel.dealer" />
+    <EntitySet Name="products" EntityType="InventoryModel.product" />
+    <EntitySet Name="selling_history" EntityType="InventoryModel.selling_history" />
+    <EntitySet Name="sub_category" EntityType="InventoryModel.sub_category" />
+    <EntitySet Name="transaction_type" EntityType="InventoryModel.transaction_type" />
+  </EntityContainer>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Email" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="DOJ" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="category_name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="dealer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="dealer_name" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="dealer_address" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="product_name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="brand" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="category" Nullable="false" />
+    <Property Type="Int32" Name="sub_category" Nullable="false" />
+    <Property Type="String" Name="weight" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="cost_price" Nullable="false" Precision="19" Scale="4" />
+    <Property Type="Decimal" Name="sell_price" Nullable="false" Precision="19" Scale="4" />
+    <Property Type="Boolean" Name="status" Nullable="false" />
+  </EntityType>
+  <EntityType Name="selling_history">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="product_id" />
+      <PropertyRef Name="quantity_credit" />
+      <PropertyRef Name="quantity_debit" />
+      <PropertyRef Name="transaction_type" />
+      <PropertyRef Name="payment_type" />
+      <PropertyRef Name="payment_date" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="product_id" Nullable="false" />
+    <Property Type="Int32" Name="quantity_credit" Nullable="false" />
+    <Property Type="Int32" Name="quantity_debit" Nullable="false" />
+    <Property Type="Int32" Name="transaction_type" Nullable="false" />
+    <Property Type="String" Name="customer_info" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="payment_type" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="payment_date" Nullable="false" Precision="3" />
+    <Property Type="String" Name="customer_name" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="dealer_id" />
+  </EntityType>
+  <EntityType Name="sub_category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="subcategory_name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="category" />
+  </EntityType>
+  <EntityType Name="transaction_type">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="transactiontype" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

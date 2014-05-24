@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="InventoryModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="InventoryModelStoreContainer">
+    <EntitySet Name="category" EntityType="InventoryModel.Store.category" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="dealers" EntityType="InventoryModel.Store.dealers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="products" EntityType="InventoryModel.Store.products" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="selling_history" EntityType="InventoryModel.Store.selling_history" store:Type="Tables" store:Schema="dbo" store:Name="selling_history">
+      <DefiningQuery>SELECT 
+      [selling_history].[id] AS [id], 
+      [selling_history].[product_id] AS [product_id], 
+      [selling_history].[quantity_credit] AS [quantity_credit], 
+      [selling_history].[quantity_debit] AS [quantity_debit], 
+      [selling_history].[transaction_type] AS [transaction_type], 
+      [selling_history].[customer_info] AS [customer_info], 
+      [selling_history].[payment_type] AS [payment_type], 
+      [selling_history].[payment_date] AS [payment_date], 
+      [selling_history].[customer_name] AS [customer_name], 
+      [selling_history].[dealer_id] AS [dealer_id]
+      FROM [dbo].[selling_history] AS [selling_history]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="sub_category" EntityType="InventoryModel.Store.sub_category" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="transaction_type" EntityType="InventoryModel.Store.transaction_type" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="InventoryModel.Store.Users" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="category_name" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="dealers">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="dealer_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="dealer_address" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="products">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="product_name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="brand" Type="nvarchar(max)" />
+    <Property Name="category" Type="int" Nullable="false" />
+    <Property Name="sub_category" Type="int" Nullable="false" />
+    <Property Name="weight" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="cost_price" Type="money" Nullable="false" />
+    <Property Name="sell_price" Type="money" Nullable="false" />
+    <Property Name="status" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'katyayani_hw.dbo.selling_history' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="selling_history">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="product_id" />
+      <PropertyRef Name="quantity_credit" />
+      <PropertyRef Name="quantity_debit" />
+      <PropertyRef Name="transaction_type" />
+      <PropertyRef Name="payment_type" />
+      <PropertyRef Name="payment_date" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="product_id" Type="int" Nullable="false" />
+    <Property Name="quantity_credit" Type="int" Nullable="false" />
+    <Property Name="quantity_debit" Type="int" Nullable="false" />
+    <Property Name="transaction_type" Type="int" Nullable="false" />
+    <Property Name="customer_info" Type="nvarchar(max)" />
+    <Property Name="payment_type" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="payment_date" Type="datetime" Nullable="false" />
+    <Property Name="customer_name" Type="nvarchar(max)" />
+    <Property Name="dealer_id" Type="int" />
+  </EntityType>
+  <EntityType Name="sub_category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="subcategory_name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="category" Type="int" />
+  </EntityType>
+  <EntityType Name="transaction_type">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="transactiontype" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="Email" Type="nvarchar(max)" />
+    <Property Name="DOJ" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime" />
+  </EntityType>
+</Schema>

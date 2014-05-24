@@ -1,0 +1,18 @@
+D:\Development Area\inventory\Layers\BusinessLayer\bin\Debug\BusinessLayer.dll
+D:\Development Area\inventory\Layers\BusinessLayer\bin\Debug\BusinessLayer.pdb
+D:\Development Area\inventory\Layers\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
+D:\Development Area\inventory\Layers\BusinessLayer\obj\Debug\BusinessLayer.dll
+D:\Development Area\inventory\Layers\BusinessLayer\obj\Debug\BusinessLayer.pdb
+D:\Development Area\inventory\Layers\BusinessLayer\bin\Debug\DataLayer.dll
+D:\Development Area\inventory\Layers\BusinessLayer\bin\Debug\EntityFramework.dll
+D:\Development Area\inventory\Layers\BusinessLayer\bin\Debug\DataLayer.pdb
+D:\Development Area\inventory\Layers\BusinessLayer\bin\Debug\EntityFramework.xml
+G:\Softwares\inventory\Layers\BusinessLayer\bin\Debug\BusinessLayer.dll
+G:\Softwares\inventory\Layers\BusinessLayer\bin\Debug\BusinessLayer.pdb
+G:\Softwares\inventory\Layers\BusinessLayer\bin\Debug\DataLayer.dll
+G:\Softwares\inventory\Layers\BusinessLayer\bin\Debug\EntityFramework.dll
+G:\Softwares\inventory\Layers\BusinessLayer\bin\Debug\DataLayer.pdb
+G:\Softwares\inventory\Layers\BusinessLayer\bin\Debug\EntityFramework.xml
+G:\Softwares\inventory\Layers\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
+G:\Softwares\inventory\Layers\BusinessLayer\obj\Debug\BusinessLayer.dll
+G:\Softwares\inventory\Layers\BusinessLayer\obj\Debug\BusinessLayer.pdb

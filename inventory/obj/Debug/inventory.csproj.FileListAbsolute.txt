@@ -1,0 +1,59 @@
+c:\users\shivam\documents\visual studio 2012\Projects\inventory\inventory\bin\Debug\inventory.exe.config
+D:\Development Area\inventory\inventory\bin\Debug\inventory.exe.config
+D:\Development Area\inventory\inventory\bin\Debug\inventory.exe
+D:\Development Area\inventory\inventory\bin\Debug\inventory.pdb
+D:\Development Area\inventory\inventory\obj\Debug\inventory.csprojResolveAssemblyReference.cache
+D:\Development Area\inventory\inventory\obj\Debug\App.g.cs
+D:\Development Area\inventory\inventory\obj\Debug\inventory_MarkupCompile.cache
+D:\Development Area\inventory\inventory\obj\Debug\inventory.g.resources
+D:\Development Area\inventory\inventory\obj\Debug\inventory.Properties.Resources.resources
+D:\Development Area\inventory\inventory\obj\Debug\inventory.csproj.GenerateResource.Cache
+D:\Development Area\inventory\inventory\obj\Debug\inventory.exe
+D:\Development Area\inventory\inventory\obj\Debug\inventory.pdb
+D:\Development Area\inventory\inventory\obj\Debug\View\Login.baml
+D:\Development Area\inventory\inventory\obj\Debug\View\Login.g.cs
+D:\Development Area\inventory\inventory\bin\Debug\BusinessLayer.dll
+D:\Development Area\inventory\inventory\bin\Debug\DataLayer.dll
+D:\Development Area\inventory\inventory\bin\Debug\EntityFramework.dll
+D:\Development Area\inventory\inventory\bin\Debug\BusinessLayer.pdb
+D:\Development Area\inventory\inventory\bin\Debug\DataLayer.pdb
+D:\Development Area\inventory\inventory\bin\Debug\EntityFramework.xml
+D:\Development Area\inventory\inventory\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Development Area\inventory\inventory\obj\Debug\inventory_MarkupCompile.lref
+D:\Development Area\inventory\inventory\obj\Debug\ResourceDic\MainDictionary.baml
+D:\Development Area\inventory\inventory\obj\Debug\App.baml
+D:\Development Area\inventory\inventory\obj\Debug\View\MainWindow.baml
+D:\Development Area\inventory\inventory\obj\Debug\View\MainWindow.g.cs
+D:\Development Area\inventory\inventory\obj\Debug\View\Dealers\ModifyDealers.baml
+D:\Development Area\inventory\inventory\obj\Debug\View\Dealers\ModifyDealers.g.cs
+D:\Development Area\inventory\inventory\obj\Debug\View\Dealers\AddDealers.baml
+D:\Development Area\inventory\inventory\obj\Debug\View\Dealers\AddDealers.g.cs
+G:\Softwares\inventory\inventory\bin\Debug\inventory.exe.config
+G:\Softwares\inventory\inventory\obj\Debug\inventory.exe
+G:\Softwares\inventory\inventory\obj\Debug\inventory.pdb
+G:\Softwares\inventory\inventory\bin\Debug\inventory.exe
+G:\Softwares\inventory\inventory\bin\Debug\inventory.pdb
+G:\Softwares\inventory\inventory\bin\Debug\BusinessLayer.dll
+G:\Softwares\inventory\inventory\bin\Debug\DataLayer.dll
+G:\Softwares\inventory\inventory\bin\Debug\EntityFramework.dll
+G:\Softwares\inventory\inventory\bin\Debug\BusinessLayer.pdb
+G:\Softwares\inventory\inventory\bin\Debug\DataLayer.pdb
+G:\Softwares\inventory\inventory\bin\Debug\EntityFramework.xml
+G:\Softwares\inventory\inventory\obj\Debug\Inventory.csprojResolveAssemblyReference.cache
+G:\Softwares\inventory\inventory\obj\Debug\ResourceDic\MainDictionary.baml
+G:\Softwares\inventory\inventory\obj\Debug\View\Dealers\AddDealers.baml
+G:\Softwares\inventory\inventory\obj\Debug\App.baml
+G:\Softwares\inventory\inventory\obj\Debug\View\Dealers\AddDealers.g.cs
+G:\Softwares\inventory\inventory\obj\Debug\View\Dealers\ModifyDealers.g.cs
+G:\Softwares\inventory\inventory\obj\Debug\View\Login.g.cs
+G:\Softwares\inventory\inventory\obj\Debug\View\MainWindow.g.cs
+G:\Softwares\inventory\inventory\obj\Debug\App.g.cs
+G:\Softwares\inventory\inventory\obj\Debug\GeneratedInternalTypeHelper.g.cs
+G:\Softwares\inventory\inventory\obj\Debug\inventory_MarkupCompile.cache
+G:\Softwares\inventory\inventory\obj\Debug\inventory_MarkupCompile.lref
+G:\Softwares\inventory\inventory\obj\Debug\View\Dealers\ModifyDealers.baml
+G:\Softwares\inventory\inventory\obj\Debug\View\Login.baml
+G:\Softwares\inventory\inventory\obj\Debug\View\MainWindow.baml
+G:\Softwares\inventory\inventory\obj\Debug\inventory.g.resources
+G:\Softwares\inventory\inventory\obj\Debug\inventory.Properties.Resources.resources
+G:\Softwares\inventory\inventory\obj\Debug\Inventory.csproj.GenerateResource.Cache

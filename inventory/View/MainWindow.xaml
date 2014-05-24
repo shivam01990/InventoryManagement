@@ -1,0 +1,45 @@
+﻿<Window x:Class="inventory.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ViewModel="clr-namespace:inventory.ViewModel"
+        xmlns:View="clr-namespace:inventory.View"
+        Title="Inventory" Height="600" Width="800" MouseLeftButtonDown="Drag_Window"   ShowInTaskbar="True" WindowStartupLocation="CenterScreen"  FontFamily="Georgia" Background="Transparent"  Style="{DynamicResource MainWindowStyle}" x:Name="window" TabIndex="0" Foreground="#FFFFFFFF">
+    <Window.CommandBindings>
+        <CommandBinding Command="Close" Executed="CloseCommand_Executed"/>
+        <CommandBinding Command="{x:Static SystemCommands.MinimizeWindowCommand}" CanExecute="CommandBinding_CanExecute_1" Executed="MiniMize_Execute" />
+    </Window.CommandBindings>
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type ViewModel:ModifyDealersViewModel}">
+            <View:ModifyDealers/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type ViewModel:AddDealersViewModel}">
+            <View:AddDealers/>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Expander Header="Delears Menu" IsExpanded="True" Margin="25,10,25,388" Height="100" Width="150" >
+            <ListBox x:Name="ListBoxDelears"                    
+                 Grid.Column="0"
+                 ItemsSource="{Binding DelarsMenu}"
+                 SelectedIndex="0" RenderTransformOrigin="0.51,0.18" Height="100" Width="150" SelectionChanged="ListBoxDelears_SelectionChanged" Margin="0,0,-2,0" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}" Padding="10"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Expander>
+
+        <Border Grid.Column="1" Margin="0" BorderBrush="#FF202020"   BorderThickness="3,0,0,0">
+            <ContentControl Name="pnlcontent" Width="550" Height="450" />
+        </Border>
+    </Grid>
+</Window>

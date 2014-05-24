@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9c53aa5e27b94f3484b4246c18279e96" Name="Diagram1">
+        <EntityTypeShape EntityType="InventoryModel.User" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InventoryModel.category" Width="1.5" PointX="4.4875011763011576" PointY="25.278968390672919" />
+        <EntityTypeShape EntityType="InventoryModel.dealer" Width="1.5" PointX="11.041895711348342" PointY="27.008919892371129" />
+        <EntityTypeShape EntityType="InventoryModel.product" Width="1.5" PointX="4.9754296471250381" PointY="9.2694798304091588" />
+        <EntityTypeShape EntityType="InventoryModel.selling_history" Width="1.5" PointX="2.0229676375272536" PointY="4.8571068965164512" />
+        <EntityTypeShape EntityType="InventoryModel.sub_category" Width="1.5" PointX="1.2113092063047501" PointY="9.5494193628194832" />
+        <EntityTypeShape EntityType="InventoryModel.transaction_type" Width="1.5" PointX="10.158568515516151" PointY="4.0464378763206481" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
