@@ -15,6 +15,12 @@
         <DataTemplate DataType="{x:Type ViewModel:AddDealersViewModel}">
             <View:AddDealers/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type ViewModel:CategoryViewModel}">
+            <View:Category/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type ViewModel:AddSubCategoryViewModel}">
+            <View:SubCategory/>
+        </DataTemplate>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -29,7 +35,7 @@
             <ListBox x:Name="ListBoxDelears"                    
                  Grid.Column="0"
                  ItemsSource="{Binding DelarsMenu}"
-                 SelectedIndex="0" RenderTransformOrigin="0.51,0.18" Height="100" Width="150" SelectionChanged="ListBoxDelears_SelectionChanged" Margin="0,0,-2,0" >
+                  RenderTransformOrigin="0.51,0.18" Height="100" Width="150" SelectionChanged="ListBoxDelears_SelectionChanged" Margin="0,0,-2,0" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name}" Padding="10"/>
@@ -37,9 +43,20 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </Expander>
-
+        <Expander Header="Product Menu" IsExpanded="True"  Height="100" Width="150" Margin="25,115,25,283" >
+            <ListBox x:Name="ListBoxCategory"
+        	ItemsSource="{Binding ProductMenu}"
+             RenderTransformOrigin="0.51,0.18" Width="150"  Margin="0,0,-2,0" SelectionChanged="ListBoxCategory_SelectionChanged" Height="81" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}" Padding="10"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Expander>
         <Border Grid.Column="1" Margin="0" BorderBrush="#FF202020"   BorderThickness="3,0,0,0">
             <ContentControl Name="pnlcontent" Width="550" Height="450" />
         </Border>
+       
     </Grid>
 </Window>

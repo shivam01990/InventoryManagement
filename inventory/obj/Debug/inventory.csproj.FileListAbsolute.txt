@@ -57,3 +57,7 @@ G:\Softwares\inventory\inventory\obj\Debug\View\MainWindow.baml
 G:\Softwares\inventory\inventory\obj\Debug\inventory.g.resources
 G:\Softwares\inventory\inventory\obj\Debug\inventory.Properties.Resources.resources
 G:\Softwares\inventory\inventory\obj\Debug\Inventory.csproj.GenerateResource.Cache
+D:\Development Area\inventory\inventory\obj\Debug\View\Products\Category.baml
+D:\Development Area\inventory\inventory\obj\Debug\View\Products\Category.g.cs
+D:\Development Area\inventory\inventory\obj\Debug\View\Products\SubCategory.baml
+D:\Development Area\inventory\inventory\obj\Debug\View\Products\SubCategory.g.cs

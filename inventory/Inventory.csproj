@@ -62,6 +62,9 @@
     <Compile Include="ViewModel\Dealers\ModifyDealersViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\Products\AddSubCategoryViewModel.cs" />
+    <Compile Include="ViewModel\Products\CategoryViewModel.cs" />
+    <Compile Include="ViewModel\Products\ProductsViewModelBase.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\Dealers\AddDealers.xaml.cs">
@@ -70,7 +73,6 @@
     <Compile Include="View\Dealers\ModifyDealers.xaml.cs">
       <DependentUpon>ModifyDealers.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Dealers\UserServices.cs" />
     <Compile Include="View\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -80,6 +82,12 @@
     </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Products\Category.xaml.cs">
+      <DependentUpon>Category.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Products\SubCategory.xaml.cs">
+      <DependentUpon>SubCategory.xaml</DependentUpon>
     </Compile>
     <Page Include="ResourceDic\MainDictionary.xaml">
       <SubType>Designer</SubType>
@@ -98,6 +106,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Products\Category.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Products\SubCategory.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

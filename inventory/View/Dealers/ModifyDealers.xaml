@@ -23,8 +23,8 @@
         <Label Content="Dealer Name" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="23,3,0,0" Grid.Row="2"/>
         <Label Content="Address" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="23,4,0,0" Grid.Row="3" RenderTransformOrigin="0.528,0.808"/>
         <TextBox HorizontalAlignment="Left" Name="txt_DealerID" Height="23" TextWrapping="Wrap" Text="{Binding ElementName=Delarlst,Path=SelectedItem.id}" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="20,5,0,0" Grid.Row="1" Visibility="Hidden" />
-        <TextBox HorizontalAlignment="Left" Height="18" TextWrapping="Wrap" MaxLines="1" MaxLength="50"  Text="{Binding ElementName=Delarlst,Path=SelectedItem.dealer_name}" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="20,5,0,0" Grid.Row="2"/>
-        <TextBox HorizontalAlignment="Left" Height="18" TextWrapping="Wrap" MaxLines="1" MaxLength="50" Text="{Binding ElementName=Delarlst,Path=SelectedItem.dealer_address}" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="20,5,0,0" Grid.Row="3" />
+        <TextBox HorizontalAlignment="Left" Height="18" TextWrapping="Wrap" MaxLines="1"  Text="{Binding ElementName=Delarlst,Path=SelectedItem.dealer_name}" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="20,5,0,0" Grid.Row="2"/>
+        <TextBox HorizontalAlignment="Left" Height="18" TextWrapping="Wrap" MaxLines="1"  Text="{Binding ElementName=Delarlst,Path=SelectedItem.dealer_address}" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="20,5,0,0" Grid.Row="3" />
         <Button Content="Update" HorizontalAlignment="Left" Command="{Binding UpdateCommand}" CommandParameter="{Binding ElementName=txt_DealerID}" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="20,5,0,0" Grid.Row="4"/>
         <Button Content="Delete" HorizontalAlignment="Left" Command="{Binding DeleteCommand}" CommandParameter="{Binding ElementName=txt_DealerID}" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="110,5,0,0" Grid.Row="4" RenderTransformOrigin="0.507,1"/>
 
@@ -33,9 +33,9 @@
                 <GridView x:Name="grdDelar">
                     <GridViewColumn Header="Delar ID" HeaderContainerStyle="{DynamicResource GridHeaderLeft}"   DisplayMemberBinding="{Binding id}" Width="75">
                     </GridViewColumn>
-                    <GridViewColumn Header="Delar Name" HeaderContainerStyle="{DynamicResource GridHeaderLeft}" DisplayMemberBinding="{Binding dealer_name}" Width="150" >
+                    <GridViewColumn Header="Delar Name" HeaderContainerStyle="{DynamicResource GridHeaderLeft}" DisplayMemberBinding="{Binding dealer_name}" Width="130" >
                     </GridViewColumn>
-                    <GridViewColumn Header="Delar Address" HeaderContainerStyle="{DynamicResource GridHeaderLeft}" DisplayMemberBinding="{Binding dealer_address}" Width="170" />
+                    <GridViewColumn Header="Delar Address" HeaderContainerStyle="{DynamicResource GridHeaderLeft}" DisplayMemberBinding="{Binding dealer_address}" Width="190" />
                 </GridView>
             </ListView.View>
         </ListView>

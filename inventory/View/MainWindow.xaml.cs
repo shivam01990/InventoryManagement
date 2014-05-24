@@ -25,6 +25,8 @@ namespace inventory.View
             InitializeComponent();
             this.DataContext = new MainWindowViewModel();
 
+            ListBoxDelears.SelectedIndex = 0;
+
         }
 
         private void CloseCommand_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -52,7 +54,22 @@ namespace inventory.View
         private void ListBoxDelears_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //pnlcontent.Content = "{Binding ElementName=ListBoxDelears, Path=SelectedItem}";
-            pnlcontent.Content = ListBoxDelears.SelectedItem;
+            if (ListBoxDelears.SelectedIndex != -1)
+            {
+                pnlcontent.Content = ListBoxDelears.SelectedItem;
+                ListBoxCategory.SelectedIndex = -1;
+            }
+          
+        }
+
+        private void ListBoxCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ListBoxCategory.SelectedIndex != -1)
+            {
+                pnlcontent.Content = ListBoxCategory.SelectedItem;
+                ListBoxDelears.SelectedIndex = -1;
+            }
+           
         }
 
 
