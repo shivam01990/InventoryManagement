@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using DataLayer;
 using BusinessLayer;
+using EntityLayer;
+using inventory.Model;
 
 namespace inventory.ViewModel
 {
@@ -12,12 +14,13 @@ namespace inventory.ViewModel
     {
         public override string Name
         {
-            get { return "Add Sub-Category"; }
+            get { return "Sub-Category"; }
         }
 
         public AddSubCategoryViewModel()
         {
             this._Categorylst = CategoryServices.GetAllCategory(0);
+           // this._lstSubCategory = SubcategoryModel.GetAllSubCategoryEntity(0, 0);
         }
 
         private List<category> _Categorylst;
@@ -34,10 +37,55 @@ namespace inventory.ViewModel
             }
         }
 
+        private category _SelectedCategory;
         public category SelectedCategory
         {
-            get;
-            set;
+            get
+            {
+                return _SelectedCategory;
+            }
+            set
+            {
+                _SelectedCategory = value;
+                this._lstSubCategory = SubcategoryModel.GetAllSubCategoryEntity(0, _SelectedCategory.id);
+                RaisedPropertyChanged("SelectedCategory");
+                RaisedPropertyChanged("lstSubCategory");
+            }
+        }
+
+        private SubCategoryEntity _SelectedSubCategory;
+        public SubCategoryEntity SelectedSubCategory
+        {
+            get
+            {
+                return _SelectedSubCategory;
+            }
+            set
+            {
+                _SelectedSubCategory = value;
+                if (_SelectedSubCategory != null)
+                {
+                    sub_category temp = SubCategoryServices.GetSubCategory(_SelectedSubCategory.id);
+                    _SelectedCategory = CategoryServices.GetCategory((int)temp.category);
+                }
+                RaisedPropertyChanged("SelectedCategory");
+                RaisedPropertyChanged("SelectedSubCategory");
+                RaisedPropertyChanged("Categorylst");
+            }
+        }
+
+        private List<SubCategoryEntity> _lstSubCategory;
+        public List<SubCategoryEntity> lstSubCategory
+        {
+            get
+            {
+                return _lstSubCategory;
+            }
+            set
+            {
+                _lstSubCategory = value;
+                RaisedPropertyChanged("lstSubCategory");
+            }
         }
     }
 }

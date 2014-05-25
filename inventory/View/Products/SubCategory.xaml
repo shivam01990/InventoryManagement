@@ -22,9 +22,20 @@
         <Label Content="Select Category" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,3,0,0" Grid.Row="2"/>
         <Label Content="Sub-Category" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="23,4,0,0" Grid.Row="3" RenderTransformOrigin="0.528,0.808"/>
         <TextBox HorizontalAlignment="Left" Name="txt_subcategoryId" Height="18" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="20,5,0,0" Grid.Row="1" Visibility="Hidden" />
-        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" DisplayMemberPath="category_name" SelectedValuePath="id" SelectedItem="{Binding SelectedCategory}"  ItemsSource="{Binding Categorylst}" Width="150" Grid.Column="1" Margin="20,3,0,0" Grid.Row="2"/>
-        <TextBox HorizontalAlignment="Left" Height="18"  MaxLines="1"  VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="20,5,0,0" Grid.Row="3" />
+        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" DisplayMemberPath="category_name" SelectedValuePath="id" SelectedItem="{Binding SelectedCategory,UpdateSourceTrigger=PropertyChanged}"  ItemsSource="{Binding Categorylst}" Width="150" Grid.Column="1" Margin="20,3,0,0" Grid.Row="2"/>
+        <TextBox HorizontalAlignment="Left" Height="18"  MaxLines="1" Text="{Binding ElementName=SubCategorylst,Path=SelectedItem.sub_category_name}"  VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="20,5,0,0" Grid.Row="3" />
         <Button Content="Add Sub-Category" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="95" Grid.Column="1" Margin="20,5,0,0" Grid.Row="4"/>
-
+        <ListView Name="SubCategorylst" Grid.Row="5" SelectedItem="{Binding SelectedSubCategory}"  ItemsSource="{Binding lstSubCategory,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Margin="20,19,10,10"  >
+            <ListView.View>
+                <GridView x:Name="grdCategory">
+                    <GridViewColumn Header="Sub-Category ID" HeaderContainerStyle="{DynamicResource GridHeaderLeft}"   DisplayMemberBinding="{Binding id}" Width="100">
+                    </GridViewColumn>
+                    <GridViewColumn Header="Category Name" HeaderContainerStyle="{DynamicResource GridHeaderLeft}"   DisplayMemberBinding="{Binding category_name}" Width="150">
+                    </GridViewColumn>
+                    <GridViewColumn Header="Sub-Category Name" HeaderContainerStyle="{DynamicResource GridHeaderLeft}" DisplayMemberBinding="{Binding sub_category_name}" Width="150" >
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </UserControl>

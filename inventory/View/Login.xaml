@@ -47,8 +47,5 @@
         <PasswordBox HorizontalAlignment="Left" Name="txt_Password" VerticalAlignment="Top" Height="20" Margin="30,3,0,0" Width="155" Grid.Column="1" Grid.Row="2"/>
         <Button Content="Login" HorizontalAlignment="Left"   Command="{Binding ClickCommand}" CommandParameter="{Binding ElementName=txt_Password}" VerticalAlignment="Top" Width="75" Margin="30,11,0,0" RenderTransformOrigin="0.267,1.05" Grid.Column="1" Grid.Row="3"/>
         <Button Content="Cancel" HorizontalAlignment="Left"   Command="{Binding ClickCancel}"  VerticalAlignment="Top" Width="75" Margin="136,11,0,0" RenderTransformOrigin="0.267,1.05" Grid.Column="1" Grid.Row="3"/>
-
-
-
     </Grid>
 </Window>

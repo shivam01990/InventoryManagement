@@ -56,7 +56,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Helpers\DialogCloser.cs" />
-    <Compile Include="Model\UserModel.cs" />
+    <Compile Include="Model\SubcategoryModel.cs" />
     <Compile Include="ViewModel\Dealers\AddDealersViewModel.cs" />
     <Compile Include="ViewModel\Dealers\DealersViewModelBase.cs" />
     <Compile Include="ViewModel\Dealers\ModifyDealersViewModel.cs" />
@@ -156,6 +156,10 @@
     <ProjectReference Include="..\Layers\DataLayer\DataLayer.csproj">
       <Project>{b2c4b5ae-3b42-4660-a355-f81f9822a165}</Project>
       <Name>DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Layers\EntityLayer\EntityLayer.csproj">
+      <Project>{4c03ecb7-bdb4-4f43-8167-2873eb513071}</Project>
+      <Name>EntityLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

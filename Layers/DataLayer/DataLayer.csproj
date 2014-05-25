@@ -76,6 +76,7 @@
     <Compile Include="selling_history.cs">
       <DependentUpon>Inventory.tt</DependentUpon>
     </Compile>
+    <Compile Include="SubCategoryProvider.cs" />
     <Compile Include="sub_category.cs">
       <DependentUpon>Inventory.tt</DependentUpon>
     </Compile>
@@ -112,6 +113,12 @@
       <LastGenOutput>Inventory.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EntityLayer\EntityLayer.csproj">
+      <Project>{4c03ecb7-bdb4-4f43-8167-2873eb513071}</Project>
+      <Name>EntityLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

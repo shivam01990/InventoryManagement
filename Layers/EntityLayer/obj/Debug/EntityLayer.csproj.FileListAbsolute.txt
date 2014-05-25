@@ -1,0 +1,5 @@
+D:\Development Area\inventory\Layers\EntityLayer\bin\Debug\EntityLayer.dll
+D:\Development Area\inventory\Layers\EntityLayer\bin\Debug\EntityLayer.pdb
+D:\Development Area\inventory\Layers\EntityLayer\obj\Debug\EntityLayer.csprojResolveAssemblyReference.cache
+D:\Development Area\inventory\Layers\EntityLayer\obj\Debug\EntityLayer.dll
+D:\Development Area\inventory\Layers\EntityLayer\obj\Debug\EntityLayer.pdb
