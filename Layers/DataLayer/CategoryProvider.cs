@@ -60,18 +60,27 @@ namespace DataLayer
 
         public static bool DeleteCategory(int Category_id)
         {
-            bool flag = false;
-            using (InventoryEntities db = new InventoryEntities())
+            try
             {
-                category temp = db.categories.Where(u => u.id == Category_id).FirstOrDefault();
-                if (temp != null)
+                bool flag = false;
+                using (InventoryEntities db = new InventoryEntities())
                 {
-                    db.categories.Remove(temp);
-                    db.SaveChanges();
-                    flag = true;
+                    category temp = db.categories.Where(u => u.id == Category_id).FirstOrDefault();
+                    if (temp != null)
+                    {
+                        db.categories.Remove(temp);
+                        db.SaveChanges();
+                        flag = true;
+                    }
                 }
+                return flag;
             }
-            return flag;
+            catch
+            {
+                return false;
+
+            }
         }
+
     }
 }

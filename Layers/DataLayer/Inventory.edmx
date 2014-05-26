@@ -26,6 +26,10 @@
           <EntitySet Name="sub_category" EntityType="InventoryModel.Store.sub_category" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="transaction_type" EntityType="InventoryModel.Store.transaction_type" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Users" EntityType="InventoryModel.Store.Users" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_sub_category_category" Association="InventoryModel.Store.FK_sub_category_category">
+            <End Role="category" EntitySet="category" />
+            <End Role="sub_category" EntitySet="sub_category" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="category">
           <Key>
@@ -107,6 +111,18 @@
           <Property Name="DOJ" Type="datetime" Nullable="false" />
           <Property Name="UpdatedOn" Type="datetime" />
         </EntityType>
+        <Association Name="FK_sub_category_category">
+          <End Role="category" Type="InventoryModel.Store.category" Multiplicity="0..1" />
+          <End Role="sub_category" Type="InventoryModel.Store.sub_category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sub_category">
+              <PropertyRef Name="category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -119,6 +135,10 @@
           <EntitySet Name="selling_history" EntityType="InventoryModel.selling_history" />
           <EntitySet Name="sub_category" EntityType="InventoryModel.sub_category" />
           <EntitySet Name="transaction_type" EntityType="InventoryModel.transaction_type" />
+          <AssociationSet Name="FK_sub_category_category" Association="InventoryModel.FK_sub_category_category">
+            <End Role="category" EntitySet="categories" />
+            <End Role="sub_category" EntitySet="sub_category" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="User">
           <Key>
@@ -138,6 +158,7 @@
           </Key>
           <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="category_name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="sub_category" Relationship="InventoryModel.FK_sub_category_category" FromRole="category" ToRole="sub_category" />
         </EntityType>
         <EntityType Name="dealer">
           <Key>
@@ -189,6 +210,7 @@
           <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="subcategory_name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="category" />
+          <NavigationProperty Name="category1" Relationship="InventoryModel.FK_sub_category_category" FromRole="sub_category" ToRole="category" />
         </EntityType>
         <EntityType Name="transaction_type">
           <Key>
@@ -197,6 +219,18 @@
           <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="transactiontype" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
+        <Association Name="FK_sub_category_category">
+          <End Type="InventoryModel.category" Role="category" Multiplicity="0..1" />
+          <End Type="InventoryModel.sub_category" Role="sub_category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sub_category">
+              <PropertyRef Name="category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

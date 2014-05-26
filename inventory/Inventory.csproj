@@ -62,7 +62,7 @@
     <Compile Include="ViewModel\Dealers\ModifyDealersViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
-    <Compile Include="ViewModel\Products\AddSubCategoryViewModel.cs" />
+    <Compile Include="ViewModel\Products\SubCategoryViewModel.cs" />
     <Compile Include="ViewModel\Products\CategoryViewModel.cs" />
     <Compile Include="ViewModel\Products\ProductsViewModelBase.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />

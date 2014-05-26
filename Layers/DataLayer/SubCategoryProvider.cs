@@ -37,12 +37,12 @@ namespace DataLayer
             return _category;
         }
 
-        public static List<sub_category> GetAllSubCategoryByName(string Category_Name)
+        public static List<sub_category> GetAllSubCategoryByName(string Category_Name,int CategoryId)
         {
             List<sub_category> _Category = null;
             using (InventoryEntities db = new InventoryEntities())
             {
-                _Category = (from u in db.sub_category where (u.subcategory_name == Category_Name) select u).ToList();
+                _Category = (from u in db.sub_category where ((u.subcategory_name == Category_Name)&&(u.category==CategoryId)) select u).ToList();
             }
             return _Category;
         }

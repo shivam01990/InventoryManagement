@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace inventory.ViewModel
 {
-    public class CategoryViewModel:ProductsViewModelBase
+    public class CategoryViewModel : ProductsViewModelBase
     {
         public override string Name
         {
@@ -115,6 +115,10 @@ namespace inventory.ViewModel
                 RaisedPropertyChanged("Category");
                 MessageBox.Show("Category Deleted");
             }
+            else
+            {
+                MessageBox.Show("Sub-category are associated with Category ");
+            }
         }
 
         public void UpdateCatagory(object parameter)
@@ -138,7 +142,7 @@ namespace inventory.ViewModel
                             MessageBox.Show("Category Name alredy Exist.");
                             return;
                         }
- 
+
                     }
                     int temp_Category_id = CategoryServices.AddUpdateCategory(ob_Category);
                     if (temp_Category_id == ob_Category.id)
@@ -152,15 +156,15 @@ namespace inventory.ViewModel
                 {
 
                     MessageBox.Show("Category Name already Exist");
-                    
+
                 }
 
             }
         }
 
         public void AddCatagory(object parameter)
-        { 
-             string category_name;
+        {
+            string category_name;
             TextBox tb = (TextBox)parameter;
             category_name = tb.Text;
             if (category_name != "")
@@ -174,7 +178,7 @@ namespace inventory.ViewModel
                     int temp_Category_id = CategoryServices.AddUpdateCategory(ct);
                     if (temp_Category_id != 0)
                     {
-                        MessageBox.Show("Category " +category_name + " is Created");
+                        MessageBox.Show("Category " + category_name + " is Created");
                         BindGrid();
                         RaisedPropertyChanged("Category");
                     }

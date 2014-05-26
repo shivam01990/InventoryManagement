@@ -21,6 +21,10 @@
     <EntitySet Name="sub_category" EntityType="InventoryModel.Store.sub_category" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="transaction_type" EntityType="InventoryModel.Store.transaction_type" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Users" EntityType="InventoryModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_sub_category_category" Association="InventoryModel.Store.FK_sub_category_category">
+      <End Role="category" EntitySet="category" />
+      <End Role="sub_category" EntitySet="sub_category" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="category">
     <Key>
@@ -102,4 +106,16 @@
     <Property Name="DOJ" Type="datetime" Nullable="false" />
     <Property Name="UpdatedOn" Type="datetime" />
   </EntityType>
+  <Association Name="FK_sub_category_category">
+    <End Role="category" Type="InventoryModel.Store.category" Multiplicity="0..1" />
+    <End Role="sub_category" Type="InventoryModel.Store.sub_category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="sub_category">
+        <PropertyRef Name="category" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -10,9 +10,9 @@ namespace BusinessLayer
 {
     public class SubCategoryServices
     {
-        public static List<SubCategoryEntity> GetAllSubCategoryEntity(int subCategoryId,int CategoryId)
+        public static List<SubCategoryEntity> GetAllSubCategoryEntity(int subCategoryId, int CategoryId)
         {
-            return SubCategoryProvider.GetAllSubCategoryEntity(subCategoryId,CategoryId);
+            return SubCategoryProvider.GetAllSubCategoryEntity(subCategoryId, CategoryId);
         }
         public static List<sub_category> GetAllSubCategory(int subCategoryId)
         {
@@ -22,6 +22,21 @@ namespace BusinessLayer
         public static sub_category GetSubCategory(int SubCategoryId)
         {
             return SubCategoryProvider.GetAllSubCategory(SubCategoryId).FirstOrDefault();
+        }
+
+        public static List<sub_category> GetAllSubCategoryByName(string Category_Name, int CategoryId)
+        {
+            return SubCategoryProvider.GetAllSubCategoryByName(Category_Name, CategoryId);
+        }
+
+        public static int AddUpdateSubCategory(sub_category ob)
+        {
+            return SubCategoryProvider.AddUpdateSubCategory(ob);
+        }
+
+        public static bool DeleteSubCategory(int Category_id)
+        {
+            return SubCategoryProvider.DeleteSubCategory(Category_id);
         }
     }
 }

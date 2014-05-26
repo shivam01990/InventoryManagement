@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using inventory.ViewModel;
 
 namespace inventory.View
 {
@@ -23,6 +24,7 @@ namespace inventory.View
         public SubCategory()
         {
             InitializeComponent();
+            this.DataContext = new AddSubCategoryViewModel();
         }
 
         
