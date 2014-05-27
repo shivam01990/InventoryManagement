@@ -7,6 +7,7 @@ using System.Windows.Input;
 using DataLayer;
 using BusinessLayer;
 using System.Windows.Forms;
+using inventory.Helpers;
 
 namespace inventory.ViewModel
 {
@@ -14,7 +15,7 @@ namespace inventory.ViewModel
     {
         public override string Name
         {
-            get { return "Add Dealers"; }
+            get { return InventoryHelper.AddDealer; }
         }
 
         private string _dealeraddress;
@@ -71,7 +72,7 @@ namespace inventory.ViewModel
             ob.dealer_address = DealerAddress;
             ob.dealer_name = DealerName;
             List<dealer> temp = DelarServices.GetDelarByName(ob.dealer_name.Trim());
-            if (temp.Count==0)
+            if (temp.Count == 0)
             {
                 int temp_dealerid = DelarServices.AddUpdateDealer(ob);
                 if (temp_dealerid > 0)

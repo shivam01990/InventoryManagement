@@ -10,6 +10,7 @@ using inventory.Model;
 using System.Windows.Input;
 using System.Windows.Controls;
 using System.Windows;
+using inventory.Helpers;
 
 namespace inventory.ViewModel
 {
@@ -17,7 +18,7 @@ namespace inventory.ViewModel
     {
         public override string Name
         {
-            get { return "Sub-Category"; }
+            get { return InventoryHelper.SubCategory; }
         }
 
         public AddSubCategoryViewModel()

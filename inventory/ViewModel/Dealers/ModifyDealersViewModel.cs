@@ -8,6 +8,7 @@ using BusinessLayer;
 using System.Windows.Input;
 using System.Windows.Controls;
 using System.Windows;
+using inventory.Helpers;
 namespace inventory.ViewModel
 {
     public class ModifyDealersViewModel : DealersViewModelBase
@@ -15,7 +16,7 @@ namespace inventory.ViewModel
 
         public override string Name
         {
-            get { return "Modify Dealers"; }
+            get { return InventoryHelper.ModifyDealer; }
         }
 
         public ModifyDealersViewModel()
@@ -119,7 +120,7 @@ namespace inventory.ViewModel
                             RaisedPropertyChanged("Delars");
                             return;
                         }
- 
+
                     }
                     int temp_delar_id = DelarServices.AddUpdateDealer(ob_dealer);
                     if (temp_delar_id == ob_dealer.id)
@@ -131,9 +132,9 @@ namespace inventory.ViewModel
                 }
                 else
                 {
-                   
-                        MessageBox.Show("Dealer Name already Exist");
-                    
+
+                    MessageBox.Show("Dealer Name already Exist");
+
                 }
 
             }
