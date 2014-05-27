@@ -21,6 +21,10 @@ namespace inventory.ViewModel
             get { return InventoryHelper.SubCategory; }
         }
 
+        public override string Icon
+        {
+            get { return InventoryHelper.SubCategoryIcon; }
+        }
         public AddSubCategoryViewModel()
         {
             Categorylst = CategoryServices.GetAllCategory(0);

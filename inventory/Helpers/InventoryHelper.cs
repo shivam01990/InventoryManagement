@@ -15,6 +15,12 @@ namespace inventory.Helpers
         public static string ModifyDealer = "Modify Dealer";
         #endregion
 
+        #region Icons
+        public static string SubCategoryIcon = "/Files/SubCategory.png";
+        public static string CategoryIcon = "/Files/category.png";
+        public static string AddDealerIcon = "/Files/dealer.jpg";
+        public static string ModifyDealerIcon = "/Files/ModifyDealer.jpg";
+        #endregion
 
     }
 }

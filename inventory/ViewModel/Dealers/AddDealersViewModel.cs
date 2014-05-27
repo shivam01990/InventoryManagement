@@ -18,6 +18,11 @@ namespace inventory.ViewModel
             get { return InventoryHelper.AddDealer; }
         }
 
+        public override string Icon
+        {
+            get { return InventoryHelper.AddDealerIcon; }
+        }
+
         private string _dealeraddress;
         public string DealerAddress
         {

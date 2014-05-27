@@ -9,5 +9,6 @@ namespace inventory.ViewModel
     public abstract class DealersViewModelBase : ViewModelBase
     {
         public abstract string Name { get; }
+        public abstract string Icon { get; }
     }
 }

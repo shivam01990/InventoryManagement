@@ -19,6 +19,10 @@ namespace inventory.ViewModel
             get { return InventoryHelper.ModifyDealer; }
         }
 
+        public override string Icon
+        {
+            get { return InventoryHelper.ModifyDealerIcon; }
+        }
         public ModifyDealersViewModel()
         {
             BindGrid();

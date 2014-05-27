@@ -19,6 +19,11 @@ namespace inventory.ViewModel
             get { return InventoryHelper.Category; }
         }
 
+        public override string Icon
+        {
+            get { return InventoryHelper.CategoryIcon; }
+        }
+
         public CategoryViewModel()
         {
             BindGrid();

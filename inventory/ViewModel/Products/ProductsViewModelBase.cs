@@ -10,6 +10,6 @@ namespace inventory.ViewModel
     {
 
         public abstract string Name { get; }
-
+        public abstract string Icon { get; }
     }
 }
