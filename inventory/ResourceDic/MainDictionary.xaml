@@ -84,7 +84,16 @@
                             </Border>
 
                             <!-- Footer -->
-                            <Border Grid.Row="2" Background="{DynamicResource BackgroundBrush}"  x:Name="Footer" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,0,1,1" CornerRadius="0,0,5,5"/>
+                            <Border Grid.Row="2" Background="{DynamicResource BackgroundBrush}"  x:Name="Footer" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,0,1,1" CornerRadius="0,0,5,5">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="20"/>
+                                    </Grid.ColumnDefinitions>
+                                         <TextBlock  Grid.Column="1" Text="@All Rights Reserved (Shivam Srivastava) 2014-15" TextWrapping="Wrap"  Foreground="{DynamicResource HeaderFontColor}" FontSize="10" VerticalAlignment="Center" />
+                                </Grid>
+                            </Border>
                         </Grid>
                     </Border>
                 </ControlTemplate>
