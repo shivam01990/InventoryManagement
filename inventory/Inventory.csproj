@@ -55,7 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\ImageToSourceConverter.cs" />
     <Compile Include="Helpers\DialogCloser.cs" />
+    <Compile Include="Helpers\InventoryHelper.cs" />
     <Compile Include="Model\SubcategoryModel.cs" />
     <Compile Include="ViewModel\Dealers\AddDealersViewModel.cs" />
     <Compile Include="ViewModel\Dealers\DealersViewModelBase.cs" />
@@ -147,7 +149,12 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Files\category.png" />
+    <Resource Include="Files\dealer.jpg" />
+    <Resource Include="Files\ModifyDealer.jpg" />
+    <Resource Include="Files\SubCategory.png" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Layers\BusinessLayer\BusinessLayer.csproj">
       <Project>{73abf4d1-33e4-4048-9f8b-92e0832d1b12}</Project>
