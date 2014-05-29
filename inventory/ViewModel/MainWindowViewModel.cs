@@ -30,6 +30,7 @@ namespace inventory.ViewModel
             this._ProductMenu = new ObservableCollection<ProductsViewModelBase>();
             this._ProductMenu.Add(new CategoryViewModel());
             this._ProductMenu.Add(new AddSubCategoryViewModel());
+            this._ProductMenu.Add(new AddProductViewModel());
 
         }
 

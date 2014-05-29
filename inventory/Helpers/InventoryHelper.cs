@@ -13,6 +13,7 @@ namespace inventory.Helpers
         public static string Category = "Category";
         public static string AddDealer = "Add Dealers";
         public static string ModifyDealer = "Modify Dealer";
+        public static string AddProduct = "Add Product";
         #endregion
 
         #region Icons
@@ -20,6 +21,7 @@ namespace inventory.Helpers
         public static string CategoryIcon = "/Files/category.png";
         public static string AddDealerIcon = "/Files/dealer.jpg";
         public static string ModifyDealerIcon = "/Files/ModifyDealer.jpg";
+        public static string AddProductIcon = "/Files/AddProduct.png";
         #endregion
 
     }

@@ -25,6 +25,9 @@
         <DataTemplate DataType="{x:Type ViewModel:AddSubCategoryViewModel}">
             <View:SubCategory/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type ViewModel:AddProductViewModel}">
+            <View:AddProduct/>
+        </DataTemplate>
     </Window.Resources>
 
     <Grid>
@@ -51,10 +54,10 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </Expander>
-        <Expander Header="Product Menu" IsExpanded="True"  Height="100" Width="150" Margin="25,115,25,283" >
+        <Expander Header="Product Menu" IsExpanded="True" Width="150" Margin="25,115,25,94" >
             <ListBox x:Name="ListBoxCategory"
         	ItemsSource="{Binding ProductMenu}"
-             RenderTransformOrigin="0.51,0.18" Width="150"  Margin="0,0,-2,0" SelectionChanged="ListBoxCategory_SelectionChanged" Height="81" >
+             Width="150"  Margin="0,0,-2,0" SelectionChanged="ListBoxCategory_SelectionChanged" Height="269" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
