@@ -3,8 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Convertor="clr-namespace:inventory.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="550" Background="Transparent">
+    <UserControl.Resources>
+        <Convertor:ImageToSourceConverter x:Key="ImageSourceConverter">
+        </Convertor:ImageToSourceConverter>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
@@ -16,7 +21,7 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
+
             <RowDefinition Height="90"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
@@ -31,19 +36,18 @@
         <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Brand" VerticalAlignment="Bottom" RenderTransformOrigin="2.806,1.188" Margin="65,0,0,10" Grid.Row="3"/>
         <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Category" VerticalAlignment="Bottom" RenderTransformOrigin="2.806,1.188" Margin="48,0,0,10" Grid.Row="4"/>
         <TextBox HorizontalAlignment="Left" Height="18" Width="150" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  Grid.Column="1" Margin="23,4,0,0" Grid.Row="3"/>
-        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="23,4,0,0" Grid.Row="4"/>
+        <ComboBox HorizontalAlignment="Left"  ItemsSource="{Binding Category}" DisplayMemberPath="category_name" SelectedItem="{Binding SelectedCategory}" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="23,4,0,0" Grid.Row="4"/>
         <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="SubCategory" VerticalAlignment="Bottom" RenderTransformOrigin="2.806,1.188" Margin="28,0,0,10" Grid.Row="5"/>
-        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="23,4,0,0" Grid.Row="5"/>
+        <ComboBox HorizontalAlignment="Left" ItemsSource="{Binding SubCategory}"  DisplayMemberPath="subcategory_name" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="23,4,0,0" Grid.Row="5"/>
         <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Weight" VerticalAlignment="Bottom" RenderTransformOrigin="2.806,1.188" Margin="58,0,0,10" Grid.Row="6"/>
         <TextBox HorizontalAlignment="Left" Height="18" Width="150" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  Grid.Column="1" Margin="23,4,0,0" Grid.Row="6"/>
         <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Cost Price" VerticalAlignment="Bottom" RenderTransformOrigin="2.806,1.188" Margin="44,0,0,6" Grid.Row="7"/>
         <TextBox HorizontalAlignment="Left" Height="18" Width="150" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  Grid.Column="1" Margin="23,8,0,0" Grid.Row="7"/>
-        <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Selling Price" VerticalAlignment="Bottom" RenderTransformOrigin="2.806,1.188" Margin="31,0,0,4" Grid.Row="8" Width="66"/>
+        <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Selling Price" VerticalAlignment="Bottom" RenderTransformOrigin="2.806,1.188" Margin="30,0,0,4" Grid.Row="8" />
         <TextBox HorizontalAlignment="Left" Height="18" Width="150" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  Grid.Column="1" Margin="23,8,0,0" Grid.Row="8"/>
-        <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Product Image" VerticalAlignment="Bottom" RenderTransformOrigin="2.806,1.188" Margin="14,0,0,4" Grid.Row="9" Width="82"/>
-        <TextBox HorizontalAlignment="Left" Height="18" Width="150" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  Grid.Column="1" Margin="23,8,0,0" Grid.Row="9"/>
-        <Button Content="Browse" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="197,6,0,0" Grid.Row="9"/>
-        <Image HorizontalAlignment="Left" Height="75" VerticalAlignment="Top" Width="118" Grid.Column="1" Margin="23,10,0,0" Grid.Row="10" RenderTransformOrigin="0.598,0.75"/>
-        <Button Content="Add Product" HorizontalAlignment="Left" VerticalAlignment="Top" Width="82" Grid.Column="1" Margin="23,5,0,0" Grid.Row="11"/>
+        <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Product Image" VerticalAlignment="Bottom" RenderTransformOrigin="2.806,1.188" Margin="14,0,0,38" Grid.Row="9" Width="82"/>
+        <Button Content="Browse"  Command="{Binding OpenCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="185,36,0,0" Grid.Row="9"/>
+        <Image HorizontalAlignment="Left" Source="{Binding SelectedPath,Converter={StaticResource ImageSourceConverter}}" Height="75" VerticalAlignment="Top" Width="118" Grid.Column="1" Margin="41,10,0,0" Grid.Row="9" RenderTransformOrigin="0.598,0.75"/>
+        <Button Content="Add Product" HorizontalAlignment="Left" VerticalAlignment="Top" Width="82" Grid.Column="1" Margin="23,10,0,0" Grid.Row="11"/>
     </Grid>
 </UserControl>

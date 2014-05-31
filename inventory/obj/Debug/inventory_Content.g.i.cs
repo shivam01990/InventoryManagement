@@ -8,9 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("files/category.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("files/dealer.jpg")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("files/modifydealer.jpg")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("files/subcategory.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("files/na.png")]
 
 

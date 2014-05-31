@@ -63,3 +63,40 @@ D:\Development Area\inventory\inventory\obj\Debug\View\Products\SubCategory.baml
 D:\Development Area\inventory\inventory\obj\Debug\View\Products\SubCategory.g.cs
 D:\Development Area\inventory\inventory\bin\Debug\EntityLayer.dll
 D:\Development Area\inventory\inventory\bin\Debug\EntityLayer.pdb
+G:\Softwares\inventory\InventoryManagement\inventory\bin\Debug\inventory.exe.config
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\inventory.exe
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\inventory.pdb
+G:\Softwares\inventory\InventoryManagement\inventory\bin\Debug\inventory.exe
+G:\Softwares\inventory\InventoryManagement\inventory\bin\Debug\inventory.pdb
+G:\Softwares\inventory\InventoryManagement\inventory\bin\Debug\BusinessLayer.dll
+G:\Softwares\inventory\InventoryManagement\inventory\bin\Debug\DataLayer.dll
+G:\Softwares\inventory\InventoryManagement\inventory\bin\Debug\EntityLayer.dll
+G:\Softwares\inventory\InventoryManagement\inventory\bin\Debug\EntityFramework.dll
+G:\Softwares\inventory\InventoryManagement\inventory\bin\Debug\BusinessLayer.pdb
+G:\Softwares\inventory\InventoryManagement\inventory\bin\Debug\DataLayer.pdb
+G:\Softwares\inventory\InventoryManagement\inventory\bin\Debug\EntityLayer.pdb
+G:\Softwares\inventory\InventoryManagement\inventory\bin\Debug\EntityFramework.xml
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\Inventory.csprojResolveAssemblyReference.cache
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\ResourceDic\MainDictionary.baml
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Dealers\AddDealers.baml
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Products\Category.baml
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Products\SubCategory.baml
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\App.baml
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Dealers\AddDealers.g.cs
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Dealers\ModifyDealers.g.cs
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Login.g.cs
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\MainWindow.g.cs
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Products\Category.g.cs
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Products\SubCategory.g.cs
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\App.g.cs
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\GeneratedInternalTypeHelper.g.cs
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\inventory_MarkupCompile.cache
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\inventory_MarkupCompile.lref
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Dealers\ModifyDealers.baml
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Login.baml
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\MainWindow.baml
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\inventory.g.resources
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\inventory.Properties.Resources.resources
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\Inventory.csproj.GenerateResource.Cache
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Products\AddProduct.baml
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Products\AddProduct.g.cs

@@ -24,5 +24,9 @@ namespace inventory.Helpers
         public static string AddProductIcon = "/Files/AddProduct.png";
         #endregion
 
+
+        public static string ImageNA = "/Files/NA.png";
+
+
     }
 }

@@ -64,6 +64,7 @@
     <Compile Include="ViewModel\Dealers\ModifyDealersViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\Products\AddProductViewModel.cs" />
     <Compile Include="ViewModel\Products\SubCategoryViewModel.cs" />
     <Compile Include="ViewModel\Products\CategoryViewModel.cs" />
     <Compile Include="ViewModel\Products\ProductsViewModelBase.cs" />
@@ -84,6 +85,9 @@
     </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Products\AddProduct.xaml.cs">
+      <DependentUpon>AddProduct.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Products\Category.xaml.cs">
       <DependentUpon>Category.xaml</DependentUpon>
@@ -108,6 +112,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Products\AddProduct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -150,12 +158,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Files\category.png" />
-    <Resource Include="Files\dealer.jpg" />
-    <Resource Include="Files\ModifyDealer.jpg" />
-    <Resource Include="Files\SubCategory.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Layers\BusinessLayer\BusinessLayer.csproj">
       <Project>{73abf4d1-33e4-4048-9f8b-92e0832d1b12}</Project>
       <Name>BusinessLayer</Name>
@@ -168,6 +170,16 @@
       <Project>{4c03ecb7-bdb4-4f43-8167-2873eb513071}</Project>
       <Name>EntityLayer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Files\AddProduct.png" />
+    <Resource Include="Files\category.png" />
+    <Resource Include="Files\dealer.jpg" />
+    <Resource Include="Files\ModifyDealer.jpg" />
+    <Resource Include="Files\SubCategory.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Files\NA.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

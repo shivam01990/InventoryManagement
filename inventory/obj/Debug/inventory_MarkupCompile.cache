@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Development Area\inventory\inventory\obj\Debug\
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\
 inventory
 none
 false
 DEBUG;TRACE
-D:\Development Area\inventory\inventory\App.xaml
-71284471763
+G:\Softwares\inventory\InventoryManagement\inventory\App.xaml
+81515229131
 
-24-703071891
-17-1563922656
-ResourceDic\MainDictionary.xaml;View\Dealers\AddDealers.xaml;View\Dealers\ModifyDealers.xaml;View\Login.xaml;View\MainWindow.xaml;View\Products\Category.xaml;View\Products\SubCategory.xaml;
+2629153576
+17-1928864686
+ResourceDic\MainDictionary.xaml;View\Dealers\AddDealers.xaml;View\Dealers\ModifyDealers.xaml;View\Login.xaml;View\MainWindow.xaml;View\Products\AddProduct.xaml;View\Products\Category.xaml;View\Products\SubCategory.xaml;
 
 False
 
