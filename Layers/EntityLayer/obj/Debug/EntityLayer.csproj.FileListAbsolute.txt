@@ -3,3 +3,7 @@ D:\Development Area\inventory\Layers\EntityLayer\bin\Debug\EntityLayer.pdb
 D:\Development Area\inventory\Layers\EntityLayer\obj\Debug\EntityLayer.csprojResolveAssemblyReference.cache
 D:\Development Area\inventory\Layers\EntityLayer\obj\Debug\EntityLayer.dll
 D:\Development Area\inventory\Layers\EntityLayer\obj\Debug\EntityLayer.pdb
+G:\Softwares\inventory\InventoryManagement\Layers\EntityLayer\bin\Debug\EntityLayer.dll
+G:\Softwares\inventory\InventoryManagement\Layers\EntityLayer\bin\Debug\EntityLayer.pdb
+G:\Softwares\inventory\InventoryManagement\Layers\EntityLayer\obj\Debug\EntityLayer.dll
+G:\Softwares\inventory\InventoryManagement\Layers\EntityLayer\obj\Debug\EntityLayer.pdb

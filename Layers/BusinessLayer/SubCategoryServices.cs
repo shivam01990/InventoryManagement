@@ -14,14 +14,14 @@ namespace BusinessLayer
         {
             return SubCategoryProvider.GetAllSubCategoryEntity(subCategoryId, CategoryId);
         }
-        public static List<sub_category> GetAllSubCategory(int subCategoryId)
+        public static List<sub_category> GetAllSubCategory(int subCategoryId, int CategoryId)
         {
-            return SubCategoryProvider.GetAllSubCategory(subCategoryId);
+            return SubCategoryProvider.GetAllSubCategory(subCategoryId,CategoryId);
         }
 
         public static sub_category GetSubCategory(int SubCategoryId)
         {
-            return SubCategoryProvider.GetAllSubCategory(SubCategoryId).FirstOrDefault();
+            return SubCategoryProvider.GetAllSubCategory(SubCategoryId,0).FirstOrDefault();
         }
 
         public static List<sub_category> GetAllSubCategoryByName(string Category_Name, int CategoryId)
