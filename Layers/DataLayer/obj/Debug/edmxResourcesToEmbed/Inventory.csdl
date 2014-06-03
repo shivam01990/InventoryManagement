@@ -54,6 +54,7 @@
     <Property Type="Decimal" Name="cost_price" Nullable="false" Precision="19" Scale="4" />
     <Property Type="Decimal" Name="sell_price" Nullable="false" Precision="19" Scale="4" />
     <Property Type="Boolean" Name="status" Nullable="false" />
+    <Property Type="String" Name="image_url" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="selling_history">
     <Key>

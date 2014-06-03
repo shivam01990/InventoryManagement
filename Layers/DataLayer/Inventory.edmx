@@ -26,10 +26,6 @@
           <EntitySet Name="sub_category" EntityType="InventoryModel.Store.sub_category" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="transaction_type" EntityType="InventoryModel.Store.transaction_type" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Users" EntityType="InventoryModel.Store.Users" store:Type="Tables" Schema="dbo" />
-          <AssociationSet Name="FK_sub_category_category" Association="InventoryModel.Store.FK_sub_category_category">
-            <End Role="category" EntitySet="category" />
-            <End Role="sub_category" EntitySet="sub_category" />
-          </AssociationSet>
         </EntityContainer>
         <EntityType Name="category">
           <Key>
@@ -52,6 +48,7 @@
           </Key>
           <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="product_name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="image_url" Type="nvarchar(max)" />
           <Property Name="brand" Type="nvarchar(max)" />
           <Property Name="category" Type="int" Nullable="false" />
           <Property Name="sub_category" Type="int" Nullable="false" />
@@ -61,7 +58,7 @@
           <Property Name="status" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'katyayani_hw.dbo.selling_history' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'inventory.dbo.selling_history' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="selling_history">
           <Key>
@@ -111,18 +108,6 @@
           <Property Name="DOJ" Type="datetime" Nullable="false" />
           <Property Name="UpdatedOn" Type="datetime" />
         </EntityType>
-        <Association Name="FK_sub_category_category">
-          <End Role="category" Type="InventoryModel.Store.category" Multiplicity="0..1" />
-          <End Role="sub_category" Type="InventoryModel.Store.sub_category" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="category">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="sub_category">
-              <PropertyRef Name="category" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -181,6 +166,7 @@
           <Property Type="Decimal" Name="cost_price" Nullable="false" Precision="19" Scale="4" />
           <Property Type="Decimal" Name="sell_price" Nullable="false" Precision="19" Scale="4" />
           <Property Type="Boolean" Name="status" Nullable="false" />
+          <Property Type="String" Name="image_url" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="selling_history">
           <Key>
@@ -270,6 +256,7 @@
           <EntitySetMapping Name="products">
             <EntityTypeMapping TypeName="InventoryModel.product">
               <MappingFragment StoreEntitySet="products">
+                <ScalarProperty Name="image_url" ColumnName="image_url" />
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="sell_price" ColumnName="sell_price" />
                 <ScalarProperty Name="cost_price" ColumnName="cost_price" />

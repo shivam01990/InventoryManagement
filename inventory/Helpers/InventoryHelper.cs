@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,17 @@ namespace inventory.Helpers
 
         public static string ImageNA = "/Files/NA.png";
 
+        public static string GetSaveFilePath()
+        {
+           string DirectoryPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string FolderName="InventoryFiles";
+            DirectoryPath +=@"\"+ FolderName;
+            if (!Directory.Exists(DirectoryPath))
+            {
+                Directory.CreateDirectory(DirectoryPath);
+            }
+           return DirectoryPath;
+        }
 
     }
 }

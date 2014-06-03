@@ -34,6 +34,7 @@
     <EntitySetMapping Name="products">
       <EntityTypeMapping TypeName="InventoryModel.product">
         <MappingFragment StoreEntitySet="products">
+          <ScalarProperty Name="image_url" ColumnName="image_url" />
           <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="sell_price" ColumnName="sell_price" />
           <ScalarProperty Name="cost_price" ColumnName="cost_price" />

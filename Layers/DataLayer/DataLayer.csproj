@@ -72,6 +72,7 @@
     <Compile Include="product.cs">
       <DependentUpon>Inventory.tt</DependentUpon>
     </Compile>
+    <Compile Include="ProductProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="selling_history.cs">
       <DependentUpon>Inventory.tt</DependentUpon>

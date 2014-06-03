@@ -32,7 +32,7 @@
         </Grid.ColumnDefinitions>
         <TextBlock HorizontalAlignment="Left" FontWeight="Bold" TextWrapping="Wrap" Text="Add Product" VerticalAlignment="Top" RenderTransformOrigin="2.806,1.188" Grid.Column="1" Margin="141,4,0,0"/>
         <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Product Name" VerticalAlignment="Bottom" RenderTransformOrigin="2.806,1.188" Margin="20,0,0,10" Grid.Row="2"/>
-        <TextBox HorizontalAlignment="Left" Height="18" Width="150" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  Grid.Column="1" Margin="23,4,0,0" Grid.Row="2"/>
+        <TextBox HorizontalAlignment="Left" Height="18" Width="150" TextWrapping="Wrap" Text="{Binding ProductName}" VerticalAlignment="Top"  Grid.Column="1" Margin="23,4,0,0" Grid.Row="2"/>
         <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Brand" VerticalAlignment="Bottom" RenderTransformOrigin="2.806,1.188" Margin="65,0,0,10" Grid.Row="3"/>
         <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Category" VerticalAlignment="Bottom" RenderTransformOrigin="2.806,1.188" Margin="48,0,0,10" Grid.Row="4"/>
         <TextBox HorizontalAlignment="Left" Height="18" Width="150" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  Grid.Column="1" Margin="23,4,0,0" Grid.Row="3"/>

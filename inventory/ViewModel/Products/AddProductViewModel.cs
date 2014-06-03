@@ -130,5 +130,93 @@ namespace inventory.ViewModel
                 SelectedPath = filename;
             }
         }
+
+        private string _ProductName;
+        public string ProductName
+        {
+            get
+            {
+                return _ProductName;
+            }
+            set
+            {
+                _ProductName = value;
+                RaisedPropertyChanged("ProductName");
+            }
+        }
+
+        private string _Brand;
+        public string Brand
+        {
+            get
+            {
+                return _Brand;
+            }
+            set
+            {
+                _Brand = value;
+                RaisedPropertyChanged("Brand");
+            }
+        }
+
+        private string _Weight;
+        public string Weight
+        {
+            get
+            {
+                return _Weight;
+            }
+            set
+            {
+                _Weight = value;
+                RaisedPropertyChanged("Weight");
+            }
+        }
+
+        private decimal _CostPrice;
+        public decimal CostPrice
+        {
+            get
+            {
+                return _CostPrice;
+            }
+            set
+            {
+                _CostPrice = value;
+                RaisedPropertyChanged("CostPrice");
+            }
+        }
+
+        private decimal _SellingPrice;
+        public decimal SellingPrice
+        {
+            get
+            {
+                return _SellingPrice;
+            }
+            set
+            {
+                _SellingPrice = value;
+                RaisedPropertyChanged("SellingPrice");
+            }
+        }
+
+
+        public void SaveProduct()
+        {
+            string path = InventoryHelper.GetSaveFilePath();
+            product temp = new product();
+            temp.product_name = ProductName;
+            temp.brand = Brand;
+            temp.category = SelectedCategory.id;
+            //temp.sub_category = 
+            temp.sell_price = SellingPrice;
+            temp.cost_price = CostPrice;
+            temp.image_url = SelectedPath;
+            temp.weight = Weight;
+            temp.status = true;
+            ProductServices.AddUpdateProduct(temp);
+
+        }
     }
 }
