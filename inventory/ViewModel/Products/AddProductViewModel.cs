@@ -4,13 +4,14 @@ using inventory.Helpers;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace inventory.ViewModel
 {
-    public class AddProductViewModel : ProductsViewModelBase
+    public class AddProductViewModel : ProductsViewModelBase, IDataErrorInfo
     {
         public override string Name
         {
@@ -216,6 +217,51 @@ namespace inventory.ViewModel
             temp.weight = Weight;
             temp.status = true;
             ProductServices.AddUpdateProduct(temp);
+
+        }
+
+
+        public string Error
+        {
+
+            get { throw new NotImplementedException(); }
+
+        }
+
+
+
+        public string this[string columnName]
+        {
+
+            get
+            {
+
+                string result = string.Empty;
+
+                switch (columnName)
+                {
+
+                    case "ProductName": if (string.IsNullOrEmpty(ProductName)) result = "Product Name is required!"; break;
+
+                    //case "SellingPrice":
+                    //    if (SellingPrice.GetType().Name.ToLower() != "decimal")
+                    //    {
+                    //        result = "Selling Price is Required";
+                    //    }
+                    //    break;
+
+                    //case "CostPrice":
+                    //    if (CostPrice == 0)
+                    //    {
+                    //        result = "CostPrice is Required";
+                    //    }
+                    //    break;
+
+                };
+
+                return result;
+
+            }
 
         }
     }
