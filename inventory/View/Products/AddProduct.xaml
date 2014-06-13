@@ -44,7 +44,7 @@
         </Grid.ColumnDefinitions>
         <TextBlock HorizontalAlignment="Left" FontWeight="Bold" TextWrapping="Wrap" Text="Add Product" VerticalAlignment="Top" RenderTransformOrigin="2.806,1.188" Grid.Column="1" Margin="141,4,0,0"/>
         <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Product Name" VerticalAlignment="Bottom" RenderTransformOrigin="2.806,1.188" Margin="20,0,0,10" Grid.Row="2"/>
-        <TextBox HorizontalAlignment="Left" Height="18" Width="150" TextWrapping="Wrap" Text="{Binding ProductName, ValidatesOnDataErrors=True}" VerticalAlignment="Top"  Grid.Column="1" Margin="23,4,0,0" Grid.Row="2"/>
+        <TextBox Name="txt_ProductName" HorizontalAlignment="Left" Height="18" Width="150" TextWrapping="Wrap" Text="{Binding ProductName, ValidatesOnDataErrors=True}" VerticalAlignment="Top"  Grid.Column="1" Margin="23,4,0,0"  Grid.Row="2"/>
         <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Brand" VerticalAlignment="Bottom" RenderTransformOrigin="2.806,1.188" Margin="65,0,0,10" Grid.Row="3"/>
         <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Category" VerticalAlignment="Bottom" RenderTransformOrigin="2.806,1.188" Margin="48,0,0,10" Grid.Row="4"/>
         <TextBox HorizontalAlignment="Left" Height="18" Width="150" TextWrapping="Wrap" Text="{Binding Brand}" VerticalAlignment="Top"  Grid.Column="1" Margin="23,4,0,0" Grid.Row="3"/>
@@ -54,12 +54,69 @@
         <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Weight" VerticalAlignment="Bottom" RenderTransformOrigin="2.806,1.188" Margin="58,0,0,10" Grid.Row="6"/>
         <TextBox HorizontalAlignment="Left" Height="18" Width="150" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  Grid.Column="1" Margin="23,4,0,0" Grid.Row="6"/>
         <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Cost Price" VerticalAlignment="Bottom" RenderTransformOrigin="2.806,1.188" Margin="44,0,0,6" Grid.Row="7"/>
-        <TextBox HorizontalAlignment="Left" Height="18" Width="150" TextWrapping="Wrap" Text="{Binding CostPrice, ValidatesOnDataErrors=True}" VerticalAlignment="Top"  Grid.Column="1" Margin="23,8,0,0" Grid.Row="7"/>
+        <TextBox Name="txt_CostPrice" HorizontalAlignment="Left" Height="18" Width="150" TextWrapping="Wrap" Text="{Binding CostPrice, ValidatesOnDataErrors=True}" VerticalAlignment="Top"  Grid.Column="1" Margin="23,8,0,0" Grid.Row="7" />
         <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Selling Price" VerticalAlignment="Bottom" RenderTransformOrigin="2.806,1.188" Margin="30,0,0,4" Grid.Row="8" />
-        <TextBox HorizontalAlignment="Left"   Height="18" Width="150" TextWrapping="Wrap" Text="{Binding SellingPrice, ValidatesOnDataErrors=True}" VerticalAlignment="Top"  Grid.Column="1" Margin="23,8,0,0" Grid.Row="8"/>
+        <TextBox Name="txt_SellingPrice" HorizontalAlignment="Left"   Height="18" Width="150" TextWrapping="Wrap" Text="{Binding SellingPrice, ValidatesOnDataErrors=True}" VerticalAlignment="Top"  Grid.Column="1" Margin="23,8,0,0" Grid.Row="8" />
         <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Product Image" VerticalAlignment="Bottom" RenderTransformOrigin="2.806,1.188" Margin="14,0,0,38" Grid.Row="9" Width="82"/>
         <Button Content="Browse"  Command="{Binding OpenCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="185,36,0,0" Grid.Row="9"/>
         <Image HorizontalAlignment="Left" Source="{Binding SelectedPath,Converter={StaticResource ImageSourceConverter}}" Height="75" VerticalAlignment="Top" Width="118" Grid.Column="1" Margin="41,10,0,0" Grid.Row="9" RenderTransformOrigin="0.598,0.75"/>
-        <Button Content="Add Product" HorizontalAlignment="Left" VerticalAlignment="Top" Width="82" Grid.Column="1" Margin="23,10,0,0" Grid.Row="11"/>
+        <Button Content="Add Product" Command="{Binding ClickCommand}"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="82" Grid.Column="1" Margin="23,10,0,0" Grid.Row="11">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="IsEnabled" Value="false" />
+                    <Setter Property="Foreground" Value="#FFFFFF" />
+                    <Setter Property="Width" Value="60" />
+                    <Setter Property="Height" Value="20" />
+                    <Setter Property="FontSize" Value="10" />                   
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding ElementName= txt_ProductName, Path=(Validation.HasError)}" Value="false" />
+                                <Condition Binding="{Binding ElementName=txt_CostPrice, Path=(Validation.HasError)}" Value="false" />
+                                <Condition Binding="{Binding ElementName=txt_SellingPrice, Path=(Validation.HasError)}" Value="false" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="true" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Grid>
+                                            <Rectangle x:Name="Rectangle" Stroke="#FF051F42" StrokeMiterLimit="1.000000" StrokeThickness="0.500000" RadiusX="5" RadiusY="5">
+                                                <Rectangle.Fill>
+                                                    <LinearGradientBrush EndPoint="0.501,0.039" StartPoint="0.501,0.971">
+                                                        <GradientStop Color="#FF1F317D" Offset="0.101" />
+                                                        <GradientStop Color="#FF1F317D" Offset="0.49" />
+                                                        <GradientStop Color="#FF6C8EBD" Offset="0.51" />
+                                                        <GradientStop Color="#FF283D8C" Offset="0" />
+                                                        <GradientStop Color="#FF7094C7" Offset="0.986" />
+                                                    </LinearGradientBrush>
+                                                </Rectangle.Fill>
+                                            </Rectangle>
+                                            <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RecognizesAccessKey="True" />
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsKeyboardFocused" Value="true" />
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter Property="Fill" TargetName="Rectangle">
+                                                    <Setter.Value>
+                                                        <LinearGradientBrush EndPoint="0.501,0.039" StartPoint="0.501,0.971">
+                                                            <GradientStop Color="#FF2C558C" Offset="0.101" />
+                                                            <GradientStop Color="#FF1F317D" Offset="0.49" />
+                                                            <GradientStop Color="#FF9DB5D7" Offset="0.51" />
+                                                            <GradientStop Color="#FF244AAF" Offset="0" />
+                                                            <GradientStop Color="#FF87A4D9" Offset="0.986" />
+                                                        </LinearGradientBrush>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                    
+                </Style>
+            </Button.Style>
+        </Button>
     </Grid>
 </UserControl>

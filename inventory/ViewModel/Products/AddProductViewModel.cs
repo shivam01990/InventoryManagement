@@ -8,6 +8,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace inventory.ViewModel
 {
@@ -85,7 +88,11 @@ namespace inventory.ViewModel
                 }
                 return _selectedPath;
             }
-            set { _selectedPath = value; RaisedPropertyChanged("SelectedPath"); }
+            set
+            {
+                _selectedPath = value;
+                RaisedPropertyChanged("SelectedPath");
+            }
         }
 
         private RelayCommand _openCommand;
@@ -116,7 +123,7 @@ namespace inventory.ViewModel
 
             // Set filter for file extension and default file extension 
             dlg.DefaultExt = ".png";
-            dlg.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
+            dlg.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif|BMP Files (*.bmp)|*.bmp";
 
 
             // Display OpenFileDialog by calling ShowDialog method 
@@ -202,21 +209,54 @@ namespace inventory.ViewModel
             }
         }
 
-
-        public void SaveProduct()
+        private ICommand _clickCommand;
+        public ICommand ClickCommand
         {
-            string path = InventoryHelper.GetSaveFilePath();
-            product temp = new product();
-            temp.product_name = ProductName;
-            temp.brand = Brand;
-            temp.category = SelectedCategory.id;
-            //temp.sub_category = 
-            temp.sell_price = SellingPrice;
-            temp.cost_price = CostPrice;
-            temp.image_url = SelectedPath;
-            temp.weight = Weight;
-            temp.status = true;
-            ProductServices.AddUpdateProduct(temp);
+            get
+            {
+                if (_clickCommand == null)
+                {
+                    _clickCommand = new RelayCommand(new Action<object>(SaveProduct));
+                }
+                return _clickCommand;
+            }
+            set
+            {
+                _clickCommand = value;
+                RaisedPropertyChanged("ClickCommand");
+
+            }
+        }
+
+        public void SaveProduct(object parameter)
+        {
+            try
+            {
+                string path = InventoryHelper.GetSaveFilePath() + "\\" + ProductName + System.IO.Path.GetExtension(SelectedPath);
+                if (SelectedPath != InventoryHelper.ImageNA)
+                {
+                    System.IO.File.Copy(SelectedPath, path, true);
+                }
+                product temp = new product();
+                temp.product_name = ProductName;
+                temp.brand = Brand == null ? "" : Brand;
+                temp.category = SelectedCategory.id;
+                //temp.sub_category = 
+                temp.sell_price = SellingPrice;
+                temp.cost_price = CostPrice;
+                temp.image_url = SelectedPath == InventoryHelper.ImageNA ? "" : path;
+                temp.weight = Weight == null ? "" : Weight;
+                temp.status = true;
+                int productId = ProductServices.AddUpdateProduct(temp);
+                if (productId > 0)
+                {
+                    MessageBox.Show("Product Added");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Product Entry Fails:"+ex.ToString());
+            }
 
         }
 
@@ -241,21 +281,24 @@ namespace inventory.ViewModel
                 switch (columnName)
                 {
 
-                    case "ProductName": if (string.IsNullOrEmpty(ProductName)) result = "Product Name is required!"; break;
+                    case "ProductName":
+                        if (string.IsNullOrEmpty(ProductName))
+                            result = "Product Name is required!";
+                        break;
 
-                    //case "SellingPrice":
-                    //    if (SellingPrice.GetType().Name.ToLower() != "decimal")
-                    //    {
-                    //        result = "Selling Price is Required";
-                    //    }
-                    //    break;
+                    case "SellingPrice":
+                        if ((SellingPrice == 0) || (SellingPrice < 0))
+                        {
+                            result = "Selling Price is must be greater than zero";
+                        }
+                        break;
 
-                    //case "CostPrice":
-                    //    if (CostPrice == 0)
-                    //    {
-                    //        result = "CostPrice is Required";
-                    //    }
-                    //    break;
+                    case "CostPrice":
+                        if ((CostPrice == 0) || (CostPrice < 0))
+                        {
+                            result = "CostPrice must be greater than zero";
+                        }
+                        break;
 
                 };
 
@@ -264,5 +307,9 @@ namespace inventory.ViewModel
             }
 
         }
+
+
+
+
     }
 }
