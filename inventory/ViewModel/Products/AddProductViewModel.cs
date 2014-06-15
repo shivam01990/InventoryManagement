@@ -61,6 +61,24 @@ namespace inventory.ViewModel
             }
         }
 
+
+        private sub_category _SelectedSubCategory;
+
+        public sub_category SelectedSubCategory
+        {
+            get
+            {
+               
+                return _SelectedSubCategory;
+            }
+            set
+            {
+                _SelectedSubCategory = value;
+                RaisedPropertyChanged("SelectedSubCategory");
+            }
+        }
+
+
         private IList<sub_category> _SubCategory;
         public IList<sub_category> SubCategory
         {
@@ -240,8 +258,8 @@ namespace inventory.ViewModel
                 product temp = new product();
                 temp.product_name = ProductName;
                 temp.brand = Brand == null ? "" : Brand;
-                temp.category = SelectedCategory.id;
-                //temp.sub_category = 
+                temp.sub_category = SelectedSubCategory.id;
+                temp.category = SelectedCategory.id;                
                 temp.sell_price = SellingPrice;
                 temp.cost_price = CostPrice;
                 temp.image_url = SelectedPath == InventoryHelper.ImageNA ? "" : path;
