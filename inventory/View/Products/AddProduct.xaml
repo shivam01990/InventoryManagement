@@ -18,6 +18,15 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+
+        <Style TargetType="ComboBox">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors).CurrentItem.ErrorContent}" />
+                    <Setter Property="BorderBrush" Value="Red"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </UserControl.Resources>
     
 
@@ -48,9 +57,9 @@
         <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Brand" VerticalAlignment="Bottom" RenderTransformOrigin="2.806,1.188" Margin="65,0,0,10" Grid.Row="3"/>
         <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Category" VerticalAlignment="Bottom" RenderTransformOrigin="2.806,1.188" Margin="48,0,0,10" Grid.Row="4"/>
         <TextBox HorizontalAlignment="Left" Height="18" Width="150" TextWrapping="Wrap" Text="{Binding Brand}" VerticalAlignment="Top"  Grid.Column="1" Margin="23,4,0,0" Grid.Row="3"/>
-        <ComboBox HorizontalAlignment="Left" Name="lst_category"  ItemsSource="{Binding Category,ValidatesOnDataErrors=True}" DisplayMemberPath="category_name" SelectedItem="{Binding SelectedCategory}" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="23,4,0,0" Grid.Row="4"/>
+        <ComboBox HorizontalAlignment="Left"  Name="lst_category"  ItemsSource="{Binding Category,ValidatesOnDataErrors=True}" DisplayMemberPath="category_name" SelectedItem="{Binding SelectedCategory,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True,NotifyOnValidationError=True}" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="23,4,0,0" Grid.Row="4"/>
         <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="SubCategory" VerticalAlignment="Bottom" RenderTransformOrigin="2.806,1.188" Margin="28,0,0,10" Grid.Row="5"/>
-        <ComboBox HorizontalAlignment="Left" Name="lst_subcategory" ItemsSource="{Binding SubCategory,ValidatesOnDataErrors=True}"  SelectedItem="{Binding SelectedSubCategory}"  DisplayMemberPath="subcategory_name" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="23,4,0,0" Grid.Row="5"/>
+        <ComboBox HorizontalAlignment="Left" Name="lst_subcategory" ItemsSource="{Binding SubCategory,ValidatesOnDataErrors=True}"  SelectedItem="{Binding SelectedSubCategory,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True}"  DisplayMemberPath="subcategory_name" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="23,4,0,0" Grid.Row="5"/>
         <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Weight" VerticalAlignment="Bottom" RenderTransformOrigin="2.806,1.188" Margin="58,0,0,10" Grid.Row="6"/>
         <TextBox HorizontalAlignment="Left" Height="18" Width="150" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  Grid.Column="1" Margin="23,4,0,0" Grid.Row="6"/>
         <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Cost Price" VerticalAlignment="Bottom" RenderTransformOrigin="2.806,1.188" Margin="44,0,0,6" Grid.Row="7"/>
@@ -75,6 +84,7 @@
                                 <Condition Binding="{Binding ElementName=txt_CostPrice, Path=(Validation.HasError)}" Value="false" />
                                 <Condition Binding="{Binding ElementName=txt_SellingPrice, Path=(Validation.HasError)}" Value="false" />
                                 <Condition Binding="{Binding ElementName=lst_category,Path=(Validation.HasError)}" Value="false"></Condition>
+                                <Condition Binding="{Binding ElementName=lst_subcategory,Path=(Validation.HasError)}" Value="false"></Condition> 
                             </MultiDataTrigger.Conditions>
                             <Setter Property="IsEnabled" Value="true" />
                             <Setter Property="Template">

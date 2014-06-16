@@ -68,7 +68,7 @@ namespace inventory.ViewModel
         {
             get
             {
-               
+
                 return _SelectedSubCategory;
             }
             set
@@ -259,7 +259,7 @@ namespace inventory.ViewModel
                 temp.product_name = ProductName;
                 temp.brand = Brand == null ? "" : Brand;
                 temp.sub_category = SelectedSubCategory.id;
-                temp.category = SelectedCategory.id;                
+                temp.category = SelectedCategory.id;
                 temp.sell_price = SellingPrice;
                 temp.cost_price = CostPrice;
                 temp.image_url = SelectedPath == InventoryHelper.ImageNA ? "" : path;
@@ -273,7 +273,7 @@ namespace inventory.ViewModel
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Product Entry Fails:"+ex.ToString());
+                MessageBox.Show("Product Entry Fails:" + ex.ToString());
             }
 
         }
@@ -318,6 +318,18 @@ namespace inventory.ViewModel
                         }
                         break;
 
+                    case "SelectedCategory":
+                        if (SelectedCategory == null)
+                        {
+                            result = "Select Category";
+                        }
+                        break;
+                    case "SelectedSubCategory":
+                        if (SelectedSubCategory == null)
+                        {
+                            result = "Select SubCategory";
+                        }
+                        break;
                 };
 
                 return result;
