@@ -44,5 +44,16 @@ namespace DataLayer
             }
             return _Productid;
         }
+
+        public static List<product> GetAllProduct(int ProductId)
+        {
+            List<product> _product = null;
+            using (InventoryEntities db = new InventoryEntities())
+            {
+                _product = (from u in db.products where ((ProductId == null) || (u.id == ProductId) || (ProductId == 0)) select u).ToList();
+            }
+            return _product;
+        }
+
     }
 }
