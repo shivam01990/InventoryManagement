@@ -13,5 +13,10 @@ namespace BusinessLayer
         {
             return ProductProvider.AddUpdateProduct(ob);
         }
+
+        public static List<product> GetAllProduct(int ProductId)
+        {
+            return ProductProvider.GetAllProduct(ProductId);
+        }
     }
 }
