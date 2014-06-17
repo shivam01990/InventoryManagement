@@ -31,6 +31,7 @@ namespace inventory.ViewModel
             this._ProductMenu.Add(new CategoryViewModel());
             this._ProductMenu.Add(new AddSubCategoryViewModel());
             this._ProductMenu.Add(new AddProductViewModel());
+            this._ProductMenu.Add(new ModifyProductViewModel());
 
         }
 

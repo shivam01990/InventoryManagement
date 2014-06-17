@@ -28,6 +28,9 @@
         <DataTemplate DataType="{x:Type ViewModel:AddProductViewModel}">
             <View:AddProduct/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type ViewModel:ModifyProductViewModel}">
+            <View:ModifyProduct/>
+        </DataTemplate>
     </Window.Resources>
 
     <Grid>

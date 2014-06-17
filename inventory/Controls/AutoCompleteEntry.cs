@@ -35,6 +35,9 @@ namespace inventory.Controls
             keywordStrings = keywords;
         }
 
+        public AutoCompleteEntry()
+        { }
+
         public override string ToString()
         {
             return displayString;
