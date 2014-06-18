@@ -16,6 +16,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DataLayer;
 using BusinessLayer;
+using System.ComponentModel;
+using inventory.ViewModel;
 
 namespace inventory.View
 {
@@ -24,11 +26,22 @@ namespace inventory.View
     /// </summary>
     public partial class ModifyProduct : UserControl
     {
+        private readonly BackgroundWorker worker = new BackgroundWorker();
         public ObservableCollection<AutoCompleteEntry> autoCompletionList;
         public ModifyProduct()
         {
             InitializeComponent();
-            autoCompletionList = new ObservableCollection<AutoCompleteEntry>();            
+            this.DataContext = new ModifyProductViewModel();
+            worker.DoWork += worker_DoWork;
+            worker.RunWorkerCompleted += worker_RunWorkerCompleted;
+            worker.RunWorkerAsync();
+        }
+
+        private void worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            // run all background tasks here
+
+            autoCompletionList = new ObservableCollection<AutoCompleteEntry>();
             //textBox1.AddItem(new AutoCompleteEntry("Toyota Camry", "Toyota Camry", "camry", "car", "sedan"));
             //textBox1.AddItem(new AutoCompleteEntry("Toyota Corolla", "Toyota Corolla", "corolla", "car", "compact"));
             //textBox1.AddItem(new AutoCompleteEntry("Toyota Tundra", "Toyota Tundra", "tundra", "truck"));
@@ -37,17 +50,18 @@ namespace inventory.View
             //textBox1.AddItem(new AutoCompleteEntry("Chevrolet Malibu", "Chevrolet Malibu", "malibu", "car", "sedan"));
             List<product> lst_product = new List<product>();
             lst_product = ProductServices.GetAllProduct(0);
-
-            //autoCompletionList = (from u in lst_product
-            //                      select new AutoCompleteEntry { DisplayName = u.product_name });
+                       
 
             foreach (product item in lst_product)
             {
-                autoCompletionList.Add(new AutoCompleteEntry(item.product_name, null));
+                autoCompletionList.Add(new AutoCompleteEntry(item.product_name,null));
             }
+        }
 
-            textBox1.AddList(autoCompletionList);
-
+        private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            //update ui once worker complete his work
+            txt_search_Product.AddList(autoCompletionList);
         }
     }
 }

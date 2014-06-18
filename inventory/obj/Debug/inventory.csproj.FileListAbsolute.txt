@@ -100,3 +100,7 @@ G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\inventory.Propert
 G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\Inventory.csproj.GenerateResource.Cache
 G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Products\AddProduct.baml
 G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Products\AddProduct.g.cs
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\Controls\AutoCompleteTextBox.baml
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Products\ModifyProduct.baml
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\Controls\AutoCompleteTextBox.g.cs
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Products\ModifyProduct.g.cs

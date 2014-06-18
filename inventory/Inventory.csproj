@@ -55,6 +55,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\AutoCompleteEntry.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\AutoCompleteTextBox.xaml.cs">
+      <DependentUpon>AutoCompleteTextBox.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Converters\ImageToSourceConverter.cs" />
     <Compile Include="Helpers\DialogCloser.cs" />
     <Compile Include="Helpers\InventoryHelper.cs" />
@@ -65,6 +72,7 @@
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\Products\AddProductViewModel.cs" />
+    <Compile Include="ViewModel\Products\ModifyProductViewModel.cs" />
     <Compile Include="ViewModel\Products\SubCategoryViewModel.cs" />
     <Compile Include="ViewModel\Products\CategoryViewModel.cs" />
     <Compile Include="ViewModel\Products\ProductsViewModelBase.cs" />
@@ -92,9 +100,16 @@
     <Compile Include="View\Products\Category.xaml.cs">
       <DependentUpon>Category.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Products\ModifyProduct.xaml.cs">
+      <DependentUpon>ModifyProduct.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Products\SubCategory.xaml.cs">
       <DependentUpon>SubCategory.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\AutoCompleteTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ResourceDic\MainDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -120,6 +135,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Products\Category.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Products\ModifyProduct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -176,10 +195,11 @@
     <Resource Include="Files\category.png" />
     <Resource Include="Files\dealer.jpg" />
     <Resource Include="Files\ModifyDealer.jpg" />
+    <Resource Include="Files\NA.png" />
     <Resource Include="Files\SubCategory.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Files\NA.png" />
+    <Resource Include="Files\ModifyProduct.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
