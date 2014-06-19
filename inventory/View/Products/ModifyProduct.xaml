@@ -20,8 +20,8 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Label Content="Search Product" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="2.211,1.808" Margin="23,3,0,0" Grid.Row="1"/>
-        <local:AutoCompleteTextBox Height="23" Width="240" x:Name="txt_search_Product" DelayTime="500" Margin="137,3,173,4" Grid.Row="1" />
-        <Button Content="Search" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="426,6,0,0" Grid.Row="1"/>
+        <local:AutoCompleteTextBox  Height="23" Width="240" x:Name="txt_search_Product" DelayTime="500" Margin="137,3,173,4" Grid.Row="1" />
+        <Button Content="Search"  Command="{Binding ClickCommand}" CommandParameter="{Binding ElementName=txt_search_Product}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="426,6,0,0" Grid.Row="1"/>
         <ListView Name="Categorylst" Grid.Row="2"  ItemsSource="{Binding Products,UpdateSourceTrigger=PropertyChanged}" Margin="10,10,20,19"  >
             <ListView.View>
                 <GridView x:Name="grdProduct">
@@ -50,7 +50,24 @@
                     </GridViewColumn>
                     <GridViewColumn Header="Status" HeaderContainerStyle="{DynamicResource GridHeaderLeft}" DisplayMemberBinding="{Binding status}" Width="50" >
                     </GridViewColumn>
-                    
+                    <GridViewColumn Header="ID" HeaderContainerStyle="{DynamicResource GridHeaderLeft}"  DisplayMemberBinding="{Binding id}" Width="20">
+                    </GridViewColumn>
+                    <GridViewColumn  Header="Edit" HeaderContainerStyle="{DynamicResource GridHeaderLeft}"  Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Modify" Command="{Binding DataContext.EditCommand,
+                                   RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type ItemsControl}}}" CommandParameter="{Binding id}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn  Header="Delete" HeaderContainerStyle="{DynamicResource GridHeaderLeft}"  Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Delete" Command="{Binding DataContext.DeleteCommand,
+                                   RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type ItemsControl}}}" CommandParameter="{Binding id}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 G:\Softwares\inventory\InventoryManagement\inventory\App.xaml
-10619369709
+112025507893
 
-30341511965
-17-1928864686
-Controls\AutoCompleteTextBox.xaml;ResourceDic\MainDictionary.xaml;View\Dealers\AddDealers.xaml;View\Dealers\ModifyDealers.xaml;View\Login.xaml;View\MainWindow.xaml;View\Products\AddProduct.xaml;View\Products\Category.xaml;View\Products\ModifyProduct.xaml;View\Products\SubCategory.xaml;
+32-1975668730
+241299175922
+Controls\AutoCompleteTextBox.xaml;ResourceDic\MainDictionary.xaml;View\Dealers\AddDealers.xaml;View\Dealers\ModifyDealers.xaml;View\Login.xaml;View\MainWindow.xaml;View\Products\AddProduct.xaml;View\Products\Category.xaml;View\Products\EditProduct.xaml;View\Products\ModifyProduct.xaml;View\Products\SubCategory.xaml;
 
 False
 

@@ -50,7 +50,7 @@ namespace inventory.View
             //textBox1.AddItem(new AutoCompleteEntry("Chevrolet Malibu", "Chevrolet Malibu", "malibu", "car", "sedan"));
             List<product> lst_product = new List<product>();
             lst_product = ProductServices.GetAllProduct(0);
-                       
+             
 
             foreach (product item in lst_product)
             {

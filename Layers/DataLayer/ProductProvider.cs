@@ -64,8 +64,8 @@ namespace DataLayer
                 lst_product = (from p in db.products
                                join c in db.categories on p.category equals c.id
                                join s in db.sub_category on p.sub_category equals s.id
-                               where (p.product_name.Contains(ProductName)
-                                  && (ProductName == ""))
+                               where (p.product_name.Contains(ProductName) && (p.status == true)
+                                  || (ProductName == "")&& (p.status == true))
                                select new ProductEntity
                                {
                                    id = p.id,
@@ -83,10 +83,19 @@ namespace DataLayer
 
             }
             return lst_product;
-
         }
 
-
+        public static List<product> GetProducts(int ProductId)
+        {
+            List<product> lst_product = null;
+            using (InventoryEntities db = new InventoryEntities())
+            {
+                lst_product = (from p in db.products
+                               where ((p.id == ProductId) || (ProductId == 0))
+                               select p).ToList();
+            }
+            return lst_product;
+        }
 
     }
 }

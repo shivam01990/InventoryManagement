@@ -20,6 +20,11 @@ namespace BusinessLayer
             return ProductProvider.GetAllProduct(ProductId);
         }
 
+        public static product GetProduct(int ProductId)
+        {
+            return ProductProvider.GetAllProduct(ProductId).FirstOrDefault();
+        }
+
 
         public static List<ProductEntity> GetProductsByName(string ProductName)
         {
