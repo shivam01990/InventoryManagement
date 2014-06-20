@@ -56,8 +56,19 @@ namespace inventory.ViewModel
         {
             int ProductId = (int)parameter;
             EditProduct ob = new EditProduct();
-            ob.DataContext =new EditProductViewModel(ProductId);
-            ob.Show();
+            ob.DataContext = new EditProductViewModel(ProductId);
+            bool? result;
+            result = ob.ShowDialog();
+            if (result == true)
+            {
+                ProductEntity temp = (from p in Products where (p.id == ProductId) select p).First();
+                List<ProductEntity> lsttemp = Products;
+                lsttemp.Remove(temp);
+                temp=ProductServices.GetProductEntityById(ProductId);
+                lsttemp.Add(temp);
+                Products = null;
+                Products = lsttemp;
+            }
         }
 
 

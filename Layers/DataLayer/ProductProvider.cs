@@ -85,6 +85,35 @@ namespace DataLayer
             return lst_product;
         }
 
+        public static List<ProductEntity> GetProductsEntityById(int ProductId)
+        {
+            List<ProductEntity> lst_product = null;
+            using (InventoryEntities db = new InventoryEntities())
+            {
+                lst_product = (from p in db.products
+                               join c in db.categories on p.category equals c.id
+                               join s in db.sub_category on p.sub_category equals s.id
+                               where (p.id==ProductId && (p.status == true)
+                                  || (ProductId == 0) && (p.status == true))
+                               select new ProductEntity
+                               {
+                                   id = p.id,
+                                   product_name = p.product_name,
+                                   image_url = p.image_url,
+                                   brand = p.brand,
+                                   category = c.category_name,
+                                   sub_category = s.subcategory_name,
+                                   weight = p.weight,
+                                   cost_price = p.cost_price,
+                                   sell_price = p.sell_price,
+                                   status = p.status
+                               }).ToList();
+
+
+            }
+            return lst_product;
+        }
+
         public static List<product> GetProducts(int ProductId)
         {
             List<product> lst_product = null;

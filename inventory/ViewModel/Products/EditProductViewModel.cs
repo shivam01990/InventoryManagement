@@ -35,21 +35,21 @@ namespace inventory.ViewModel
             Category = CategoryServices.GetAllCategory(0);
         }
 
-        public EditProductViewModel(int ProductId)
+        public EditProductViewModel(int temp_ProductId)
         {
             this._Category = CategoryServices.GetAllCategory(0);
-            product ob = ProductServices.GetProduct(ProductId);
+            product ob = ProductServices.GetProduct(temp_ProductId);
             if (ob != null)
             {
+                ProductId = ob.id;
                 ProductName = ob.product_name;
                 SelectedPath = ob.image_url;
-                Brand = ob.brand;               
+                Brand = ob.brand;
                 SelectedCategory = CategoryServices.GetCategory(ob.category);
                 SelectedSubCategory = SubCategoryServices.GetSubCategory(ob.sub_category);
                 Weight = ob.weight;
                 CostPrice = ob.cost_price;
                 SellingPrice = ob.sell_price;
-
             }
         }
 
@@ -179,6 +179,20 @@ namespace inventory.ViewModel
             }
         }
 
+        private int _ProductId;
+        public int ProductId
+        {
+            get
+            {
+                return _ProductId;
+            }
+            set
+            {
+                _ProductId = value;
+                RaisedPropertyChanged("ProductId");
+            }
+        }
+
         private string _ProductName;
         public string ProductName
         {
@@ -267,17 +281,23 @@ namespace inventory.ViewModel
 
             }
         }
-
+        private readonly BackgroundWorker worker = new BackgroundWorker();
+        public string path;
         public void SaveProduct(object parameter)
         {
             try
             {
-                string path = InventoryHelper.GetSaveFilePath() + "\\" + ProductName + System.IO.Path.GetExtension(SelectedPath);
+                path = InventoryHelper.GetSaveFilePath() + "\\" + ProductName + System.IO.Path.GetExtension(SelectedPath);
                 if (SelectedPath != InventoryHelper.ImageNA)
                 {
-                    System.IO.File.Copy(SelectedPath, path, true);
+
+                    worker.DoWork += worker_DoWork;
+                    worker.RunWorkerCompleted += worker_RunWorkerCompleted;
+                    worker.RunWorkerAsync();
+
                 }
                 product temp = new product();
+                temp.id = ProductId;
                 temp.product_name = ProductName;
                 temp.brand = Brand == null ? "" : Brand;
                 temp.sub_category = SelectedSubCategory.id;
@@ -287,11 +307,13 @@ namespace inventory.ViewModel
                 temp.image_url = SelectedPath == InventoryHelper.ImageNA ? "" : path;
                 temp.weight = Weight == null ? "" : Weight;
                 temp.status = true;
-                int productId = ProductServices.AddUpdateProduct(temp);
-                if (productId > 0)
+                ProductId = ProductServices.AddUpdateProduct(temp);
+                if (ProductId > 0)
                 {
                     MessageBox.Show("Product Edited");
+
                 }
+                Close = false;
             }
             catch (Exception ex)
             {
@@ -300,7 +322,21 @@ namespace inventory.ViewModel
 
         }
 
+        private void worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                System.IO.File.Copy(SelectedPath, path, true);
+            }
+            catch
+            { }
+        }
 
+        private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            //update ui once worker complete his work
+
+        }
         public string Error
         {
 
@@ -341,13 +377,13 @@ namespace inventory.ViewModel
                         break;
 
                     case "SelectedCategory":
-                        if(SelectedCategory == null)
+                        if (SelectedCategory == null)
                         {
                             result = "Select Category";
                         }
                         break;
                     case "SelectedSubCategory":
-                        if(SelectedSubCategory == null)
+                        if (SelectedSubCategory == null)
                         {
                             result = "Select SubCategory";
                         }

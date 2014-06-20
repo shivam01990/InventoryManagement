@@ -6,8 +6,8 @@
         xmlns:helpers="clr-namespace:inventory.Helpers" WindowStartupLocation="CenterScreen"
         helpers:DialogCloser.DialogResult="{Binding Close}" MouseLeftButtonDown="Drag_Window"  Style="{DynamicResource ModalWindowStyle}" x:Name="window" TabIndex="0" Foreground="#FFFFFFFF" Background="White" >
     <Window.CommandBindings>
-        <CommandBinding Command="Close"
-        Executed="CloseCommand_Executed"/>
+        <CommandBinding Command="Close" Executed="CloseCommand_Executed"/>
+       
     </Window.CommandBindings>
     <Window.Resources>
         <Convertor:ImageToSourceConverter x:Key="ImageSourceConverter">
@@ -69,7 +69,7 @@
         <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Product Image" VerticalAlignment="Bottom" RenderTransformOrigin="2.806,1.188" Margin="14,0,0,38" Grid.Row="9" Width="82"/>
         <Button Content="Browse"  Command="{Binding OpenCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="185,36,0,0" Grid.Row="9"/>
         <Image HorizontalAlignment="Left" Source="{Binding SelectedPath,Converter={StaticResource ImageSourceConverter}}" Height="75" VerticalAlignment="Top" Width="118" Grid.Column="1" Margin="41,10,0,0" Grid.Row="9" RenderTransformOrigin="0.598,0.75"/>
-        <Button Content="Add Product" Command="{Binding ClickCommand}"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="82" Grid.Column="1" Margin="23,10,0,0" Grid.Row="11">
+        <Button Content="Edit Product" Command="{Binding ClickCommand}"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="82" Grid.Column="1" Margin="23,10,0,0" Grid.Row="11" Click="Button_Click_1">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="IsEnabled" Value="false" />
@@ -129,5 +129,8 @@
                 </Style>
             </Button.Style>
         </Button>
+        <Button Content="Cancel" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.52,4.3" Grid.Column="1" Margin="129,10,0,0"  Grid.Row="11" Click="Button_Click"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Visibility="Hidden" TextWrapping="Wrap" Text="{Binding ProductId,Mode=OneWay}" VerticalAlignment="Top" Width="120" Grid.Column="1" Margin="23,5,0,0" Grid.Row="1"/>
+
     </Grid>
 </Window>

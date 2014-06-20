@@ -30,5 +30,15 @@ namespace BusinessLayer
         {
             return ProductProvider.GetProductsByName(ProductName);
         }
+
+        public static List<ProductEntity> GetProductsEntityById(int ProductId)
+        {
+            return ProductProvider.GetProductsEntityById(ProductId);
+        }
+
+        public static ProductEntity GetProductEntityById(int ProductId)
+        {
+            return ProductProvider.GetProductsEntityById(ProductId).FirstOrDefault();
+        }
     }
 }
