@@ -261,25 +261,35 @@ namespace inventory.ViewModel
                 {
 
                     case "SelectedDealer":
-                        if (SelectedDealer==null)
+                        if (SelectedDealer == null)
                             result = "Please Select Dealer";
                         break;
 
                     case "SelectedCategory":
-                        if (SelectedCategory==null)
+                        if (SelectedCategory == null)
                         {
                             result = "Please Select Category";
                         }
                         break;
 
                     case "SelectedSubCategory":
-                        if (SelectedSubCategory==null)
+                        if (SelectedSubCategory == null)
                         {
                             result = "Please Select Sub Category";
                         }
                         break;
-
-                    
+                    case "SelectedProduct":
+                        if (SelectedProduct == null)
+                        {
+                            result = "Please select Product";
+                        }
+                        break;
+                    case "Quantity":
+                        if (Quantity <= 0)
+                        {
+                            result = "Please input Quantity";
+                        }
+                        break;
                 };
 
                 return result;

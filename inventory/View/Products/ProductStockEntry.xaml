@@ -5,6 +5,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="550">
+    <UserControl.Resources>
+        <Style TargetType="TextBox">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors).CurrentItem.ErrorContent}" />
+                    <Setter Property="BorderBrush" Value="Red"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors).CurrentItem.ErrorContent}" />
+                    <Setter Property="BorderBrush" Value="Red"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
     <Grid>
 
         <Grid.RowDefinitions>
@@ -35,14 +54,14 @@
         <Label Content="Quantity" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.816,1.5" Grid.Row="7" Margin="57,1,0,0"/>
         <Label Content="Amount" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.816,1.5" Grid.Row="8" Margin="60,4,0,0"/>
         <Label Content="Remarks" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.816,1.5" Grid.Row="9" Margin="58,0,0,0"/>
-        <ComboBox HorizontalAlignment="Left" ItemsSource="{Binding Dealers}" SelectedItem="{Binding SelectedDealer}" DisplayMemberPath="dealer_name" IsSynchronizedWithCurrentItem="True" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="50,5,0,0" Grid.Row="1"/>
-        <ComboBox HorizontalAlignment="Left" ItemsSource="{Binding Category}" SelectedItem="{Binding SelectedCategory}" DisplayMemberPath="category_name" IsSynchronizedWithCurrentItem="True" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="50,4,0,0" Grid.Row="2"/>
-        <ComboBox HorizontalAlignment="Left" ItemsSource="{Binding SubCategory}" SelectedItem="{Binding SelectedSubCategory}" DisplayMemberPath="subcategory_name" IsSynchronizedWithCurrentItem="True" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="50,4,0,0" Grid.Row="3"/>
-        <ComboBox HorizontalAlignment="Left" ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct}" IsSynchronizedWithCurrentItem="True" DisplayMemberPath="product_name" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="50,4,0,0" Grid.Row="4"/>
-        <TextBox HorizontalAlignment="Left" Text="{Binding CostPrice,UpdateSourceTrigger=PropertyChanged,Mode=OneWay}" Height="18" TextWrapping="Wrap"  IsReadOnly="True" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="50,4,0,0" Grid.Row="5"/>
+        <ComboBox HorizontalAlignment="Left" ItemsSource="{Binding Dealers, ValidatesOnDataErrors=True}" SelectedItem="{Binding SelectedDealer,ValidatesOnDataErrors=True,NotifyOnValidationError=True}" DisplayMemberPath="dealer_name" IsSynchronizedWithCurrentItem="True" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="50,5,0,0" Grid.Row="1"/>
+        <ComboBox HorizontalAlignment="Left" ItemsSource="{Binding Category,ValidatesOnDataErrors=True}" SelectedItem="{Binding SelectedCategory,ValidatesOnDataErrors=True,NotifyOnValidationError=True}" DisplayMemberPath="category_name" IsSynchronizedWithCurrentItem="True" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="50,4,0,0" Grid.Row="2"/>
+        <ComboBox HorizontalAlignment="Left" ItemsSource="{Binding SubCategory,ValidatesOnDataErrors=True}" SelectedItem="{Binding SelectedSubCategory,ValidatesOnDataErrors=True,NotifyOnValidationError=True}" DisplayMemberPath="subcategory_name" IsSynchronizedWithCurrentItem="True" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="50,4,0,0" Grid.Row="3"/>
+        <ComboBox HorizontalAlignment="Left" ItemsSource="{Binding Products,ValidatesOnDataErrors=True}" SelectedItem="{Binding SelectedProduct,ValidatesOnDataErrors=True,NotifyOnValidationError=True}" IsSynchronizedWithCurrentItem="True" DisplayMemberPath="product_name" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="50,4,0,0" Grid.Row="4"/>
+        <TextBox HorizontalAlignment="Left" Text="{Binding CostPrice,UpdateSourceTrigger=PropertyChanged,Mode=OneWay,ValidatesOnDataErrors=True}" Height="18" TextWrapping="Wrap"  IsReadOnly="True" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="50,4,0,0" Grid.Row="5"/>
         <TextBox HorizontalAlignment="Left" Height="18" TextWrapping="Wrap" Text="{Binding SellingPrice,UpdateSourceTrigger=PropertyChanged,Mode=OneWay}" IsReadOnly="True" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="50,5,0,0" Grid.Row="6"/>
-        <TextBox HorizontalAlignment="Left" Height="18" TextWrapping="Wrap" Text="{Binding Quantity,UpdateSourceTrigger=PropertyChanged}"  VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="50,9,0,0" Grid.Row="7"/>
-        <TextBox HorizontalAlignment="Left" Height="18" TextWrapping="Wrap" Text="{Binding Amount,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"  VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="50,10,0,0" Grid.Row="8"/>
+        <TextBox HorizontalAlignment="Left" Height="18" TextWrapping="Wrap" Text="{Binding Quantity,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}"  VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="50,9,0,0" Grid.Row="7"/>
+        <TextBox HorizontalAlignment="Left" Height="18" TextWrapping="Wrap" Text="{Binding Amount,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}" IsReadOnly="True"  VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="50,10,0,0" Grid.Row="8"/>
         <TextBox HorizontalAlignment="Left" Height="18" TextWrapping="Wrap" Text="{Binding Remarks}"  VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="50,8,0,0" Grid.Row="9"/>
         <Button Content="Add Stock" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="50,21,0,0" Grid.Row="11"/>
 

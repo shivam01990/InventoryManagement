@@ -28,10 +28,10 @@
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
-    
+
 
     <Grid>
-        
+
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
@@ -75,7 +75,7 @@
                     <Setter Property="Foreground" Value="#FFFFFF" />
                     <Setter Property="Width" Value="60" />
                     <Setter Property="Height" Value="20" />
-                    <Setter Property="FontSize" Value="10" />                   
+                    <Setter Property="FontSize" Value="10" />
                     <Style.Triggers>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
@@ -83,7 +83,7 @@
                                 <Condition Binding="{Binding ElementName=txt_CostPrice, Path=(Validation.HasError)}" Value="false" />
                                 <Condition Binding="{Binding ElementName=txt_SellingPrice, Path=(Validation.HasError)}" Value="false" />
                                 <Condition Binding="{Binding ElementName=lst_category,Path=(Validation.HasError)}" Value="false"></Condition>
-                                <Condition Binding="{Binding ElementName=lst_subcategory,Path=(Validation.HasError)}" Value="false"></Condition> 
+                                <Condition Binding="{Binding ElementName=lst_subcategory,Path=(Validation.HasError)}" Value="false"></Condition>
                             </MultiDataTrigger.Conditions>
                             <Setter Property="IsEnabled" Value="true" />
                             <Setter Property="Template">
@@ -124,7 +124,7 @@
                             </Setter>
                         </MultiDataTrigger>
                     </Style.Triggers>
-                    
+
                 </Style>
             </Button.Style>
         </Button>
