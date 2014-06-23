@@ -14,8 +14,15 @@ namespace DataLayer
     
     public partial class dealer
     {
+        public dealer()
+        {
+            this.selling_history = new HashSet<selling_history>();
+        }
+    
         public int id { get; set; }
         public string dealer_name { get; set; }
         public string dealer_address { get; set; }
+    
+        public virtual ICollection<selling_history> selling_history { get; set; }
     }
 }

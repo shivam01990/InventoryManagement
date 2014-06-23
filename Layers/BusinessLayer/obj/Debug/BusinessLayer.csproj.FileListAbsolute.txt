@@ -26,6 +26,6 @@ G:\Softwares\inventory\InventoryManagement\Layers\BusinessLayer\bin\Debug\Entity
 G:\Softwares\inventory\InventoryManagement\Layers\BusinessLayer\bin\Debug\DataLayer.pdb
 G:\Softwares\inventory\InventoryManagement\Layers\BusinessLayer\bin\Debug\EntityLayer.pdb
 G:\Softwares\inventory\InventoryManagement\Layers\BusinessLayer\bin\Debug\EntityFramework.xml
-G:\Softwares\inventory\InventoryManagement\Layers\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
 G:\Softwares\inventory\InventoryManagement\Layers\BusinessLayer\obj\Debug\BusinessLayer.dll
 G:\Softwares\inventory\InventoryManagement\Layers\BusinessLayer\obj\Debug\BusinessLayer.pdb
+G:\Softwares\inventory\InventoryManagement\Layers\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache

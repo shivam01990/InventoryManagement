@@ -40,5 +40,10 @@ namespace BusinessLayer
         {
             return ProductProvider.GetProductsEntityById(ProductId).FirstOrDefault();
         }
+
+        public static List<product> GetProductBySubcategory(int subcategoryId)
+        {
+            return ProductProvider.GetProductBySubcategory(subcategoryId);
+        }
     }
 }

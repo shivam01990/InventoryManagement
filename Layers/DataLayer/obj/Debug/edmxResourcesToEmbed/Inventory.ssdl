@@ -7,20 +7,26 @@
     <EntitySet Name="selling_history" EntityType="InventoryModel.Store.selling_history" store:Type="Tables" store:Schema="dbo" store:Name="selling_history">
       <DefiningQuery>SELECT 
       [selling_history].[id] AS [id], 
+      [selling_history].[dealer_id] AS [dealer_id], 
       [selling_history].[product_id] AS [product_id], 
-      [selling_history].[quantity_credit] AS [quantity_credit], 
-      [selling_history].[quantity_debit] AS [quantity_debit], 
+      [selling_history].[quantity] AS [quantity], 
+      [selling_history].[credit] AS [credit], 
+      [selling_history].[debit] AS [debit], 
       [selling_history].[transaction_type] AS [transaction_type], 
       [selling_history].[customer_info] AS [customer_info], 
       [selling_history].[payment_type] AS [payment_type], 
       [selling_history].[payment_date] AS [payment_date], 
       [selling_history].[customer_name] AS [customer_name], 
-      [selling_history].[dealer_id] AS [dealer_id]
+      [selling_history].[remarks] AS [remarks]
       FROM [dbo].[selling_history] AS [selling_history]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="sub_category" EntityType="InventoryModel.Store.sub_category" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="transaction_type" EntityType="InventoryModel.Store.transaction_type" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Users" EntityType="InventoryModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_selling_history_dealers" Association="InventoryModel.Store.FK_selling_history_dealers">
+      <End Role="dealers" EntitySet="dealers" />
+      <End Role="selling_history" EntitySet="selling_history" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="category">
     <Key>
@@ -59,22 +65,24 @@
     <Key>
       <PropertyRef Name="id" />
       <PropertyRef Name="product_id" />
-      <PropertyRef Name="quantity_credit" />
-      <PropertyRef Name="quantity_debit" />
+      <PropertyRef Name="quantity" />
+      <PropertyRef Name="debit" />
       <PropertyRef Name="transaction_type" />
       <PropertyRef Name="payment_type" />
       <PropertyRef Name="payment_date" />
     </Key>
     <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="dealer_id" Type="int" />
     <Property Name="product_id" Type="int" Nullable="false" />
-    <Property Name="quantity_credit" Type="int" Nullable="false" />
-    <Property Name="quantity_debit" Type="int" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+    <Property Name="credit" Type="money" />
+    <Property Name="debit" Type="money" Nullable="false" />
     <Property Name="transaction_type" Type="int" Nullable="false" />
     <Property Name="customer_info" Type="nvarchar(max)" />
     <Property Name="payment_type" Type="nvarchar(max)" Nullable="false" />
     <Property Name="payment_date" Type="datetime" Nullable="false" />
     <Property Name="customer_name" Type="nvarchar(max)" />
-    <Property Name="dealer_id" Type="int" />
+    <Property Name="remarks" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="sub_category">
     <Key>
@@ -103,4 +111,16 @@
     <Property Name="DOJ" Type="datetime" Nullable="false" />
     <Property Name="UpdatedOn" Type="datetime" />
   </EntityType>
+  <Association Name="FK_selling_history_dealers">
+    <End Role="dealers" Type="InventoryModel.Store.dealers" Multiplicity="0..1" />
+    <End Role="selling_history" Type="InventoryModel.Store.selling_history" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dealers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="selling_history">
+        <PropertyRef Name="dealer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

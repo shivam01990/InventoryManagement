@@ -64,7 +64,7 @@ namespace inventory.ViewModel
                 ProductEntity temp = (from p in Products where (p.id == ProductId) select p).First();
                 List<ProductEntity> lsttemp = Products;
                 lsttemp.Remove(temp);
-                temp=ProductServices.GetProductEntityById(ProductId);
+                temp = ProductServices.GetProductEntityById(ProductId);
                 lsttemp.Add(temp);
                 Products = null;
                 Products = lsttemp;

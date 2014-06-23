@@ -106,3 +106,5 @@ G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\Controls\AutoComp
 G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Products\ModifyProduct.g.cs
 G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Products\EditProduct.g.cs
 G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Products\EditProduct.baml
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Products\ProductStockEntry.baml
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Products\ProductStockEntry.g.cs

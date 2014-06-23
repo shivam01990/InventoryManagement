@@ -16,6 +16,7 @@ namespace inventory.Helpers
         public static string ModifyDealer = "Modify Dealer";
         public static string AddProduct = "Add Product";
         public static string ModifyProduct = "Modify Products";
+        public static string StockEntry = "Stock Entry";
         #endregion
 
         #region Icons
@@ -25,6 +26,7 @@ namespace inventory.Helpers
         public static string ModifyDealerIcon = "/Files/ModifyDealer.jpg";
         public static string AddProductIcon = "/Files/AddProduct.png";
         public static string ModifyProductIcon = "/Files/ModifyProduct.png";
+        public static string StockEntryIcon = "/Files/StockEntry.png";
         #endregion
 
 

@@ -25,12 +25,12 @@ namespace DataLayer
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<User> Users { get; set; }
         public DbSet<category> categories { get; set; }
         public DbSet<dealer> dealers { get; set; }
         public DbSet<product> products { get; set; }
         public DbSet<selling_history> selling_history { get; set; }
         public DbSet<sub_category> sub_category { get; set; }
         public DbSet<transaction_type> transaction_type { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

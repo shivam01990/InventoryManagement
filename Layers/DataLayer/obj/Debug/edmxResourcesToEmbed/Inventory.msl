@@ -1,19 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="InventoryModelStoreContainer" CdmEntityContainer="InventoryEntities">
-    <EntitySetMapping Name="Users">
-      <EntityTypeMapping TypeName="InventoryModel.User">
-        <MappingFragment StoreEntitySet="Users">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="UserName" ColumnName="UserName" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="DOJ" ColumnName="DOJ" />
-          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="categories">
       <EntityTypeMapping TypeName="InventoryModel.category">
         <MappingFragment StoreEntitySet="category">
@@ -34,7 +21,6 @@
     <EntitySetMapping Name="products">
       <EntityTypeMapping TypeName="InventoryModel.product">
         <MappingFragment StoreEntitySet="products">
-          <ScalarProperty Name="image_url" ColumnName="image_url" />
           <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="sell_price" ColumnName="sell_price" />
           <ScalarProperty Name="cost_price" ColumnName="cost_price" />
@@ -42,6 +28,7 @@
           <ScalarProperty Name="sub_category" ColumnName="sub_category" />
           <ScalarProperty Name="category" ColumnName="category" />
           <ScalarProperty Name="brand" ColumnName="brand" />
+          <ScalarProperty Name="image_url" ColumnName="image_url" />
           <ScalarProperty Name="product_name" ColumnName="product_name" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
@@ -50,15 +37,17 @@
     <EntitySetMapping Name="selling_history">
       <EntityTypeMapping TypeName="InventoryModel.selling_history">
         <MappingFragment StoreEntitySet="selling_history">
-          <ScalarProperty Name="dealer_id" ColumnName="dealer_id" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
           <ScalarProperty Name="customer_name" ColumnName="customer_name" />
           <ScalarProperty Name="payment_date" ColumnName="payment_date" />
           <ScalarProperty Name="payment_type" ColumnName="payment_type" />
           <ScalarProperty Name="customer_info" ColumnName="customer_info" />
           <ScalarProperty Name="transaction_type" ColumnName="transaction_type" />
-          <ScalarProperty Name="quantity_debit" ColumnName="quantity_debit" />
-          <ScalarProperty Name="quantity_credit" ColumnName="quantity_credit" />
+          <ScalarProperty Name="debit" ColumnName="debit" />
+          <ScalarProperty Name="credit" ColumnName="credit" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
           <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="dealer_id" ColumnName="dealer_id" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -77,6 +66,19 @@
         <MappingFragment StoreEntitySet="transaction_type">
           <ScalarProperty Name="transactiontype" ColumnName="transactiontype" />
           <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="InventoryModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="DOJ" ColumnName="DOJ" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

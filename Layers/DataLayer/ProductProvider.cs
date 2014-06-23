@@ -65,7 +65,7 @@ namespace DataLayer
                                join c in db.categories on p.category equals c.id
                                join s in db.sub_category on p.sub_category equals s.id
                                where (p.product_name.Contains(ProductName) && (p.status == true)
-                                  || (ProductName == "")&& (p.status == true))
+                                  || (ProductName == "") && (p.status == true))
                                select new ProductEntity
                                {
                                    id = p.id,
@@ -93,7 +93,7 @@ namespace DataLayer
                 lst_product = (from p in db.products
                                join c in db.categories on p.category equals c.id
                                join s in db.sub_category on p.sub_category equals s.id
-                               where (p.id==ProductId && (p.status == true)
+                               where (p.id == ProductId && (p.status == true)
                                   || (ProductId == 0) && (p.status == true))
                                select new ProductEntity
                                {
@@ -122,6 +122,16 @@ namespace DataLayer
                 lst_product = (from p in db.products
                                where ((p.id == ProductId) || (ProductId == 0))
                                select p).ToList();
+            }
+            return lst_product;
+        }
+
+        public static List<product> GetProductBySubcategory(int subcategoryId)
+        {
+            List<product> lst_product = null;
+            using (InventoryEntities db = new InventoryEntities())
+            {
+                lst_product = db.products.Where(s => s.sub_category == subcategoryId && s.status == true).ToList();
             }
             return lst_product;
         }

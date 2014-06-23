@@ -15,14 +15,18 @@ namespace DataLayer
     public partial class selling_history
     {
         public int id { get; set; }
+        public Nullable<int> dealer_id { get; set; }
         public int product_id { get; set; }
-        public int quantity_credit { get; set; }
-        public int quantity_debit { get; set; }
+        public int quantity { get; set; }
+        public Nullable<decimal> credit { get; set; }
+        public decimal debit { get; set; }
         public int transaction_type { get; set; }
         public string customer_info { get; set; }
         public string payment_type { get; set; }
         public System.DateTime payment_date { get; set; }
         public string customer_name { get; set; }
-        public Nullable<int> dealer_id { get; set; }
+        public string remarks { get; set; }
+    
+        public virtual dealer dealer { get; set; }
     }
 }

@@ -17,7 +17,5 @@ namespace DataLayer
         public int id { get; set; }
         public string subcategory_name { get; set; }
         public Nullable<int> category { get; set; }
-    
-        public virtual category category1 { get; set; }
     }
 }

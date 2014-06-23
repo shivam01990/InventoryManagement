@@ -12,20 +12,26 @@
           <EntitySet Name="selling_history" EntityType="InventoryModel.Store.selling_history" store:Type="Tables" store:Schema="dbo" store:Name="selling_history">
             <DefiningQuery>SELECT 
       [selling_history].[id] AS [id], 
+      [selling_history].[dealer_id] AS [dealer_id], 
       [selling_history].[product_id] AS [product_id], 
-      [selling_history].[quantity_credit] AS [quantity_credit], 
-      [selling_history].[quantity_debit] AS [quantity_debit], 
+      [selling_history].[quantity] AS [quantity], 
+      [selling_history].[credit] AS [credit], 
+      [selling_history].[debit] AS [debit], 
       [selling_history].[transaction_type] AS [transaction_type], 
       [selling_history].[customer_info] AS [customer_info], 
       [selling_history].[payment_type] AS [payment_type], 
       [selling_history].[payment_date] AS [payment_date], 
       [selling_history].[customer_name] AS [customer_name], 
-      [selling_history].[dealer_id] AS [dealer_id]
+      [selling_history].[remarks] AS [remarks]
       FROM [dbo].[selling_history] AS [selling_history]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="sub_category" EntityType="InventoryModel.Store.sub_category" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="transaction_type" EntityType="InventoryModel.Store.transaction_type" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Users" EntityType="InventoryModel.Store.Users" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_selling_history_dealers" Association="InventoryModel.Store.FK_selling_history_dealers">
+            <End Role="dealers" EntitySet="dealers" />
+            <End Role="selling_history" EntitySet="selling_history" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="category">
           <Key>
@@ -64,22 +70,24 @@
           <Key>
             <PropertyRef Name="id" />
             <PropertyRef Name="product_id" />
-            <PropertyRef Name="quantity_credit" />
-            <PropertyRef Name="quantity_debit" />
+            <PropertyRef Name="quantity" />
+            <PropertyRef Name="debit" />
             <PropertyRef Name="transaction_type" />
             <PropertyRef Name="payment_type" />
             <PropertyRef Name="payment_date" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="dealer_id" Type="int" />
           <Property Name="product_id" Type="int" Nullable="false" />
-          <Property Name="quantity_credit" Type="int" Nullable="false" />
-          <Property Name="quantity_debit" Type="int" Nullable="false" />
+          <Property Name="quantity" Type="int" Nullable="false" />
+          <Property Name="credit" Type="money" />
+          <Property Name="debit" Type="money" Nullable="false" />
           <Property Name="transaction_type" Type="int" Nullable="false" />
           <Property Name="customer_info" Type="nvarchar(max)" />
           <Property Name="payment_type" Type="nvarchar(max)" Nullable="false" />
           <Property Name="payment_date" Type="datetime" Nullable="false" />
           <Property Name="customer_name" Type="nvarchar(max)" />
-          <Property Name="dealer_id" Type="int" />
+          <Property Name="remarks" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="sub_category">
           <Key>
@@ -108,42 +116,41 @@
           <Property Name="DOJ" Type="datetime" Nullable="false" />
           <Property Name="UpdatedOn" Type="datetime" />
         </EntityType>
+        <Association Name="FK_selling_history_dealers">
+          <End Role="dealers" Type="InventoryModel.Store.dealers" Multiplicity="0..1" />
+          <End Role="selling_history" Type="InventoryModel.Store.selling_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dealers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="selling_history">
+              <PropertyRef Name="dealer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="InventoryModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="InventoryEntities" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="Users" EntityType="InventoryModel.User" />
           <EntitySet Name="categories" EntityType="InventoryModel.category" />
           <EntitySet Name="dealers" EntityType="InventoryModel.dealer" />
           <EntitySet Name="products" EntityType="InventoryModel.product" />
           <EntitySet Name="selling_history" EntityType="InventoryModel.selling_history" />
           <EntitySet Name="sub_category" EntityType="InventoryModel.sub_category" />
           <EntitySet Name="transaction_type" EntityType="InventoryModel.transaction_type" />
-          <AssociationSet Name="FK_sub_category_category" Association="InventoryModel.FK_sub_category_category">
-            <End Role="category" EntitySet="categories" />
-            <End Role="sub_category" EntitySet="sub_category" />
+          <EntitySet Name="Users" EntityType="InventoryModel.User" />
+          <AssociationSet Name="FK_selling_history_dealers" Association="InventoryModel.FK_selling_history_dealers">
+            <End Role="dealer" EntitySet="dealers" />
+            <End Role="selling_history" EntitySet="selling_history" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="UserName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="Name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="Email" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="DOJ" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
-        </EntityType>
         <EntityType Name="category">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="category_name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="sub_category" Relationship="InventoryModel.FK_sub_category_category" FromRole="category" ToRole="sub_category" />
         </EntityType>
         <EntityType Name="dealer">
           <Key>
@@ -152,6 +159,7 @@
           <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="dealer_name" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="dealer_address" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="selling_history" Relationship="InventoryModel.FK_selling_history_dealers" FromRole="dealer" ToRole="selling_history" />
         </EntityType>
         <EntityType Name="product">
           <Key>
@@ -159,6 +167,7 @@
           </Key>
           <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="product_name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="image_url" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="brand" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="category" Nullable="false" />
           <Property Type="Int32" Name="sub_category" Nullable="false" />
@@ -166,28 +175,30 @@
           <Property Type="Decimal" Name="cost_price" Nullable="false" Precision="19" Scale="4" />
           <Property Type="Decimal" Name="sell_price" Nullable="false" Precision="19" Scale="4" />
           <Property Type="Boolean" Name="status" Nullable="false" />
-          <Property Type="String" Name="image_url" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="selling_history">
           <Key>
             <PropertyRef Name="id" />
             <PropertyRef Name="product_id" />
-            <PropertyRef Name="quantity_credit" />
-            <PropertyRef Name="quantity_debit" />
+            <PropertyRef Name="quantity" />
+            <PropertyRef Name="debit" />
             <PropertyRef Name="transaction_type" />
             <PropertyRef Name="payment_type" />
             <PropertyRef Name="payment_date" />
           </Key>
           <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="dealer_id" />
           <Property Type="Int32" Name="product_id" Nullable="false" />
-          <Property Type="Int32" Name="quantity_credit" Nullable="false" />
-          <Property Type="Int32" Name="quantity_debit" Nullable="false" />
+          <Property Type="Int32" Name="quantity" Nullable="false" />
+          <Property Type="Decimal" Name="credit" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="debit" Nullable="false" Precision="19" Scale="4" />
           <Property Type="Int32" Name="transaction_type" Nullable="false" />
           <Property Type="String" Name="customer_info" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="payment_type" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="payment_date" Nullable="false" Precision="3" />
           <Property Type="String" Name="customer_name" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="dealer_id" />
+          <Property Type="String" Name="remarks" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="dealer" Relationship="InventoryModel.FK_selling_history_dealers" FromRole="selling_history" ToRole="dealer" />
         </EntityType>
         <EntityType Name="sub_category">
           <Key>
@@ -196,7 +207,6 @@
           <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="subcategory_name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="category" />
-          <NavigationProperty Name="category1" Relationship="InventoryModel.FK_sub_category_category" FromRole="sub_category" ToRole="category" />
         </EntityType>
         <EntityType Name="transaction_type">
           <Key>
@@ -205,37 +215,36 @@
           <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="transactiontype" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
-        <Association Name="FK_sub_category_category">
-          <End Type="InventoryModel.category" Role="category" Multiplicity="0..1" />
-          <End Type="InventoryModel.sub_category" Role="sub_category" Multiplicity="*" />
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Name" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DOJ" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="UpdatedOn" Precision="3" />
+        </EntityType>
+        <Association Name="FK_selling_history_dealers">
+          <End Type="InventoryModel.dealer" Role="dealer" Multiplicity="0..1" />
+          <End Type="InventoryModel.selling_history" Role="selling_history" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="category">
+            <Principal Role="dealer">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="sub_category">
-              <PropertyRef Name="category" />
+            <Dependent Role="selling_history">
+              <PropertyRef Name="dealer_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="InventoryModelStoreContainer" CdmEntityContainer="InventoryEntities">
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="InventoryModel.User">
-              <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="DOJ" ColumnName="DOJ" />
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="categories">
             <EntityTypeMapping TypeName="InventoryModel.category">
               <MappingFragment StoreEntitySet="category">
@@ -256,7 +265,6 @@
           <EntitySetMapping Name="products">
             <EntityTypeMapping TypeName="InventoryModel.product">
               <MappingFragment StoreEntitySet="products">
-                <ScalarProperty Name="image_url" ColumnName="image_url" />
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="sell_price" ColumnName="sell_price" />
                 <ScalarProperty Name="cost_price" ColumnName="cost_price" />
@@ -264,6 +272,7 @@
                 <ScalarProperty Name="sub_category" ColumnName="sub_category" />
                 <ScalarProperty Name="category" ColumnName="category" />
                 <ScalarProperty Name="brand" ColumnName="brand" />
+                <ScalarProperty Name="image_url" ColumnName="image_url" />
                 <ScalarProperty Name="product_name" ColumnName="product_name" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
@@ -272,15 +281,17 @@
           <EntitySetMapping Name="selling_history">
             <EntityTypeMapping TypeName="InventoryModel.selling_history">
               <MappingFragment StoreEntitySet="selling_history">
-                <ScalarProperty Name="dealer_id" ColumnName="dealer_id" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
                 <ScalarProperty Name="customer_name" ColumnName="customer_name" />
                 <ScalarProperty Name="payment_date" ColumnName="payment_date" />
                 <ScalarProperty Name="payment_type" ColumnName="payment_type" />
                 <ScalarProperty Name="customer_info" ColumnName="customer_info" />
                 <ScalarProperty Name="transaction_type" ColumnName="transaction_type" />
-                <ScalarProperty Name="quantity_debit" ColumnName="quantity_debit" />
-                <ScalarProperty Name="quantity_credit" ColumnName="quantity_credit" />
+                <ScalarProperty Name="debit" ColumnName="debit" />
+                <ScalarProperty Name="credit" ColumnName="credit" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
                 <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="dealer_id" ColumnName="dealer_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -299,6 +310,19 @@
               <MappingFragment StoreEntitySet="transaction_type">
                 <ScalarProperty Name="transactiontype" ColumnName="transactiontype" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="InventoryModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="DOJ" ColumnName="DOJ" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

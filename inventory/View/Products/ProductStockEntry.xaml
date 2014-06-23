@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="inventory.View.ProductStockEntry"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="550">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="115"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Product Stock Entry"  HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="4.579,0.692" Grid.Column="1" Margin="101,4,0,0" FontWeight="Bold"/>
+        <Label Content="Select Dealer" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="34,8,0,0" Grid.Row="1" Grid.RowSpan="2"/>
+        <Label Content="Select Category" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.816,1.5" Margin="20,0,0,0" Grid.Row="2"/>
+        <Label Content="Select SubCategory" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.816,1.5" Grid.Row="3"/>
+        <Label Content="Select Product" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.816,1.5" Grid.Row="4" Margin="27,4,0,0"/>
+        <Label Content="Cost Price" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.816,1.5" Grid.Row="5" Margin="50,4,0,0"/>
+        <Label Content="Selling Price" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.816,1.5" Grid.Row="6" Margin="39,5,0,0" Grid.RowSpan="2"/>
+        <Label Content="Quantity" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.816,1.5" Grid.Row="7" Margin="57,1,0,0"/>
+        <Label Content="Amount" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.816,1.5" Grid.Row="8" Margin="60,4,0,0"/>
+        <Label Content="Remarks" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.816,1.5" Grid.Row="9" Margin="58,0,0,0"/>
+        <ComboBox HorizontalAlignment="Left" ItemsSource="{Binding Dealers}" SelectedItem="{Binding SelectedDealer}" DisplayMemberPath="dealer_name" IsSynchronizedWithCurrentItem="True" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="50,5,0,0" Grid.Row="1"/>
+        <ComboBox HorizontalAlignment="Left" ItemsSource="{Binding Category}" SelectedItem="{Binding SelectedCategory}" DisplayMemberPath="category_name" IsSynchronizedWithCurrentItem="True" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="50,4,0,0" Grid.Row="2"/>
+        <ComboBox HorizontalAlignment="Left" ItemsSource="{Binding SubCategory}" SelectedItem="{Binding SelectedSubCategory}" DisplayMemberPath="subcategory_name" IsSynchronizedWithCurrentItem="True" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="50,4,0,0" Grid.Row="3"/>
+        <ComboBox HorizontalAlignment="Left" ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct}" IsSynchronizedWithCurrentItem="True" DisplayMemberPath="product_name" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="50,4,0,0" Grid.Row="4"/>
+        <TextBox HorizontalAlignment="Left" Text="{Binding CostPrice,UpdateSourceTrigger=PropertyChanged,Mode=OneWay}" Height="18" TextWrapping="Wrap"  IsReadOnly="True" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="50,4,0,0" Grid.Row="5"/>
+        <TextBox HorizontalAlignment="Left" Height="18" TextWrapping="Wrap" Text="{Binding SellingPrice,UpdateSourceTrigger=PropertyChanged,Mode=OneWay}" IsReadOnly="True" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="50,5,0,0" Grid.Row="6"/>
+        <TextBox HorizontalAlignment="Left" Height="18" TextWrapping="Wrap" Text="{Binding Quantity,UpdateSourceTrigger=PropertyChanged}"  VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="50,9,0,0" Grid.Row="7"/>
+        <TextBox HorizontalAlignment="Left" Height="18" TextWrapping="Wrap" Text="{Binding Amount,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"  VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="50,10,0,0" Grid.Row="8"/>
+        <TextBox HorizontalAlignment="Left" Height="18" TextWrapping="Wrap" Text="{Binding Remarks}"  VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="50,8,0,0" Grid.Row="9"/>
+        <Button Content="Add Stock" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="50,21,0,0" Grid.Row="11"/>
+
+    </Grid>
+</UserControl>

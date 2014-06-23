@@ -31,6 +31,9 @@
         <DataTemplate DataType="{x:Type ViewModel:ModifyProductViewModel}">
             <View:ModifyProduct/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type ViewModel:ProductStockEntryViewModel}">
+            <View:ProductStockEntry/>
+        </DataTemplate>
     </Window.Resources>
 
     <Grid>

@@ -16,6 +16,7 @@ namespace DataLayer
     {
         public int id { get; set; }
         public string product_name { get; set; }
+        public string image_url { get; set; }
         public string brand { get; set; }
         public int category { get; set; }
         public int sub_category { get; set; }
@@ -23,6 +24,5 @@ namespace DataLayer
         public decimal cost_price { get; set; }
         public decimal sell_price { get; set; }
         public bool status { get; set; }
-        public string image_url { get; set; }
     }
 }

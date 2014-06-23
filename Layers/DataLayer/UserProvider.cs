@@ -13,7 +13,7 @@ namespace DataLayer
             bool flag = false;
             using (InventoryEntities db = new InventoryEntities())
             {
-                int count = (from u in db.Users where u.UserName==userName && u.Password==Password select u.UserName ).Count();
+                int count = (from u in db.Users where u.UserName==userName && u.Password==Password select u ).Count();
                 if (count != 0)
                     flag = true;
             }

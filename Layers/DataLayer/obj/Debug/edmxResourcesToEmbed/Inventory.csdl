@@ -1,37 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="InventoryModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="InventoryEntities" p1:LazyLoadingEnabled="true">
-    <EntitySet Name="Users" EntityType="InventoryModel.User" />
     <EntitySet Name="categories" EntityType="InventoryModel.category" />
     <EntitySet Name="dealers" EntityType="InventoryModel.dealer" />
     <EntitySet Name="products" EntityType="InventoryModel.product" />
     <EntitySet Name="selling_history" EntityType="InventoryModel.selling_history" />
     <EntitySet Name="sub_category" EntityType="InventoryModel.sub_category" />
     <EntitySet Name="transaction_type" EntityType="InventoryModel.transaction_type" />
-    <AssociationSet Name="FK_sub_category_category" Association="InventoryModel.FK_sub_category_category">
-      <End Role="category" EntitySet="categories" />
-      <End Role="sub_category" EntitySet="sub_category" />
+    <EntitySet Name="Users" EntityType="InventoryModel.User" />
+    <AssociationSet Name="FK_selling_history_dealers" Association="InventoryModel.FK_selling_history_dealers">
+      <End Role="dealer" EntitySet="dealers" />
+      <End Role="selling_history" EntitySet="selling_history" />
     </AssociationSet>
   </EntityContainer>
-  <EntityType Name="User">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-    <Property Name="UserName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-    <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-    <Property Name="Name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-    <Property Name="Email" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-    <Property Name="DOJ" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
-  </EntityType>
   <EntityType Name="category">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="String" Name="category_name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="sub_category" Relationship="InventoryModel.FK_sub_category_category" FromRole="category" ToRole="sub_category" />
   </EntityType>
   <EntityType Name="dealer">
     <Key>
@@ -40,6 +27,7 @@
     <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="String" Name="dealer_name" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="dealer_address" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="selling_history" Relationship="InventoryModel.FK_selling_history_dealers" FromRole="dealer" ToRole="selling_history" />
   </EntityType>
   <EntityType Name="product">
     <Key>
@@ -47,6 +35,7 @@
     </Key>
     <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="String" Name="product_name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="image_url" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="brand" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="Int32" Name="category" Nullable="false" />
     <Property Type="Int32" Name="sub_category" Nullable="false" />
@@ -54,28 +43,30 @@
     <Property Type="Decimal" Name="cost_price" Nullable="false" Precision="19" Scale="4" />
     <Property Type="Decimal" Name="sell_price" Nullable="false" Precision="19" Scale="4" />
     <Property Type="Boolean" Name="status" Nullable="false" />
-    <Property Type="String" Name="image_url" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="selling_history">
     <Key>
       <PropertyRef Name="id" />
       <PropertyRef Name="product_id" />
-      <PropertyRef Name="quantity_credit" />
-      <PropertyRef Name="quantity_debit" />
+      <PropertyRef Name="quantity" />
+      <PropertyRef Name="debit" />
       <PropertyRef Name="transaction_type" />
       <PropertyRef Name="payment_type" />
       <PropertyRef Name="payment_date" />
     </Key>
     <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="dealer_id" />
     <Property Type="Int32" Name="product_id" Nullable="false" />
-    <Property Type="Int32" Name="quantity_credit" Nullable="false" />
-    <Property Type="Int32" Name="quantity_debit" Nullable="false" />
+    <Property Type="Int32" Name="quantity" Nullable="false" />
+    <Property Type="Decimal" Name="credit" Precision="19" Scale="4" />
+    <Property Type="Decimal" Name="debit" Nullable="false" Precision="19" Scale="4" />
     <Property Type="Int32" Name="transaction_type" Nullable="false" />
     <Property Type="String" Name="customer_info" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="payment_type" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="DateTime" Name="payment_date" Nullable="false" Precision="3" />
     <Property Type="String" Name="customer_name" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="Int32" Name="dealer_id" />
+    <Property Type="String" Name="remarks" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="dealer" Relationship="InventoryModel.FK_selling_history_dealers" FromRole="selling_history" ToRole="dealer" />
   </EntityType>
   <EntityType Name="sub_category">
     <Key>
@@ -84,7 +75,6 @@
     <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="String" Name="subcategory_name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Type="Int32" Name="category" />
-    <NavigationProperty Name="category1" Relationship="InventoryModel.FK_sub_category_category" FromRole="sub_category" ToRole="category" />
   </EntityType>
   <EntityType Name="transaction_type">
     <Key>
@@ -93,15 +83,27 @@
     <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="String" Name="transactiontype" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
-  <Association Name="FK_sub_category_category">
-    <End Type="InventoryModel.category" Role="category" Multiplicity="0..1" />
-    <End Type="InventoryModel.sub_category" Role="sub_category" Multiplicity="*" />
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Name" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Email" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="DOJ" Nullable="false" Precision="3" />
+    <Property Type="DateTime" Name="UpdatedOn" Precision="3" />
+  </EntityType>
+  <Association Name="FK_selling_history_dealers">
+    <End Type="InventoryModel.dealer" Role="dealer" Multiplicity="0..1" />
+    <End Type="InventoryModel.selling_history" Role="selling_history" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="category">
+      <Principal Role="dealer">
         <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="sub_category">
-        <PropertyRef Name="category" />
+      <Dependent Role="selling_history">
+        <PropertyRef Name="dealer_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

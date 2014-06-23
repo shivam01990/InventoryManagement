@@ -14,14 +14,7 @@ namespace DataLayer
     
     public partial class category
     {
-        public category()
-        {
-            this.sub_category = new HashSet<sub_category>();
-        }
-    
         public int id { get; set; }
         public string category_name { get; set; }
-    
-        public virtual ICollection<sub_category> sub_category { get; set; }
     }
 }
