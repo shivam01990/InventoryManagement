@@ -9,22 +9,7 @@
           <EntitySet Name="category" EntityType="InventoryModel.Store.category" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="dealers" EntityType="InventoryModel.Store.dealers" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="products" EntityType="InventoryModel.Store.products" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="selling_history" EntityType="InventoryModel.Store.selling_history" store:Type="Tables" store:Schema="dbo" store:Name="selling_history">
-            <DefiningQuery>SELECT 
-      [selling_history].[id] AS [id], 
-      [selling_history].[dealer_id] AS [dealer_id], 
-      [selling_history].[product_id] AS [product_id], 
-      [selling_history].[quantity] AS [quantity], 
-      [selling_history].[credit] AS [credit], 
-      [selling_history].[debit] AS [debit], 
-      [selling_history].[transaction_type] AS [transaction_type], 
-      [selling_history].[customer_info] AS [customer_info], 
-      [selling_history].[payment_type] AS [payment_type], 
-      [selling_history].[payment_date] AS [payment_date], 
-      [selling_history].[customer_name] AS [customer_name], 
-      [selling_history].[remarks] AS [remarks]
-      FROM [dbo].[selling_history] AS [selling_history]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="selling_history" EntityType="InventoryModel.Store.selling_history" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="sub_category" EntityType="InventoryModel.Store.sub_category" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="transaction_type" EntityType="InventoryModel.Store.transaction_type" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Users" EntityType="InventoryModel.Store.Users" store:Type="Tables" Schema="dbo" />
@@ -63,24 +48,15 @@
           <Property Name="sell_price" Type="money" Nullable="false" />
           <Property Name="status" Type="bit" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-      warning 6002: The table/view 'inventory.dbo.selling_history' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
         <EntityType Name="selling_history">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="product_id" />
-            <PropertyRef Name="quantity" />
-            <PropertyRef Name="debit" />
-            <PropertyRef Name="transaction_type" />
-            <PropertyRef Name="payment_type" />
-            <PropertyRef Name="payment_date" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="dealer_id" Type="int" />
           <Property Name="product_id" Type="int" Nullable="false" />
           <Property Name="quantity" Type="int" Nullable="false" />
-          <Property Name="credit" Type="money" />
+          <Property Name="credit" Type="money" Nullable="false" />
           <Property Name="debit" Type="money" Nullable="false" />
           <Property Name="transaction_type" Type="int" Nullable="false" />
           <Property Name="customer_info" Type="nvarchar(max)" />
@@ -179,18 +155,12 @@
         <EntityType Name="selling_history">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="product_id" />
-            <PropertyRef Name="quantity" />
-            <PropertyRef Name="debit" />
-            <PropertyRef Name="transaction_type" />
-            <PropertyRef Name="payment_type" />
-            <PropertyRef Name="payment_date" />
           </Key>
-          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="dealer_id" />
           <Property Type="Int32" Name="product_id" Nullable="false" />
           <Property Type="Int32" Name="quantity" Nullable="false" />
-          <Property Type="Decimal" Name="credit" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="credit" Nullable="false" Precision="19" Scale="4" />
           <Property Type="Decimal" Name="debit" Nullable="false" Precision="19" Scale="4" />
           <Property Type="Int32" Name="transaction_type" Nullable="false" />
           <Property Type="String" Name="customer_info" MaxLength="Max" FixedLength="false" Unicode="true" />

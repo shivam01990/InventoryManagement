@@ -26,7 +26,7 @@ namespace DataLayer
                         temp.brand = ob.brand;
                         temp.sub_category = ob.sub_category;
                         temp.sell_price = ob.sell_price;
-                        temp.cost_price = ob.sell_price;
+                        temp.cost_price = ob.cost_price;
                         temp.weight = ob.weight;
                         temp.status = ob.status;
                     }

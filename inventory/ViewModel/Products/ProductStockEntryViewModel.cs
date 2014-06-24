@@ -176,6 +176,7 @@ namespace inventory.ViewModel
             {
                 _CostPrice = value;
                 RaisedPropertyChanged("CostPrice");
+                Amount = _Qantity * _CostPrice;
             }
 
         }
@@ -207,7 +208,7 @@ namespace inventory.ViewModel
             {
                 _Qantity = value;
                 RaisedPropertyChanged("Quantity");
-                Amount = _Qantity * _SellingPrice;
+                Amount = _Qantity * _CostPrice;
             }
 
         }
@@ -296,6 +297,66 @@ namespace inventory.ViewModel
 
             }
 
+        }
+
+        private ICommand _clickCommand;
+        public ICommand ClickCommand
+        {
+            get
+            {
+                if (_clickCommand == null)
+                {
+                    _clickCommand = new RelayCommand(new Action<object>(AddStock));
+                }
+                return _clickCommand;
+            }
+            set
+            {
+                _clickCommand = value;
+                RaisedPropertyChanged("ClickCommand");
+
+            }
+        }
+
+        protected void AddStock(object parameter)
+        {
+            try
+            {
+                selling_history ob = new selling_history();
+                ob.id = 0;
+                ob.dealer_id = SelectedDealer.id;
+                ob.product_id = SelectedProduct.id;
+                ob.quantity = Quantity;
+                ob.credit = 0;
+                ob.debit = Amount;
+                ob.transaction_type = (int)InventoryHelper.TransactionType.Debit;
+                ob.customer_info = "";
+                ob.payment_type = "";
+                ob.payment_date = DateTime.Now;
+                ob.customer_name = "";
+                ob.remarks = Remarks;
+                SellingHistoryServices.AddUpdateSellingHistory(ob);
+                MessageBox.Show("Stock Added");
+                Initialize();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error Occurse::" + ex.ToString());
+            }
+        }
+
+        protected void Initialize()
+        {
+            SelectedDealer = null;
+            SelectedCategory = null;
+            SelectedSubCategory = null;
+            SelectedProduct = null;
+            Remarks = "";
+            CostPrice = 0;
+            SellingPrice = 0;
+            Amount = 0;
+           
         }
 
 

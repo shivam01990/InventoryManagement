@@ -47,18 +47,12 @@
   <EntityType Name="selling_history">
     <Key>
       <PropertyRef Name="id" />
-      <PropertyRef Name="product_id" />
-      <PropertyRef Name="quantity" />
-      <PropertyRef Name="debit" />
-      <PropertyRef Name="transaction_type" />
-      <PropertyRef Name="payment_type" />
-      <PropertyRef Name="payment_date" />
     </Key>
-    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="Int32" Name="dealer_id" />
     <Property Type="Int32" Name="product_id" Nullable="false" />
     <Property Type="Int32" Name="quantity" Nullable="false" />
-    <Property Type="Decimal" Name="credit" Precision="19" Scale="4" />
+    <Property Type="Decimal" Name="credit" Nullable="false" Precision="19" Scale="4" />
     <Property Type="Decimal" Name="debit" Nullable="false" Precision="19" Scale="4" />
     <Property Type="Int32" Name="transaction_type" Nullable="false" />
     <Property Type="String" Name="customer_info" MaxLength="Max" FixedLength="false" Unicode="true" />

@@ -34,14 +34,20 @@ namespace inventory.Helpers
 
         public static string GetSaveFilePath()
         {
-           string DirectoryPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string FolderName="InventoryFiles";
-            DirectoryPath +=@"\"+ FolderName;
+            string DirectoryPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string FolderName = "InventoryFiles";
+            DirectoryPath += @"\" + FolderName;
             if (!Directory.Exists(DirectoryPath))
             {
                 Directory.CreateDirectory(DirectoryPath);
             }
-           return DirectoryPath;
+            return DirectoryPath;
+        }
+
+       public enum TransactionType
+        {
+            Credit = 1,
+            Debit = 2
         }
 
     }

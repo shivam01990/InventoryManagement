@@ -18,7 +18,7 @@ namespace DataLayer
         public Nullable<int> dealer_id { get; set; }
         public int product_id { get; set; }
         public int quantity { get; set; }
-        public Nullable<decimal> credit { get; set; }
+        public decimal credit { get; set; }
         public decimal debit { get; set; }
         public int transaction_type { get; set; }
         public string customer_info { get; set; }
