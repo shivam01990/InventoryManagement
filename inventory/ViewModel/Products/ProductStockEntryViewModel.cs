@@ -243,6 +243,20 @@ namespace inventory.ViewModel
             }
         }
 
+        private System.Windows.Controls.ComboBoxItem _PaymentType;
+        public System.Windows.Controls.ComboBoxItem PaymentType
+        {
+            get
+            {
+                return _PaymentType;
+            }
+            set
+            {
+                _PaymentType = value;
+                RaisedPropertyChanged("PaymentType");
+            }
+        }
+
         public string Error
         {
 
@@ -331,7 +345,7 @@ namespace inventory.ViewModel
                 ob.debit = Amount;
                 ob.transaction_type = (int)InventoryHelper.TransactionType.Debit;
                 ob.customer_info = "";
-                ob.payment_type = "";
+                ob.payment_type = PaymentType == null ? "" : PaymentType.Content.ToString(); 
                 ob.payment_date = DateTime.Now;
                 ob.customer_name = "";
                 ob.remarks = Remarks;
@@ -356,6 +370,8 @@ namespace inventory.ViewModel
             CostPrice = 0;
             SellingPrice = 0;
             Amount = 0;
+            PaymentType = null;
+            Quantity = 0;
            
         }
 

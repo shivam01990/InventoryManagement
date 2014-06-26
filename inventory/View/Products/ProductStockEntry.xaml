@@ -53,7 +53,7 @@
         <Label Content="Selling Price" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.816,1.5" Grid.Row="6" Margin="39,5,0,0" Grid.RowSpan="2"/>
         <Label Content="Quantity" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.816,1.5" Grid.Row="7" Margin="57,1,0,0"/>
         <Label Content="Amount" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.816,1.5" Grid.Row="8" Margin="60,4,0,0"/>
-        <Label Content="Remarks" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.816,1.5" Grid.Row="9" Margin="58,0,0,0"/>
+        <Label Content="Remarks" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.816,1.5" Grid.Row="10" Margin="58,0,0,0"/>
         <ComboBox HorizontalAlignment="Left" Name="ddl_Dealer" ItemsSource="{Binding Dealers, ValidatesOnDataErrors=True}" SelectedItem="{Binding SelectedDealer,ValidatesOnDataErrors=True,NotifyOnValidationError=True}" DisplayMemberPath="dealer_name" IsSynchronizedWithCurrentItem="True" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="50,5,0,0" Grid.Row="1"/>
         <ComboBox HorizontalAlignment="Left" Name="ddl_Category" ItemsSource="{Binding Category,ValidatesOnDataErrors=True}" SelectedItem="{Binding SelectedCategory,ValidatesOnDataErrors=True,NotifyOnValidationError=True}" DisplayMemberPath="category_name" IsSynchronizedWithCurrentItem="True" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="50,4,0,0" Grid.Row="2"/>
         <ComboBox HorizontalAlignment="Left" Name="ddl_subcategory" ItemsSource="{Binding SubCategory,ValidatesOnDataErrors=True}" SelectedItem="{Binding SelectedSubCategory,ValidatesOnDataErrors=True,NotifyOnValidationError=True}" DisplayMemberPath="subcategory_name" IsSynchronizedWithCurrentItem="True" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="50,4,0,0" Grid.Row="3"/>
@@ -62,7 +62,7 @@
         <TextBox HorizontalAlignment="Left" Name="txt_SellingPrice"  Height="18" TextWrapping="Wrap" Text="{Binding SellingPrice,UpdateSourceTrigger=PropertyChanged,Mode=OneWay}" IsReadOnly="True" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="50,5,0,0" Grid.Row="6"/>
         <TextBox HorizontalAlignment="Left" Name="txt_Quantity" Height="18" TextWrapping="Wrap" Text="{Binding Quantity,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}"  VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="50,9,0,0" Grid.Row="7"/>
         <TextBox HorizontalAlignment="Left" Name="txt_Amount" Height="18" TextWrapping="Wrap" Text="{Binding Amount,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}" IsReadOnly="True"  VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="50,10,0,0" Grid.Row="8"/>
-        <TextBox HorizontalAlignment="Left" Height="18" Name="txt_Remarks" TextWrapping="Wrap" Text="{Binding Remarks}"  VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="50,8,0,0" Grid.Row="9"/>
+        <TextBox HorizontalAlignment="Left" Height="18" Name="txt_Remarks" TextWrapping="Wrap" Text="{Binding Remarks}"  VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="50,8,0,0" Grid.Row="10"/>
         <Button Content="Add Stock"  Command="{Binding ClickCommand}"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="50,21,0,0" Grid.Row="11">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
@@ -126,6 +126,13 @@
                 </Style>
             </Button.Style>
         </Button>
+        <Label Content="Payment Type" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.816,1.5" Grid.Row="9" Margin="27,4,0,0"/>
+        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" IsSynchronizedWithCurrentItem="True" SelectedItem="{Binding PaymentType}"  Width="150" Grid.Column="1" Margin="50,4,0,0" Grid.Row="9">
+            <ComboBox.Items>
+                <ComboBoxItem Content="Cash Payment"  />
+                <ComboBoxItem Content="Cheque Payment"  />                
+            </ComboBox.Items>
+        </ComboBox>
 
     </Grid>
 </UserControl>
