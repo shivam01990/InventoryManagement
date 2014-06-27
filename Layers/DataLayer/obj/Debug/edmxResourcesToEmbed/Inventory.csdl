@@ -43,6 +43,7 @@
     <Property Type="Decimal" Name="cost_price" Nullable="false" Precision="19" Scale="4" />
     <Property Type="Decimal" Name="sell_price" Nullable="false" Precision="19" Scale="4" />
     <Property Type="Boolean" Name="status" Nullable="false" />
+    <Property Type="Int32" Name="Stock" />
   </EntityType>
   <EntityType Name="selling_history">
     <Key>

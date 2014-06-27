@@ -24,5 +24,6 @@ namespace DataLayer
         public decimal cost_price { get; set; }
         public decimal sell_price { get; set; }
         public bool status { get; set; }
+        public Nullable<int> Stock { get; set; }
     }
 }

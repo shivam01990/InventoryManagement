@@ -42,6 +42,7 @@
     <Property Name="cost_price" Type="money" Nullable="false" />
     <Property Name="sell_price" Type="money" Nullable="false" />
     <Property Name="status" Type="bit" Nullable="false" />
+    <Property Name="Stock" Type="int" />
   </EntityType>
   <EntityType Name="selling_history">
     <Key>

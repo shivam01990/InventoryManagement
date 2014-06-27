@@ -48,6 +48,8 @@
                     </GridViewColumn>
                     <GridViewColumn Header="SellPrice" HeaderContainerStyle="{DynamicResource GridHeaderLeft}" DisplayMemberBinding="{Binding sell_price}" Width="100" >
                     </GridViewColumn>
+                    <GridViewColumn Header="Stock" HeaderContainerStyle="{DynamicResource GridHeaderLeft}" DisplayMemberBinding="{Binding Stock}" Width="50" >
+                    </GridViewColumn>
                     <GridViewColumn Header="Status" HeaderContainerStyle="{DynamicResource GridHeaderLeft}" DisplayMemberBinding="{Binding status}" Width="50" >
                     </GridViewColumn>                    
                     <GridViewColumn  Header="Edit" HeaderContainerStyle="{DynamicResource GridHeaderLeft}"  Width="100">

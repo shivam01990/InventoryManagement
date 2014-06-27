@@ -50,6 +50,7 @@
       <DependentUpon>Inventory.tt</DependentUpon>
     </Compile>
     <Compile Include="CategoryProvider.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="dealer.cs">
       <DependentUpon>Inventory.tt</DependentUpon>
     </Compile>

@@ -17,6 +17,7 @@ namespace EntityLayer
         public string weight { get; set; }
         public decimal cost_price { get; set; }
         public decimal sell_price { get; set; }
+        public int? Stock { get; set; }
         public bool status { get; set; }
     }
 }

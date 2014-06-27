@@ -264,6 +264,7 @@ namespace inventory.ViewModel
                 temp.cost_price = CostPrice;
                 temp.image_url = SelectedPath == InventoryHelper.ImageNA ? "" : path;
                 temp.weight = Weight == null ? "" : Weight;
+                temp.Stock = 0;
                 temp.status = true;
                 int productId = ProductServices.AddUpdateProduct(temp);
                 if (productId > 0)

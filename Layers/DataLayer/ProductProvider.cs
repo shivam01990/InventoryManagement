@@ -29,6 +29,7 @@ namespace DataLayer
                         temp.cost_price = ob.cost_price;
                         temp.weight = ob.weight;
                         temp.status = ob.status;
+                        temp.Stock = ob.Stock;
                     }
 
                 }
@@ -77,7 +78,8 @@ namespace DataLayer
                                    weight = p.weight,
                                    cost_price = p.cost_price,
                                    sell_price = p.sell_price,
-                                   status = p.status
+                                   status = p.status,
+                                   Stock =p.Stock
                                }).ToList();
 
 
@@ -134,6 +136,12 @@ namespace DataLayer
                 lst_product = db.products.Where(s => s.sub_category == subcategoryId && s.status == true).ToList();
             }
             return lst_product;
+        }
+
+        public static int CheckProductStock(int ProductId)
+        {
+            int Currentstock = 0;
+            return Currentstock;
         }
 
     }
