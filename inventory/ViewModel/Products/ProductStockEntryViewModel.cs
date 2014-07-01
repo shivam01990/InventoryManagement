@@ -350,6 +350,7 @@ namespace inventory.ViewModel
                 ob.customer_name = "";
                 ob.remarks = Remarks;
                 SellingHistoryServices.AddUpdateSellingHistory(ob);
+                ProductServices.UpdateProductStock(ob.product_id);
                 MessageBox.Show("Stock Added");
                 Initialize();
 

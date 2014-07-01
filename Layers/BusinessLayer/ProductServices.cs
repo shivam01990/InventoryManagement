@@ -45,5 +45,10 @@ namespace BusinessLayer
         {
             return ProductProvider.GetProductBySubcategory(subcategoryId);
         }
+
+        public static int UpdateProductStock(int ProductId)
+        {
+            return ProductProvider.UpdateProductStock(ProductId);
+        }
     }
 }

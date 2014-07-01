@@ -79,7 +79,7 @@ namespace DataLayer
                                    cost_price = p.cost_price,
                                    sell_price = p.sell_price,
                                    status = p.status,
-                                   Stock =p.Stock
+                                   Stock = p.Stock
                                }).ToList();
 
 
@@ -138,9 +138,34 @@ namespace DataLayer
             return lst_product;
         }
 
-        public static int CheckProductStock(int ProductId)
+        public static int UpdateProductStock(int ProductId)
         {
             int Currentstock = 0;
+            using (InventoryEntities db = new InventoryEntities())
+            {
+                product temp = GetAllProduct(ProductId).FirstOrDefault();
+                if (temp != null)
+                {
+                    int CreditStock = 0;
+                    int DebitStock = 0;
+                    try
+                    {
+                        CreditStock = db.selling_history.Where(s => s.product_id == ProductId && s.transaction_type == 2).Sum(q => q.quantity); //Debit Transactions
+
+                    }
+                    catch
+                    { }
+                    try
+                    {
+                        DebitStock = db.selling_history.Where(s => s.product_id == ProductId && s.transaction_type == 1).Sum(q => q.quantity); //Credit Transactions
+                    }
+                    catch
+                    { }
+                    Currentstock = CreditStock - DebitStock;
+                    temp.Stock = Currentstock;
+                    AddUpdateProduct(temp);
+                }
+            }
             return Currentstock;
         }
 
