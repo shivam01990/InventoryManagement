@@ -34,6 +34,10 @@
         <DataTemplate DataType="{x:Type ViewModel:ProductStockEntryViewModel}">
             <View:ProductStockEntry/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type ViewModel:SellProductsViewModel}">
+            <View:SellProducts/>
+        </DataTemplate>
+
     </Window.Resources>
 
     <Grid>

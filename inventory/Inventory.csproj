@@ -82,6 +82,7 @@
     <Compile Include="ViewModel\Products\EditProductViewModel.cs" />
     <Compile Include="ViewModel\Products\ModifyProductViewModel.cs" />
     <Compile Include="ViewModel\Products\ProductStockEntryViewModel.cs" />
+    <Compile Include="ViewModel\Products\SellProductsViewModel.cs" />
     <Compile Include="ViewModel\Products\SubCategoryViewModel.cs" />
     <Compile Include="ViewModel\Products\CategoryViewModel.cs" />
     <Compile Include="ViewModel\Products\ProductsViewModelBase.cs" />
@@ -117,6 +118,9 @@
     </Compile>
     <Compile Include="View\Products\ProductStockEntry.xaml.cs">
       <DependentUpon>ProductStockEntry.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Products\SellProducts.xaml.cs">
+      <DependentUpon>SellProducts.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Products\SubCategory.xaml.cs">
       <DependentUpon>SubCategory.xaml</DependentUpon>
@@ -162,6 +166,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Products\ProductStockEntry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Products\SellProducts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -226,6 +234,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Files\StockEntry.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Files\sellproducts.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

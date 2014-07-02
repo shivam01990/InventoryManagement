@@ -1,4 +1,5 @@
-﻿using System;
+﻿using inventory.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace inventory.View
         public SellProducts()
         {
             InitializeComponent();
+            this.DataContext = new SellProductsViewModel();
         }
     }
 }

@@ -10,21 +10,58 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="70"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
+
+
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="115"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Sell Products" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="121,4,0,0"/>
+        <TextBlock Text="Sell Products" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="138,4,0,0" RenderTransformOrigin="0.721,0.938"/>
+        <Label Content="Customer Name" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="9,4,0,0" Grid.Row="1"/>
+        <TextBox HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="10,4,0,0" Grid.Row="1"/>
+        <Label Content="Customer Info" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,5,0,0" Grid.Row="2" Grid.RowSpan="2"/>
+        <TextBox HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="10,5,0,0" Grid.Row="2"/>
+        <Label Content="Products" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="49,38,0,0" Grid.Row="3"/>
+        <ComboBox HorizontalAlignment="Left" Name="ddl_Category" ItemsSource="{Binding Category}" SelectedItem="{Binding SelectedCategory}" DisplayMemberPath="category_name" IsSynchronizedWithCurrentItem="True" VerticalAlignment="Top" Width="120" Grid.Column="1" Margin="10,33,0,0" Grid.Row="4"/>
+        <ComboBox HorizontalAlignment="Left" Name="ddl_subcategory" ItemsSource="{Binding SubCategory}" SelectedItem="{Binding SelectedSubCategory,UpdateSourceTrigger=PropertyChanged}" IsSynchronizedWithCurrentItem="True" DisplayMemberPath="subcategory_name"  VerticalAlignment="Top" Width="120" Grid.Column="1" Margin="152,33,0,0" Grid.Row="4"/>
+        <ComboBox HorizontalAlignment="Left" Name="ddl_product" ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct,UpdateSourceTrigger=PropertyChanged}" IsSynchronizedWithCurrentItem="True" DisplayMemberPath="product_name" VerticalAlignment="Top" Width="120" Grid.Column="1" Margin="296,33,0,0" Grid.Row="4" RenderTransformOrigin="1.008,0.5">
+        </ComboBox>
+        <Label Content="Sub Category" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="152,7,0,0" Grid.Row="4" Grid.Column="1"/>
+        <Label Content="Category" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,7,0,0" Grid.Row="4" Grid.Column="1"/>
+        <Label Content="Select Product" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="296,7,0,0" Grid.Row="4" Grid.Column="1"/>
+        <TextBox HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="{Binding SellingPrice}" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="10,4,0,0" Grid.Row="5" RenderTransformOrigin="0.413,-1.2"/>
+        <TextBox HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="10,4,0,0" Grid.Row="6"/>
+        <Label Content="Quantity" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="49,4,0,0" Grid.Row="6"/>
+        <Button Content="Add" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="341,7,0,0" Grid.Row="6"/>
+        <Label Content="Selling Price" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="31,4,0,0" Grid.Row="5"/>
+        <ListView Name="Sellinglst" Grid.Row="3"  ItemsSource="{Binding SellingItems,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Margin="10,10,9,10"   >
+            <ListView.View>
+                <GridView x:Name="grdDelar">
 
+                    <GridViewColumn Header="ProductID" HeaderContainerStyle="{DynamicResource GridHeaderLeft}" DisplayMemberBinding="{Binding ProductId}" Width="70" >
+                    </GridViewColumn>
+                    <GridViewColumn Header="ProductName" HeaderContainerStyle="{DynamicResource GridHeaderLeft}" DisplayMemberBinding="{Binding ProductName}" Width="100" >
+                    </GridViewColumn>
+                    <GridViewColumn Header="SellingPrice" HeaderContainerStyle="{DynamicResource GridHeaderLeft}" DisplayMemberBinding="{Binding SellingPrice}" Width="80" >
+                    </GridViewColumn>
+                    <GridViewColumn Header="Quantity" HeaderContainerStyle="{DynamicResource GridHeaderLeft}" DisplayMemberBinding="{Binding Quantity}" Width="80" />
+                    <GridViewColumn Header="Amount" HeaderContainerStyle="{DynamicResource GridHeaderLeft}" DisplayMemberBinding="{Binding Amount}" Width="80" />
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="*Quantity less than" FontStyle="Italic" HorizontalAlignment="Left" Grid.Column="1" Margin="180,4,0,0" Grid.Row="6" Foreground="#FFFF2929"/>
+        <Label Content="{Binding MaxQuantity}" FontStyle="Italic" HorizontalAlignment="Left" Grid.Column="1" Margin="295,4,0,0" Grid.Row="6" Foreground="#FFFF2929" RenderTransformOrigin="1.4,0.577"  VerticalAlignment="Top"/>
+        <Label Content="Remarks" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,5,0,0" Grid.Row="7" Grid.RowSpan="2"/>
+        <TextBox HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="10,5,0,0" Grid.Row="7"/>
+        <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="21,10,0,0" Grid.Row="8"/>
     </Grid>
 </UserControl>
