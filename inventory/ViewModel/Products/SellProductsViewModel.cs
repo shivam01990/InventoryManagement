@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 
 namespace inventory.ViewModel
 {
@@ -122,7 +124,7 @@ namespace inventory.ViewModel
                 {
                     //CostPrice = _SelectedProduct.cost_price;
                     SellingPrice = _SelectedProduct.sell_price;
-                    MaxQuantity = _SelectedProduct.Stock==null?0:(int)_SelectedProduct.Stock;
+                    MaxQuantity = _SelectedProduct.Stock == null ? 0 : (int)_SelectedProduct.Stock;
                 }
                 return _SelectedProduct;
             }
@@ -150,6 +152,20 @@ namespace inventory.ViewModel
             }
         }
 
+        private int _Quantity;
+        public int Quantity
+        {
+            get
+            {
+                return _Quantity;
+            }
+            set
+            {
+                _Quantity = value;
+                RaisedPropertyChanged("Quantity");
+            }
+        }
+
         private int _MaxQuantity;
         public int MaxQuantity
         {
@@ -162,6 +178,62 @@ namespace inventory.ViewModel
                 _MaxQuantity = value;
                 RaisedPropertyChanged("MaxQuantity");
             }
+        }
+
+        private ICommand _AddCommand;
+        public ICommand AddCommand
+        {
+            get
+            {
+                if (_AddCommand == null)
+                {
+                    _AddCommand = new RelayCommand(new Action<object>(AddSellingList));
+                }
+                return _AddCommand;
+            }
+            set
+            {
+                _AddCommand = value;
+                RaisedPropertyChanged("AddCommand");
+
+            }
+        }
+
+        protected void AddSellingList(object parameter)
+        {
+            ProductSellingEntity Item = null;
+            Item = CoverttoProductSellingEntity(SelectedProduct);
+            List<ProductSellingEntity> temp_Selling_lst = new List<ProductSellingEntity>();
+            if (SellingItems != null)
+            {
+                temp_Selling_lst = SellingItems;
+                if (temp_Selling_lst.Where(p => p.ProductId == Item.ProductId).Count() != 0)
+                {
+                    int temp_quantity = temp_Selling_lst.Where(p => p.ProductId == Item.ProductId).FirstOrDefault().Quantity;
+                    Quantity += temp_quantity;
+                    if (Quantity > MaxQuantity)
+                    {
+                        MessageBox.Show("Quantity is greater than Stock");
+                        return;
+                    }
+                    Item = CoverttoProductSellingEntity(SelectedProduct);
+                    temp_Selling_lst.Remove(temp_Selling_lst.Where(p => p.ProductId == Item.ProductId).FirstOrDefault());
+                }
+            }
+            temp_Selling_lst.Add(Item);
+            SellingItems = null;
+            SellingItems = temp_Selling_lst;
+        }
+
+        protected ProductSellingEntity CoverttoProductSellingEntity(product ob)
+        {
+            ProductSellingEntity tempproduct = new ProductSellingEntity();
+            tempproduct.ProductId = ob.id;
+            tempproduct.ProductName = ob.product_name;
+            tempproduct.Quantity = Quantity;
+            tempproduct.SellingPrice = ob.sell_price;
+            tempproduct.Amount = tempproduct.SellingPrice * Quantity;
+            return tempproduct;
         }
 
         //private decimal _CostPrice;
