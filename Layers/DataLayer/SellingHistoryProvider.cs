@@ -46,5 +46,36 @@ namespace DataLayer
             }
             return _id;
         }
+
+        public static bool AddBulkSellingHistory(List<selling_history> lst_sellinghistory)
+        {
+            bool flag = false;
+            using (InventoryEntities db = new InventoryEntities())
+            {
+                foreach (selling_history item in lst_sellinghistory)
+                {
+                    db.selling_history.Add(item);
+                }
+
+                int x = db.SaveChanges();
+                if (x > 0)
+                {
+                    flag = true;
+                }
+
+            }
+            return flag;
+        }
+
+
+        public static decimal GetOverAllBalance()
+        {
+            decimal balance = 0;
+            using (InventoryEntities db = new InventoryEntities())
+            {
+                balance = (from s in db.selling_history select (s.credit - s.debit)).Sum();
+            }
+            return balance;
+        }
     }
 }

@@ -152,6 +152,48 @@ namespace inventory.ViewModel
             }
         }
 
+        private string _CustomerName;
+        public string CustomerName
+        {
+            get
+            {
+                return _CustomerName;
+            }
+            set
+            {
+                _CustomerName = value;
+                RaisedPropertyChanged("CustomerName");
+            }
+        }
+
+        private string _CustomerInfo;
+        public string CustomerInfo
+        {
+            get
+            {
+                return _CustomerInfo;
+            }
+            set
+            {
+                _CustomerInfo = value;
+                RaisedPropertyChanged("CustomerInfo");
+            }
+        }
+
+        private string _Remarks;
+        public string Remarks
+        {
+            get
+            {
+                return _Remarks;
+            }
+            set
+            {
+                _Remarks = value;
+                RaisedPropertyChanged("Remarks");
+            }
+        }
+
         private int _Quantity;
         public int Quantity
         {
@@ -180,6 +222,90 @@ namespace inventory.ViewModel
             }
         }
 
+        private decimal _TotalAmount;
+        public decimal TotalAmount
+        {
+            get
+            {
+                return _TotalAmount;
+            }
+            set
+            {
+                _TotalAmount = value;
+                RaisedPropertyChanged("TotalAmount");
+            }
+        }
+
+        private ICommand _SubmitCommand;
+        public ICommand SubmitCommand
+        {
+            get
+            {
+                if (_SubmitCommand == null)
+                {
+                    _SubmitCommand = new RelayCommand(new Action<object>(SubmitSellingList));
+                }
+                return _SubmitCommand;
+            }
+            set
+            {
+                _SubmitCommand = value;
+                RaisedPropertyChanged("SubmitCommand");
+            }
+        }
+
+        protected void SubmitSellingList(object parameter)
+        {
+            try
+            {
+                if (SellingItems != null)
+                {
+                    if (SellingItems.Count != 0)
+                    {
+                        List<selling_history> ob_sellinghistory = new List<selling_history>();
+                        foreach (ProductSellingEntity item in SellingItems)
+                        {
+                            ob_sellinghistory.Add(Converttosellinghistory(item));
+                        }
+                        bool flag = SellingHistoryServices.AddBulkSellingHistory(ob_sellinghistory);
+                        if (flag == true)
+                        {
+                            MessageBox.Show("Transaction Complete");
+                            try
+                            {
+                                foreach (ProductSellingEntity item in SellingItems)
+                                {
+                                    ProductServices.UpdateProductStock(item.ProductId);
+                                }
+                            }
+                            catch
+                            { }
+
+                        }
+                        Initialize();
+                    }
+
+                }
+            }
+            catch
+            { MessageBox.Show("Transaction Fails"); }
+        }
+
+
+        protected void Initialize()
+        {
+            TotalAmount = 0;
+            SellingPrice = 0;
+            Remarks = "";
+            SellingItems = null;
+            SelectedCategory = null;
+            SelectedSubCategory = null;
+            SelectedProduct = null;
+            PaymentType = null;
+            CustomerInfo = "";
+            CustomerName = "";
+        }
+
         private ICommand _AddCommand;
         public ICommand AddCommand
         {
@@ -201,32 +327,52 @@ namespace inventory.ViewModel
 
         protected void AddSellingList(object parameter)
         {
-            ProductSellingEntity Item = null;
-            Item = CoverttoProductSellingEntity(SelectedProduct);
-            List<ProductSellingEntity> temp_Selling_lst = new List<ProductSellingEntity>();
-            if (SellingItems != null)
+            if (SelectedProduct != null)
             {
-                temp_Selling_lst = SellingItems;
-                if (temp_Selling_lst.Where(p => p.ProductId == Item.ProductId).Count() != 0)
+                ProductSellingEntity Item = null;
+                Item = CoverttoProductSellingEntity(SelectedProduct);
+                List<ProductSellingEntity> temp_Selling_lst = new List<ProductSellingEntity>();
+                if (SellingItems != null)
                 {
-                    int temp_quantity = temp_Selling_lst.Where(p => p.ProductId == Item.ProductId).FirstOrDefault().Quantity;
-                    Quantity += temp_quantity;
-                    if (Quantity > MaxQuantity)
+                    temp_Selling_lst = SellingItems;
+                    if (temp_Selling_lst.Where(p => p.ProductId == Item.ProductId).Count() != 0)
                     {
-                        MessageBox.Show("Quantity is greater than Stock");
-                        return;
+                        int temp_quantity = temp_Selling_lst.Where(p => p.ProductId == Item.ProductId).FirstOrDefault().Quantity;
+                        Quantity += temp_quantity;
+                        if (!checkQuantity())
+                        {
+                            return;
+                        }
+                        Item = CoverttoProductSellingEntity(SelectedProduct);
+                        temp_Selling_lst.Remove(temp_Selling_lst.Where(p => p.ProductId == Item.ProductId).FirstOrDefault());
                     }
-                    Item = CoverttoProductSellingEntity(SelectedProduct);
-                    temp_Selling_lst.Remove(temp_Selling_lst.Where(p => p.ProductId == Item.ProductId).FirstOrDefault());
                 }
+                if (!checkQuantity())
+                {
+                    return;
+                }
+                temp_Selling_lst.Add(Item);
+                Quantity = 0;
+                SellingItems = null;
+                SellingItems = temp_Selling_lst;
+                TotalAmount = SellingItems.Sum(s => s.Amount);
             }
-            temp_Selling_lst.Add(Item);
-            SellingItems = null;
-            SellingItems = temp_Selling_lst;
         }
+
+        public bool checkQuantity()
+        {
+            if (Quantity > MaxQuantity)
+            {
+                MessageBox.Show("Quantity is greater than Stock");
+                return false;
+            }
+            return true;
+        }
+
 
         protected ProductSellingEntity CoverttoProductSellingEntity(product ob)
         {
+
             ProductSellingEntity tempproduct = new ProductSellingEntity();
             tempproduct.ProductId = ob.id;
             tempproduct.ProductName = ob.product_name;
@@ -234,6 +380,38 @@ namespace inventory.ViewModel
             tempproduct.SellingPrice = ob.sell_price;
             tempproduct.Amount = tempproduct.SellingPrice * Quantity;
             return tempproduct;
+        }
+
+        protected selling_history Converttosellinghistory(ProductSellingEntity ob)
+        {
+            selling_history temphistory = new selling_history();
+            temphistory.dealer_id = null;
+            temphistory.product_id = ob.ProductId;
+            temphistory.quantity = ob.Quantity;
+            temphistory.credit = ob.Amount;
+            temphistory.debit = 0;
+            temphistory.transaction_type = (int)InventoryHelper.TransactionType.Credit;
+            temphistory.customer_info = CustomerInfo;
+            temphistory.payment_type = PaymentType.Content == null ? "" : PaymentType.Content.ToString();
+            temphistory.payment_date = DateTime.Now;
+            temphistory.customer_name = CustomerName;
+            temphistory.remarks = Remarks;
+
+            return temphistory;
+        }
+
+        private System.Windows.Controls.ComboBoxItem _PaymentType;
+        public System.Windows.Controls.ComboBoxItem PaymentType
+        {
+            get
+            {
+                return _PaymentType;
+            }
+            set
+            {
+                _PaymentType = value;
+                RaisedPropertyChanged("PaymentType");
+            }
         }
 
         //private decimal _CostPrice;

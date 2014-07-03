@@ -13,5 +13,10 @@ namespace BusinessLayer
         {
             return SellingHistoryProvider.AddUpdateSellingHistory(ob);
         }
+
+        public static bool AddBulkSellingHistory(List<selling_history> lst_sellinghistory)
+        {
+            return SellingHistoryProvider.AddBulkSellingHistory(lst_sellinghistory);
+        }
     }
 }

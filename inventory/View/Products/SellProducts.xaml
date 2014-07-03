@@ -10,8 +10,8 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="120"/>
-            <RowDefinition Height="70"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
@@ -26,9 +26,9 @@
         </Grid.ColumnDefinitions>
         <TextBlock Text="Sell Products" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="138,4,0,0" RenderTransformOrigin="0.721,0.938"/>
         <Label Content="Customer Name" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="9,4,0,0" Grid.Row="1"/>
-        <TextBox HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="10,4,0,0" Grid.Row="1"/>
+        <TextBox HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="{Binding CustomerName}" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="10,4,0,0" Grid.Row="1"/>
         <Label Content="Customer Info" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,5,0,0" Grid.Row="2" Grid.RowSpan="2"/>
-        <TextBox HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="10,5,0,0" Grid.Row="2"/>
+        <TextBox HorizontalAlignment="Left" Height="20" Text="{Binding CustomerInfo}" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="10,5,0,0" Grid.Row="2"/>
         <Label Content="Products" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="49,38,0,0" Grid.Row="3"/>
         <ComboBox HorizontalAlignment="Left" Name="ddl_Category" ItemsSource="{Binding Category}" SelectedItem="{Binding SelectedCategory}" DisplayMemberPath="category_name" IsSynchronizedWithCurrentItem="True" VerticalAlignment="Top" Width="120" Grid.Column="1" Margin="10,33,0,0" Grid.Row="4"/>
         <ComboBox HorizontalAlignment="Left" Name="ddl_subcategory" ItemsSource="{Binding SubCategory}" SelectedItem="{Binding SelectedSubCategory,UpdateSourceTrigger=PropertyChanged}" IsSynchronizedWithCurrentItem="True" DisplayMemberPath="subcategory_name"  VerticalAlignment="Top" Width="120" Grid.Column="1" Margin="152,33,0,0" Grid.Row="4"/>
@@ -42,7 +42,7 @@
         <Label Content="Quantity" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="49,4,0,0" Grid.Row="6"/>
         <Button Content="Add" Command="{Binding AddCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="341,7,0,0" Grid.Row="6"/>
         <Label Content="Selling Price" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="31,4,0,0" Grid.Row="5"/>
-        <ListView Name="Sellinglst" Grid.Row="3"  ItemsSource="{Binding SellingItems,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Margin="10,10,9,10"   >
+        <ListView Name="Sellinglst" Grid.Row="3"  ItemsSource="{Binding SellingItems,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Margin="10,10,9,37"   >
             <ListView.View>
                 <GridView x:Name="grdDelar">
 
@@ -61,7 +61,16 @@
         <Label Content="*Quantity less than" FontStyle="Italic" HorizontalAlignment="Left" Grid.Column="1" Margin="180,4,0,0" Grid.Row="6" Foreground="#FFFF2929"/>
         <Label Content="{Binding MaxQuantity}" FontStyle="Italic" HorizontalAlignment="Left" Grid.Column="1" Margin="295,4,0,0" Grid.Row="6" Foreground="#FFFF2929" RenderTransformOrigin="1.4,0.577"  VerticalAlignment="Top"/>
         <Label Content="Remarks" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,5,0,0" Grid.Row="7" Grid.RowSpan="2"/>
-        <TextBox HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="10,5,0,0" Grid.Row="7"/>
-        <Button Content="Submit" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" Grid.Column="1" Margin="10,0,0,0" Grid.Row="8" RenderTransformOrigin="0.467,0.2"/>
+        <TextBox HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="{Binding Remarks}" VerticalAlignment="Top" Width="150" Grid.Column="1" Margin="10,5,0,0" Grid.Row="7"/>
+        <Button Content="Submit" Command="{Binding SubmitCommand}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" Grid.Column="1" Margin="10,0,0,0" Grid.Row="9" RenderTransformOrigin="0.467,0.2"/>
+        <Label Content="Total Amount" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="218,118,0,0" Grid.Row="3"/>
+        <Label Content="{Binding TotalAmount}" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="316,118,0,0" Grid.Row="3" FontWeight="Bold"/>
+        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" IsSynchronizedWithCurrentItem="True" SelectedItem="{Binding PaymentType}"  Width="150" Grid.Column="1" Margin="10,8,0,0" Grid.Row="8">
+            <ComboBox.Items>
+                <ComboBoxItem Content="Cash Payment"  />
+                <ComboBoxItem Content="Cheque Payment"  />
+            </ComboBox.Items>
+        </ComboBox>
+        <Label Content="Payment Type" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,4,0,0" Grid.Row="8" RenderTransformOrigin="-0.154,0.231"/>
     </Grid>
 </UserControl>
