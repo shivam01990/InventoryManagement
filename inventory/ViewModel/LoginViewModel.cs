@@ -10,12 +10,14 @@ using BusinessLayer;
 using DataLayer;
 using System.Windows.Controls;
 using inventory.View;
+using inventory.View.Alerts;
 
 
 namespace inventory.ViewModel
 {
     public class LoginViewModel : ViewModelBase
     {
+        readonly GrowlNotifiactions growlNotifications = new GrowlNotifiactions();
         private string _username;
         private string _password;
 
@@ -97,15 +99,17 @@ namespace inventory.ViewModel
             bool flag = UserServices.CheckLogin(UserName, Password);
             if (flag == true)
             {
-
+                growlNotifications.AddNotification(new Notification { Title = "Mesage #1", ImageUrl = "pack://application:,,,/Files/close.png", Message = "Shivam ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." });
                 //MessageBox.Show("Login Successful");
                 MainWindow ob = new MainWindow();
                 this.Close = true;
                 ob.ShowDialog();
+                
             }
             else
             {
                 MessageBox.Show("Fails");
+              
             }
         }
 

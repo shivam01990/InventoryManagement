@@ -110,3 +110,6 @@ G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\inventory.Propert
 G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\Inventory.csproj.GenerateResource.Cache
 G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\inventory.exe
 G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\inventory.pdb
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Alerts\GrowlNotifiactions.g.cs
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Alerts\DesignTimeNotificationData.baml
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Alerts\GrowlNotifiactions.baml

@@ -73,6 +73,7 @@
     <Compile Include="Helpers\DialogCloser.cs" />
     <Compile Include="Helpers\InventoryHelper.cs" />
     <Compile Include="Model\SubcategoryModel.cs" />
+    <Compile Include="ViewModel\Alerts\Notification.cs" />
     <Compile Include="ViewModel\Dealers\AddDealersViewModel.cs" />
     <Compile Include="ViewModel\Dealers\DealersViewModelBase.cs" />
     <Compile Include="ViewModel\Dealers\ModifyDealersViewModel.cs" />
@@ -88,6 +89,9 @@
     <Compile Include="ViewModel\Products\ProductsViewModelBase.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="View\Alerts\GrowlNotifiactions.xaml.cs">
+      <DependentUpon>GrowlNotifiactions.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Dealers\AddDealers.xaml.cs">
       <DependentUpon>AddDealers.xaml</DependentUpon>
     </Compile>
@@ -129,7 +133,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Alerts\DesignTimeNotificationData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ResourceDic\MainDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Alerts\GrowlNotifiactions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -237,6 +249,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Files\sellproducts.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Files\close.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
