@@ -169,5 +169,15 @@ namespace DataLayer
             return Currentstock;
         }
 
+        public static List<product> GetEmptyStockList()
+        {
+            List<product> lstProducts = null;
+            using (InventoryEntities db = new InventoryEntities())
+            {
+                lstProducts = (from p in db.products where ((p.Stock == 0) && (p.status == true)) select p).ToList();
+            }
+            return lstProducts;
+        }
+
     }
 }

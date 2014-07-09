@@ -1,7 +1,7 @@
 ﻿<Notifications xmlns="clr-namespace:inventory.ViewModel">
-    <Notification Id="1" Title="Notification #1" ImageUrl="pack://application:,,,/Files/SubCategory.png" Message="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
-    <Notification Id="2" Title="Notification #2" ImageUrl="pack://application:,,,/Files/SubCategory.png" Message="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
-    <Notification Id="3" Title="Notification #3" ImageUrl="pack://application:,,,/Files/SubCategory.png" Message="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
-    <Notification Id="4" Title="Notification #4" ImageUrl="pack://application:,,,/Files/SubCategory.png" Message="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
+    <Notification Id="1" Title="Notification #1" ImageUrl="pack://application:,,,/Files/notification-icon.png" Message="Message Content 1." />
+    <Notification Id="2" Title="Notification #2" ImageUrl="pack://application:,,,/Files/notification-icon.png" Message="Message Content 2." />
+    <Notification Id="3" Title="Notification #3" ImageUrl="pack://application:,,,/Files/notification-icon.png" Message="Message Content 3." />
+    <Notification Id="4" Title="Notification #4" ImageUrl="pack://application:,,,/Files/notification-icon.png" Message="Message Content 4." />
 
 </Notifications>

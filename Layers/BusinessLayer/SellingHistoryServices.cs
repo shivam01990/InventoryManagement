@@ -18,5 +18,10 @@ namespace BusinessLayer
         {
             return SellingHistoryProvider.AddBulkSellingHistory(lst_sellinghistory);
         }
+
+        public static decimal GetOverAllBalance(DateTime? StartDate, DateTime? EndDate)
+        {
+            return SellingHistoryProvider.GetOverAllBalance(StartDate, EndDate);
+        }
     }
 }

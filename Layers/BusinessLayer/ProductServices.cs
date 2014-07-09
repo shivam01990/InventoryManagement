@@ -50,5 +50,10 @@ namespace BusinessLayer
         {
             return ProductProvider.UpdateProductStock(ProductId);
         }
+
+        public static List<product> GetEmptyStockList()
+        {
+            return ProductProvider.GetEmptyStockList();
+        }
     }
 }

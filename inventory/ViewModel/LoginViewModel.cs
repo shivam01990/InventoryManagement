@@ -11,13 +11,14 @@ using DataLayer;
 using System.Windows.Controls;
 using inventory.View;
 using inventory.View.Alerts;
+using inventory.Helpers;
 
 
 namespace inventory.ViewModel
 {
     public class LoginViewModel : ViewModelBase
     {
-        readonly GrowlNotifiactions growlNotifications = new GrowlNotifiactions();
+        private readonly BackgroundWorker worker = new BackgroundWorker();
         private string _username;
         private string _password;
 
@@ -99,8 +100,10 @@ namespace inventory.ViewModel
             bool flag = UserServices.CheckLogin(UserName, Password);
             if (flag == true)
             {
-                growlNotifications.AddNotification(new Notification { Title = "Mesage #1", ImageUrl = "pack://application:,,,/Files/close.png", Message = "Shivam ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." });
-                //MessageBox.Show("Login Successful");
+                worker.DoWork += worker_DoWork;
+                worker.RunWorkerCompleted += worker_RunWorkerCompleted;
+                worker.RunWorkerAsync();
+               // MessageBox.Show("Login Successful");
                 MainWindow ob = new MainWindow();
                 this.Close = true;
                 ob.ShowDialog();
@@ -108,8 +111,9 @@ namespace inventory.ViewModel
             }
             else
             {
-                MessageBox.Show("Fails");
-              
+                //MessageBox.Show("Fails");
+                InventoryHelper.growlNotifications.AddNotification(new Notification { Title = "Warning", ImageUrl = "pack://application:,,,/Files/notification-icon.png", Message = "Login Fails." });
+           
             }
         }
 
@@ -129,6 +133,39 @@ namespace inventory.ViewModel
 
                 _close = value;
                 RaisedPropertyChanged("Close");
+            }
+        }
+
+        private Decimal OverAllBalance;
+        private Decimal MonthlyBalance;
+        private string EmptyStockProductList="";
+        private void worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            OverAllBalance = SellingHistoryProvider.GetOverAllBalance(null, null);
+            DateTime date = DateTime.Now;
+            DateTime FirstDayOfMonth = new DateTime(date.Year, date.Month, 1); 
+            DateTime LastDayOfMonth = new DateTime(date.Year, date.Month, 1).AddMonths(1).AddDays(-1);
+           MonthlyBalance = SellingHistoryProvider.GetOverAllBalance(FirstDayOfMonth, LastDayOfMonth);
+
+           foreach (product item in  ProductServices.GetEmptyStockList())
+           {
+               EmptyStockProductList += item.product_name + ",";
+
+           }
+           if (EmptyStockProductList.Length != 0)
+           {
+               EmptyStockProductList = EmptyStockProductList.Substring(0, EmptyStockProductList.LastIndexOf(','));
+           }
+        }
+
+        private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            InventoryHelper.growlNotifications.AddNotification(new Notification { Title = "OverAll Balance", ImageUrl = "pack://application:,,,/Files/notification-icon.png", Message = "Your Over All Balance is "+OverAllBalance+"." });
+            InventoryHelper.growlNotifications.AddNotification(new Notification { Title = "Monthly Balance", ImageUrl = "pack://application:,,,/Files/notification-icon.png", Message = "Your Monthly Balance is " + MonthlyBalance + "." });
+            if (EmptyStockProductList.Length != 0)
+            {
+                InventoryHelper.growlNotifications.AddNotification(new Notification { Title = "Empty Stock List ", ImageUrl = "pack://application:,,,/Files/notification-icon.png", Message = "Products " + EmptyStockProductList + " are Out of Stock" });
+        
             }
         }
 
