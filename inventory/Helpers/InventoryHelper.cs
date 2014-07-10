@@ -48,100 +48,106 @@ namespace inventory.Helpers
             return DirectoryPath;
         }
 
-       public enum TransactionType
+        public enum TransactionType
         {
             Credit = 1,
             Debit = 2
         }
 
 
-      public static  readonly GrowlNotifiactions growlNotifications = new GrowlNotifiactions(); // Glow Notification Object
+        public static readonly GrowlNotifiactions growlNotifications = new GrowlNotifiactions(); // Glow Notification Object
 
-      public static void SimpleAlert(string _Title,string _Message)
-      {
-          InventoryHelper.growlNotifications.AddNotification(new Notification { Title = _Title, ImageUrl = "pack://application:,,,/Files/notification-icon.png", Message = _Message });
-        
-      }
+        public static void SimpleAlert(string _Title, string _Message)
+        {
+            InventoryHelper.growlNotifications.AddNotification(new Notification { Title = _Title, ImageUrl = "pack://application:,,,/Files/notification-icon.png", Message = _Message });
 
-      public static DateTime GetFirstDateOfWeek(DateTime dayInWeek, DayOfWeek RunningDay)  //RunningDay is Schedular Running day 
-      {
-          DateTime firstDayInWeek = dayInWeek.Date;
-          while (firstDayInWeek.DayOfWeek != RunningDay)
-              firstDayInWeek = firstDayInWeek.AddDays(-1);
+        }
 
-          return firstDayInWeek;
-      }
-      public static DateTime GetLastDateOfWeek(DateTime dayInWeek, DayOfWeek RunningDay)
-      {
-          DateTime lastDayInWeek = dayInWeek.Date;
-          while (lastDayInWeek.DayOfWeek != RunningDay)
-              lastDayInWeek = lastDayInWeek.AddDays(1);
+        public static void SuccessAlert(string _Title, string _Message)
+        {
+            InventoryHelper.growlNotifications.AddNotification(new Notification { Title = _Title, ImageUrl = "pack://application:,,,/Files/Success.png", Message = _Message });
 
-          return lastDayInWeek;
-      }
+        }
 
-      public static DateTime GetLastDayOfMonth()
-      {
-          DateTime firstOfNextMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(1);
-          DateTime lastOfThisMonth = firstOfNextMonth.AddDays(-1);
-          return lastOfThisMonth;
-      }
+        public static DateTime GetFirstDateOfWeek(DateTime dayInWeek, DayOfWeek RunningDay)  //RunningDay is Schedular Running day 
+        {
+            DateTime firstDayInWeek = dayInWeek.Date;
+            while (firstDayInWeek.DayOfWeek != RunningDay)
+                firstDayInWeek = firstDayInWeek.AddDays(-1);
 
-      public static DateTime GetLastWeekdayOfMonth(DateTime date, DayOfWeek day)         // Get last WeekdayofMonth according to day
-      {
-          DateTime lastDayOfMonth = new DateTime(date.Year, date.Month, 1).AddMonths(1).AddDays(-1);
-          int wantedDay = (int)day;
-          int lastDay = (int)lastDayOfMonth.DayOfWeek;
-          return lastDayOfMonth.AddDays(lastDay >= wantedDay ? wantedDay - lastDay : wantedDay - lastDay - 7);
-      }
+            return firstDayInWeek;
+        }
+        public static DateTime GetLastDateOfWeek(DateTime dayInWeek, DayOfWeek RunningDay)
+        {
+            DateTime lastDayInWeek = dayInWeek.Date;
+            while (lastDayInWeek.DayOfWeek != RunningDay)
+                lastDayInWeek = lastDayInWeek.AddDays(1);
 
-      public static DateTime GetMonthFirstday(DateTime date)
-      {
-          DateTime FirstDay = new DateTime(date.Year, date.Month, 1);
-          return FirstDay;
-      }
+            return lastDayInWeek;
+        }
 
-      public static DateTime GetMonthLastday(DateTime date)
-      {
-          DateTime firstDayOfTheMonth = new DateTime(date.Year, date.Month, 1);
-          return firstDayOfTheMonth.AddMonths(1).AddDays(-1);
-      }
+        public static DateTime GetLastDayOfMonth()
+        {
+            DateTime firstOfNextMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(1);
+            DateTime lastOfThisMonth = firstOfNextMonth.AddDays(-1);
+            return lastOfThisMonth;
+        }
 
-      public static bool CheckWeekEndDay()
-      {
-          DateTime currentdate = DateTime.Now.Date;
-          DateTime lastDayInWeek = GetLastDateOfWeek(DateTime.Now, DayOfWeek.Sunday);
-          if (currentdate == lastDayInWeek)
-          {
-              return true;
-          }
-          else
-          {
-              return false;
-          }
+        public static DateTime GetLastWeekdayOfMonth(DateTime date, DayOfWeek day)         // Get last WeekdayofMonth according to day
+        {
+            DateTime lastDayOfMonth = new DateTime(date.Year, date.Month, 1).AddMonths(1).AddDays(-1);
+            int wantedDay = (int)day;
+            int lastDay = (int)lastDayOfMonth.DayOfWeek;
+            return lastDayOfMonth.AddDays(lastDay >= wantedDay ? wantedDay - lastDay : wantedDay - lastDay - 7);
+        }
 
-      }
+        public static DateTime GetMonthFirstday(DateTime date)
+        {
+            DateTime FirstDay = new DateTime(date.Year, date.Month, 1);
+            return FirstDay;
+        }
+
+        public static DateTime GetMonthLastday(DateTime date)
+        {
+            DateTime firstDayOfTheMonth = new DateTime(date.Year, date.Month, 1);
+            return firstDayOfTheMonth.AddMonths(1).AddDays(-1);
+        }
+
+        public static bool CheckWeekEndDay()
+        {
+            DateTime currentdate = DateTime.Now.Date;
+            DateTime lastDayInWeek = GetLastDateOfWeek(DateTime.Now, DayOfWeek.Sunday);
+            if (currentdate == lastDayInWeek)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
 
 
-      public static bool CheckMonthWeekEndDay()
-      {
-          DateTime currentdate = DateTime.Now.Date;
-          DateTime monthlastweekend = GetLastWeekdayOfMonth(DateTime.Now, DayOfWeek.Sunday);
-          if (currentdate == monthlastweekend)
-          {
-              return true;
-          }
-          else
-          {
-              return false;
-          }
+        public static bool CheckMonthWeekEndDay()
+        {
+            DateTime currentdate = DateTime.Now.Date;
+            DateTime monthlastweekend = GetLastWeekdayOfMonth(DateTime.Now, DayOfWeek.Sunday);
+            if (currentdate == monthlastweekend)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
 
-      }
+        }
 
 
     }
 
-    
+
 }
 
 

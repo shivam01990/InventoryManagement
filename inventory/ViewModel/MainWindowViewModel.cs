@@ -11,6 +11,7 @@ namespace inventory.ViewModel
     {
         private readonly ObservableCollection<DealersViewModelBase> _delarsMenu;
         private ObservableCollection<ProductsViewModelBase> _ProductMenu;
+        private ObservableCollection<TransactionViewModelBase> _transactionMenu;
         public ObservableCollection<DealersViewModelBase> DelarsMenu
         {
             get { return this._delarsMenu; }
@@ -21,12 +22,17 @@ namespace inventory.ViewModel
             get { return this._ProductMenu; }
         }
 
+        public ObservableCollection<TransactionViewModelBase> TransactionMenu
+        {
+            get { return this._transactionMenu; }
+        }
+
         public MainWindowViewModel()
         {
             this._delarsMenu = new ObservableCollection<DealersViewModelBase>();
             this._delarsMenu.Add(new ModifyDealersViewModel());
             this._delarsMenu.Add(new AddDealersViewModel());
-
+            /////////////////////////////////////////////////////////////////////
             this._ProductMenu = new ObservableCollection<ProductsViewModelBase>();
             this._ProductMenu.Add(new CategoryViewModel());
             this._ProductMenu.Add(new AddSubCategoryViewModel());
@@ -34,6 +40,9 @@ namespace inventory.ViewModel
             this._ProductMenu.Add(new ModifyProductViewModel());
             this._ProductMenu.Add(new ProductStockEntryViewModel());
             this._ProductMenu.Add(new SellProductsViewModel());
+            //////////////////////////////////////////////////////////////////////
+            this._transactionMenu = new ObservableCollection<TransactionViewModelBase>();
+            this._transactionMenu.Add(new TransactionSummaryViewModel());
 
         }
 

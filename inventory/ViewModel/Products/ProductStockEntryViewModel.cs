@@ -351,7 +351,8 @@ namespace inventory.ViewModel
                 ob.remarks = Remarks;
                 SellingHistoryServices.AddUpdateSellingHistory(ob);
                 ProductServices.UpdateProductStock(ob.product_id);
-                MessageBox.Show("Stock Added");
+                //MessageBox.Show("Stock Added");
+                InventoryHelper.SuccessAlert("Success", "Stock Added");
                 Initialize();
 
             }

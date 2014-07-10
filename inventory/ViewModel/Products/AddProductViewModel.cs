@@ -256,7 +256,12 @@ namespace inventory.ViewModel
                     System.IO.File.Copy(SelectedPath, path, true);
                 }
                 product temp = new product();
-                temp.product_name = ProductName;
+                temp.product_name = ProductName.Trim();
+                if (!ProductServices.CheckProductNameAvailable(temp.product_name))
+                {
+                    InventoryHelper.SimpleAlert("Warning", "Product Name is Already taken");
+                    return;
+                }
                 temp.brand = Brand == null ? "" : Brand;
                 temp.sub_category = SelectedSubCategory.id;
                 temp.category = SelectedCategory.id;
@@ -269,7 +274,17 @@ namespace inventory.ViewModel
                 int productId = ProductServices.AddUpdateProduct(temp);
                 if (productId > 0)
                 {
-                    MessageBox.Show("Product Added");
+                   // MessageBox.Show("Product Added");
+                    InventoryHelper.SuccessAlert("Success", "Product Added");
+                    Brand = "";
+                    SellingPrice = 0;
+                    CostPrice = 0;
+                    Weight = "";
+                    SelectedPath = InventoryHelper.ImageNA;
+                    ProductName = "";
+                    SelectedSubCategory = null;
+                    SelectedCategory = null;
+                    
                 }
             }
             catch (Exception ex)

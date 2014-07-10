@@ -1,4 +1,5 @@
-﻿using inventory.ViewModel;
+﻿using inventory.Helpers;
+using inventory.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,6 +59,7 @@ namespace inventory.View
             {
                 pnlcontent.Content = ListBoxDelears.SelectedItem;
                 ListBoxCategory.SelectedIndex = -1;
+                ListBoxTransactions.SelectedIndex = -1;
             }
           
         }
@@ -68,9 +70,28 @@ namespace inventory.View
             {
                 pnlcontent.Content = ListBoxCategory.SelectedItem;
                 ListBoxDelears.SelectedIndex = -1;
+                ListBoxTransactions.SelectedIndex = -1;
             }
            
         }
+
+        private void ListBoxTransactions_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ListBoxTransactions.SelectedIndex!=-1)
+            {
+                pnlcontent.Content = ListBoxTransactions.SelectedItem;
+                ListBoxDelears.SelectedIndex = -1;
+                ListBoxCategory.SelectedIndex = -1;
+            }
+        }
+        protected override void OnClosed(System.EventArgs e)
+        {
+
+            InventoryHelper.growlNotifications.Close();
+            base.OnClosed(e);
+        }
+
+        
 
 
     }

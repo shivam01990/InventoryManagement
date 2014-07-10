@@ -4,7 +4,7 @@
          xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
         xmlns:Model="clr-namespace:inventory"
-       Title="GrowlNotifiactions" Height="530" Width="300"  ShowActivated="False" AllowsTransparency="True" WindowStyle="None" ShowInTaskbar="False" Background="Transparent" Topmost="True" UseLayoutRounding="True">
+       Title="GrowlNotifiactions" Height="530" Width="320"  ShowActivated="False" AllowsTransparency="True" WindowStyle="None" ShowInTaskbar="False" Background="Transparent" Topmost="True" UseLayoutRounding="True">
     <Window.Resources>
         <Storyboard x:Key="CollapseStoryboard">
             <DoubleAnimation From="100" To="0" Storyboard.TargetProperty="Height" Duration="0:0:1"/>

@@ -57,6 +57,20 @@ namespace DataLayer
             return _product;
         }
 
+        public static bool CheckProductNameAvailable(string ProductName)
+        {
+            bool flag = false;
+            using (InventoryEntities db = new InventoryEntities())
+            {
+                int num = (from p in db.products
+                           where p.product_name == ProductName
+                           select p).Count();
+                if (num == 0)
+                    flag = true;
+            }
+            return flag;
+        }
+
         public static List<ProductEntity> GetProductsByName(string ProductName)
         {
             List<ProductEntity> lst_product = null;

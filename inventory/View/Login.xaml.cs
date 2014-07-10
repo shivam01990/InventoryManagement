@@ -1,4 +1,5 @@
-﻿using System;
+﻿using inventory.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,6 +30,13 @@ namespace inventory.View
         {
             this.Close();
         }
+
+        //protected override void OnClosed(System.EventArgs e)
+        //{
+
+        //    InventoryHelper.growlNotifications.Close();
+        //    base.OnClosed(e);
+        //}
 
     }
 }

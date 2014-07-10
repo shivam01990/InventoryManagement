@@ -103,22 +103,25 @@ namespace inventory.ViewModel
                 worker.DoWork += worker_DoWork;
                 worker.RunWorkerCompleted += worker_RunWorkerCompleted;
                 worker.RunWorkerAsync();
-               // MessageBox.Show("Login Successful");
+                // MessageBox.Show("Login Successful");
+                InventoryHelper.SuccessAlert("Success", "Login Successful.");
+            
                 MainWindow ob = new MainWindow();
                 this.Close = true;
                 ob.ShowDialog();
-                
+
             }
             else
             {
                 //MessageBox.Show("Fails");
                 InventoryHelper.growlNotifications.AddNotification(new Notification { Title = "Warning", ImageUrl = "pack://application:,,,/Files/notification-icon.png", Message = "Login Fails." });
-           
+
             }
         }
 
         public void CancelClient(object parameter)
         {
+            InventoryHelper.growlNotifications.Close();
             this.Close = true;
         }
         private bool _close;
@@ -138,34 +141,36 @@ namespace inventory.ViewModel
 
         private Decimal OverAllBalance;
         private Decimal MonthlyBalance;
-        private string EmptyStockProductList="";
+        private string EmptyStockProductList = "";
         private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
             OverAllBalance = SellingHistoryProvider.GetOverAllBalance(null, null);
             DateTime date = DateTime.Now;
-            DateTime FirstDayOfMonth = new DateTime(date.Year, date.Month, 1); 
+            DateTime FirstDayOfMonth = new DateTime(date.Year, date.Month, 1);
             DateTime LastDayOfMonth = new DateTime(date.Year, date.Month, 1).AddMonths(1).AddDays(-1);
-           MonthlyBalance = SellingHistoryProvider.GetOverAllBalance(FirstDayOfMonth, LastDayOfMonth);
+            MonthlyBalance = SellingHistoryProvider.GetOverAllBalance(FirstDayOfMonth, LastDayOfMonth);
 
-           foreach (product item in  ProductServices.GetEmptyStockList())
-           {
-               EmptyStockProductList += item.product_name + ",";
+            foreach (product item in ProductServices.GetEmptyStockList())
+            {
+                EmptyStockProductList += item.product_name + ",";
 
-           }
-           if (EmptyStockProductList.Length != 0)
-           {
-               EmptyStockProductList = EmptyStockProductList.Substring(0, EmptyStockProductList.LastIndexOf(','));
-           }
+            }
+            if (EmptyStockProductList.Length != 0)
+            {
+                EmptyStockProductList = EmptyStockProductList.Substring(0, EmptyStockProductList.LastIndexOf(','));
+            }
         }
 
         private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            InventoryHelper.growlNotifications.AddNotification(new Notification { Title = "OverAll Balance", ImageUrl = "pack://application:,,,/Files/notification-icon.png", Message = "Your Over All Balance is "+OverAllBalance+"." });
-            InventoryHelper.growlNotifications.AddNotification(new Notification { Title = "Monthly Balance", ImageUrl = "pack://application:,,,/Files/notification-icon.png", Message = "Your Monthly Balance is " + MonthlyBalance + "." });
+            InventoryHelper.SimpleAlert("OverAll Balance", "Your Over All Balance is " + OverAllBalance + ".");
+            InventoryHelper.SimpleAlert("Monthly Balance", "Your Monthly Balance is " + MonthlyBalance + ".");
+
+
             if (EmptyStockProductList.Length != 0)
             {
-                InventoryHelper.growlNotifications.AddNotification(new Notification { Title = "Empty Stock List ", ImageUrl = "pack://application:,,,/Files/notification-icon.png", Message = "Products " + EmptyStockProductList + " are Out of Stock" });
-        
+                InventoryHelper.SimpleAlert("Products Out of Stock", "Products " + EmptyStockProductList + " are Out of Stock");
+
             }
         }
 

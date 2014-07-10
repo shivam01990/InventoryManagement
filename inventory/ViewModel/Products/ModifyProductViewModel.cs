@@ -104,7 +104,8 @@ namespace inventory.ViewModel
                 lsttemp.Remove(temp);
                 Products = null;
                 Products = lsttemp;
-                MessageBox.Show("Product Deleted");
+                //MessageBox.Show("Product Deleted");
+                InventoryHelper.SuccessAlert("Success", "Product Deleted");
             }
         }
 

@@ -119,7 +119,8 @@ namespace inventory.ViewModel
             {
                 BindGrid();
                 RaisedPropertyChanged("Category");
-                MessageBox.Show("Category Deleted");
+                //MessageBox.Show("Category Deleted");
+                InventoryHelper.SuccessAlert("Success", "Category Deleted");
             }
             else
             {
@@ -153,7 +154,8 @@ namespace inventory.ViewModel
                     int temp_Category_id = CategoryServices.AddUpdateCategory(ob_Category);
                     if (temp_Category_id == ob_Category.id)
                     {
-                        MessageBox.Show("Category " + ob_Category.category_name + " is Updated");
+                        //MessageBox.Show("Category " + ob_Category.category_name + " is Updated");
+                        InventoryHelper.SuccessAlert("Success", "Category " + ob_Category.category_name + " is Updated");
                         BindGrid();
                         RaisedPropertyChanged("Category");
                     }
@@ -161,7 +163,9 @@ namespace inventory.ViewModel
                 else
                 {
 
-                    MessageBox.Show("Category Name already Exist");
+                    //MessageBox.Show("Category Name already Exist");
+                    InventoryHelper.SimpleAlert("Warning", "Category Name already Exist");
+                   
 
                 }
 
@@ -184,7 +188,8 @@ namespace inventory.ViewModel
                     int temp_Category_id = CategoryServices.AddUpdateCategory(ct);
                     if (temp_Category_id != 0)
                     {
-                        MessageBox.Show("Category " + category_name + " is Created");
+                        InventoryHelper.SuccessAlert("Success", "Category " + category_name + " is Created");
+                       // MessageBox.Show("Category " + category_name + " is Created");
                         BindGrid();
                         RaisedPropertyChanged("Category");
                     }

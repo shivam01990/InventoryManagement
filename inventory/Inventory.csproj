@@ -88,6 +88,8 @@
     <Compile Include="ViewModel\Products\CategoryViewModel.cs" />
     <Compile Include="ViewModel\Products\ProductsViewModelBase.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
+    <Compile Include="ViewModel\Transactions\TransactionSummaryViewModel.cs" />
+    <Compile Include="ViewModel\Transactions\TransactionViewModelBase.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\Alerts\GrowlNotifiactions.xaml.cs">
       <DependentUpon>GrowlNotifiactions.xaml</DependentUpon>
@@ -128,6 +130,9 @@
     </Compile>
     <Compile Include="View\Products\SubCategory.xaml.cs">
       <DependentUpon>SubCategory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Transactions\TransactionSummary.xaml.cs">
+      <DependentUpon>TransactionSummary.xaml</DependentUpon>
     </Compile>
     <Page Include="Controls\AutoCompleteTextBox.xaml">
       <SubType>Designer</SubType>
@@ -186,6 +191,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Products\SubCategory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Transactions\TransactionSummary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -255,6 +264,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Files\notification-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Files\Success.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

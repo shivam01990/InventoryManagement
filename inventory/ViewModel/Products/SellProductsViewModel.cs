@@ -270,7 +270,8 @@ namespace inventory.ViewModel
                         bool flag = SellingHistoryServices.AddBulkSellingHistory(ob_sellinghistory);
                         if (flag == true)
                         {
-                            MessageBox.Show("Transaction Complete");
+                            // MessageBox.Show("Transaction Complete");
+                            InventoryHelper.SuccessAlert("Success", "Transaction Complete");
                             try
                             {
                                 foreach (ProductSellingEntity item in SellingItems)
@@ -288,7 +289,10 @@ namespace inventory.ViewModel
                 }
             }
             catch
-            { MessageBox.Show("Transaction Fails"); }
+            {
+                InventoryHelper.SimpleAlert("Warning", "Transaction Fails");
+                // MessageBox.Show("Transaction Fails"); }
+            }
         }
 
 

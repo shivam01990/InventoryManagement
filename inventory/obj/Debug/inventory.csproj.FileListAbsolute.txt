@@ -84,6 +84,7 @@ G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Products\Sel
 G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Products\SubCategory.baml
 G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\App.baml
 G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\Controls\AutoCompleteTextBox.g.cs
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Alerts\GrowlNotifiactions.g.cs
 G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Dealers\AddDealers.g.cs
 G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Dealers\ModifyDealers.g.cs
 G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Login.g.cs
@@ -99,6 +100,8 @@ G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\App.g.cs
 G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\GeneratedInternalTypeHelper.g.cs
 G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\inventory_MarkupCompile.cache
 G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\inventory_MarkupCompile.lref
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Alerts\DesignTimeNotificationData.baml
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Alerts\GrowlNotifiactions.baml
 G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Dealers\ModifyDealers.baml
 G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Login.baml
 G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\MainWindow.baml
@@ -110,6 +113,5 @@ G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\inventory.Propert
 G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\Inventory.csproj.GenerateResource.Cache
 G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\inventory.exe
 G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\inventory.pdb
-G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Alerts\GrowlNotifiactions.g.cs
-G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Alerts\DesignTimeNotificationData.baml
-G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Alerts\GrowlNotifiactions.baml
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Transactions\TransactionSummary.baml
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Transactions\TransactionSummary.g.cs

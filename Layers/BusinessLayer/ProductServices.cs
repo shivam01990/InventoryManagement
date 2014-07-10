@@ -55,5 +55,11 @@ namespace BusinessLayer
         {
             return ProductProvider.GetEmptyStockList();
         }
+
+
+        public static bool CheckProductNameAvailable(string ProductName)
+        {
+            return ProductProvider.CheckProductNameAvailable(ProductName);
+        }
     }
 }

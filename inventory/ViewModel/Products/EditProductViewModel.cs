@@ -298,7 +298,12 @@ namespace inventory.ViewModel
                 }
                 product temp = new product();
                 temp.id = ProductId;
-                temp.product_name = ProductName;
+                temp.product_name = ProductName.Trim();
+                if (!ProductServices.CheckProductNameAvailable(temp.product_name) && (ProductServices.GetProduct(temp.id).product_name != temp.product_name))
+                {
+                    InventoryHelper.SimpleAlert("Warning", "Product Name is Already taken");
+                    return;
+                }
                 temp.brand = Brand == null ? "" : Brand;
                 temp.sub_category = SelectedSubCategory.id;
                 temp.category = SelectedCategory.id;
@@ -310,14 +315,17 @@ namespace inventory.ViewModel
                 ProductId = ProductServices.AddUpdateProduct(temp);
                 if (ProductId > 0)
                 {
-                    MessageBox.Show("Product Edited");
-
+                    //MessageBox.Show("Product Edited");
+                    InventoryHelper.SuccessAlert("Success", "Product Edited");
+                  
                 }
                 Close = false;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Product Entry Fails:" + ex.ToString());
+                //InventoryHelper.SimpleAlert("Warning", "Product Entry Fails:" + ex.ToString());
+                   
             }
 
         }

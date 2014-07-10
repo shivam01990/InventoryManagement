@@ -37,6 +37,9 @@
         <DataTemplate DataType="{x:Type ViewModel:SellProductsViewModel}">
             <View:SellProducts/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type ViewModel:TransactionSummaryViewModel}">
+            <View:TransactionSummary/>
+        </DataTemplate>
 
     </Window.Resources>
 
@@ -64,10 +67,25 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </Expander>
-        <Expander Header="Product Menu" IsExpanded="True" Width="150" Margin="25,115,25,94" >
+        <Expander Header="Product Menu" IsExpanded="True" Width="150" Height="250" Margin="25,128,25,120" >
             <ListBox x:Name="ListBoxCategory"
         	ItemsSource="{Binding ProductMenu}"
-             Width="150"  Margin="0,0,-2,0" SelectionChanged="ListBoxCategory_SelectionChanged" Height="269" >
+             Width="150"  Margin="0,0,-2,0" SelectionChanged="ListBoxCategory_SelectionChanged" Height="250" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{Binding Icon,Converter={StaticResource ImageSourceConverter}}" Width="25" />
+                            <TextBlock Text="{Binding Name}" Padding="10"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Expander>
+        <Expander Header="Transactions Menu" IsExpanded="True" Margin="25,388,25,10" Height="100" Width="150" >
+            <ListBox x:Name="ListBoxTransactions"                    
+                 Grid.Column="0"
+                 ItemsSource="{Binding TransactionMenu}"
+                  RenderTransformOrigin="0.51,0.18" Height="71" Width="150"  Margin="0,0,-2,0" SelectionChanged="ListBoxTransactions_SelectionChanged" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
