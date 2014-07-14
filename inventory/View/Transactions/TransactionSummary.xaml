@@ -6,7 +6,68 @@
              mc:Ignorable="d"               
              d:DesignHeight="450" d:DesignWidth="550">
     <Grid>
-        <Label Content="Transaction History" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="151,35,0,0"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="180"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="115"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Total Transactions" FontWeight="Bold" VerticalAlignment="Top" RenderTransformOrigin="3.7,1" Grid.Column="1" Margin="110,10,0,0"/>
+        <Label Content="From Date" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="1.405,1.369" Margin="39,4,0,0" Grid.Row="1"/>
+        <Label Content="To Date" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="1.405,1.369" Margin="54,4,0,0" Grid.Row="2"/>
+        <DatePicker Name="txt_FromDate" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="39,4,0,0" Grid.Row="1" />
+        <DatePicker Name="txt_ToDate" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="39,4,0,0" Grid.Row="2" />
+        <Label Content="Product Purchase" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,38,0,0" Grid.Row="4"/>
+        <Button Content="Search" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="177,6,0,0" Grid.Row="2"/>
+        <Label Content="Product Sell" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="32,41,0,0" Grid.Row="5"/>
+        <Label Content="Balance" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="57,4,0,0" Grid.Row="3"/>
+        <Label Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="39,4,0,0" Grid.Row="3"/>
+        <ListView Name="Purchaselst" Grid.Row="4"  ItemsSource="{Binding TransactionPurchaseList,UpdateSourceTrigger=PropertyChanged}" Margin="20,10,10,22" Grid.Column="1"  >
+            <ListView.View>
+                <GridView x:Name="grdpurchase">
+                    <GridViewColumn Header="ID" HeaderContainerStyle="{DynamicResource GridHeaderLeft}"   DisplayMemberBinding="{Binding ID}" Width="40">
+                    </GridViewColumn>
+                    <GridViewColumn Header="DelarName" HeaderContainerStyle="{DynamicResource GridHeaderLeft}" DisplayMemberBinding="{Binding DelarName}" Width="105" >
+                    </GridViewColumn>
+                    <GridViewColumn Header="ProductName" HeaderContainerStyle="{DynamicResource GridHeaderLeft}" DisplayMemberBinding="{Binding ProductName}" Width="150" >
+                    </GridViewColumn>
+                    <GridViewColumn Header="Credit" HeaderContainerStyle="{DynamicResource GridHeaderLeft}" DisplayMemberBinding="{Binding Credit}" Width="100" >
+                    </GridViewColumn>
+                    <GridViewColumn Header="Debit" HeaderContainerStyle="{DynamicResource GridHeaderLeft}" DisplayMemberBinding="{Binding Debit}" Width="100" >
+                    </GridViewColumn>
+                    <GridViewColumn Header="PaymentType" HeaderContainerStyle="{DynamicResource GridHeaderLeft}" DisplayMemberBinding="{Binding PaymentType}" Width="100" >
+                    </GridViewColumn>
+                    <GridViewColumn Header="Remarks" HeaderContainerStyle="{DynamicResource GridHeaderLeft}" DisplayMemberBinding="{Binding PaymentDate}" Width="180" >
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
 
+        <ListView Name="Selllst" Grid.Row="5"  ItemsSource="{Binding TransactionSellList,UpdateSourceTrigger=PropertyChanged}" Margin="20,10,10,22" Grid.Column="1"  >
+            <ListView.View>
+                <GridView x:Name="grdSell">
+                    <GridViewColumn Header="ID" HeaderContainerStyle="{DynamicResource GridHeaderLeft}"   DisplayMemberBinding="{Binding ID}" Width="40">
+                    </GridViewColumn>
+                    <GridViewColumn Header="CustomerName" HeaderContainerStyle="{DynamicResource GridHeaderLeft}" DisplayMemberBinding="{Binding CustomerName}" Width="105" >
+                    </GridViewColumn>
+                    <GridViewColumn Header="ProductName" HeaderContainerStyle="{DynamicResource GridHeaderLeft}" DisplayMemberBinding="{Binding ProductName}" Width="150" >
+                    </GridViewColumn>
+                    <GridViewColumn Header="Credit" HeaderContainerStyle="{DynamicResource GridHeaderLeft}" DisplayMemberBinding="{Binding Credit}" Width="100" >
+                    </GridViewColumn>
+                    <GridViewColumn Header="Debit" HeaderContainerStyle="{DynamicResource GridHeaderLeft}" DisplayMemberBinding="{Binding Debit}" Width="100" >
+                    </GridViewColumn>
+                    <GridViewColumn Header="PaymentType" HeaderContainerStyle="{DynamicResource GridHeaderLeft}" DisplayMemberBinding="{Binding PaymentType}" Width="100" >
+                    </GridViewColumn>
+                    <GridViewColumn Header="Remarks" HeaderContainerStyle="{DynamicResource GridHeaderLeft}" DisplayMemberBinding="{Binding PaymentDate}" Width="180" >
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </UserControl>

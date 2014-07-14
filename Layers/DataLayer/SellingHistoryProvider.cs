@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EntityLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -80,5 +81,59 @@ namespace DataLayer
             }
             return balance;
         }
+
+
+        public static List<TransactionPurchaseEntity> GetAllDebitTransaction(DateTime? StartDate, DateTime? EndDate)
+        {
+            List<TransactionPurchaseEntity> lsttxns = null;
+            using (InventoryEntities db = new InventoryEntities())
+            {
+                lsttxns = (from s in db.selling_history
+                           join d in db.dealers on s.dealer_id equals d.id
+                           join p in db.products on s.product_id equals p.id
+                           where (((s.payment_date >= StartDate) || (StartDate == null))
+                           && ((s.payment_date <= EndDate) || (EndDate == null)) && s.transaction_type == 2)
+                           select new TransactionPurchaseEntity
+                               {
+                                   ID = s.id,
+                                   DelarName = d.dealer_name,
+                                   ProductName = p.product_name,
+                                   Credit = s.credit,
+                                   Debit = s.debit,
+                                   PaymentType = s.payment_type,
+                                   Remarks = s.remarks,
+                                   PaymentDate = s.payment_date
+                               }
+                           ).ToList();
+            }
+            return lsttxns;
+        }
+
+        public static List<TransactionSellingEntity> GetAllCreditTransaction(DateTime? StartDate, DateTime? EndDate)
+        {
+            List<TransactionSellingEntity> lsttxns = null;
+            using (InventoryEntities db = new InventoryEntities())
+            {
+                lsttxns = (from s in db.selling_history
+                           join p in db.products on s.product_id equals p.id
+                           where (((s.payment_date >= StartDate) || (StartDate == null))
+                           && ((s.payment_date <= EndDate) || (EndDate == null)) && s.transaction_type == 1)
+                           select new TransactionSellingEntity
+                           {
+                               ID = s.id,
+                               CustomerName = s.customer_name,
+                               CustomerInfo = s.customer_info,
+                               ProductName = p.product_name,
+                               Credit = s.credit,
+                               Debit = s.debit,
+                               PaymentType = s.payment_type,
+                               Remarks = s.remarks,
+                               PaymentDate = s.payment_date
+                           }
+                           ).ToList();
+            }
+            return lsttxns;
+        }
+
     }
 }

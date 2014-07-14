@@ -1,4 +1,6 @@
-﻿using inventory.Helpers;
+﻿using BusinessLayer;
+using EntityLayer;
+using inventory.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +13,46 @@ namespace inventory.ViewModel
     {
         public override string Name
         {
-            get { return InventoryHelper.AddDealer; }
+            get { return InventoryHelper.Transactions; }
         }
 
         public override string Icon
         {
-            get { return InventoryHelper.AddDealerIcon; }
+            get { return InventoryHelper.TransactionsIcon; }
+        }
+
+        public TransactionSummaryViewModel()
+        {
+            TransactionPurchaseList = SellingHistoryServices.GetAllDebitTransaction(null, null);
+            TransactionSellList = SellingHistoryServices.GetAllCreditTransaction(null, null);
+        }
+
+        private List<TransactionPurchaseEntity> _TransactionPurchaseList;
+        public List<TransactionPurchaseEntity> TransactionPurchaseList
+        {
+            get
+            {
+                return _TransactionPurchaseList;
+            }
+            set
+            {
+                _TransactionPurchaseList = value;
+                RaisedPropertyChanged("TransactionPurchaseList");
+            }
+        }
+
+        private List<TransactionSellingEntity> _TransactionSellList;
+        public List<TransactionSellingEntity> TransactionSellList
+        {
+            get
+            {
+                return _TransactionSellList;
+            }
+            set
+            {
+                _TransactionSellList = value;
+                RaisedPropertyChanged("TransactionSellList");
+            }
         }
     }
 }
