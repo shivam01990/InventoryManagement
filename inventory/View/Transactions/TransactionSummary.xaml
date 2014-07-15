@@ -21,13 +21,13 @@
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Total Transactions" FontWeight="Bold" VerticalAlignment="Top" RenderTransformOrigin="3.7,1" Grid.Column="1" Margin="110,10,0,0"/>
         <Label Content="From Date" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="1.405,1.369" Margin="39,4,0,0" Grid.Row="1"/>
         <Label Content="To Date" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="1.405,1.369" Margin="54,4,0,0" Grid.Row="2"/>
-        <DatePicker Name="txt_FromDate" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="39,4,0,0" Grid.Row="1" />
-        <DatePicker Name="txt_ToDate" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="39,4,0,0" Grid.Row="2" />
+        <DatePicker Name="txt_FromDate"  SelectedDate="{Binding FromDate}" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="39,4,0,0" Grid.Row="1" />
+        <DatePicker Name="txt_ToDate" SelectedDate="{Binding ToDates}"  HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="39,4,0,0" Grid.Row="2" />
         <Label Content="Product Purchase" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,38,0,0" Grid.Row="4"/>
-        <Button Content="Search" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="177,6,0,0" Grid.Row="2"/>
+        <Button Content="Search"  Command="{Binding SearchCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="177,6,0,0" Grid.Row="2"/>
         <Label Content="Product Sell" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="32,41,0,0" Grid.Row="5"/>
         <Label Content="Balance" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="57,4,0,0" Grid.Row="3"/>
-        <Label Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="39,4,0,0" Grid.Row="3"/>
+        <Label Content="{Binding Balance}" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="39,4,0,0" Grid.Row="3"/>
         <ListView Name="Purchaselst" Grid.Row="4"  ItemsSource="{Binding TransactionPurchaseList,UpdateSourceTrigger=PropertyChanged}" Margin="20,10,10,22" Grid.Column="1"  >
             <ListView.View>
                 <GridView x:Name="grdpurchase">

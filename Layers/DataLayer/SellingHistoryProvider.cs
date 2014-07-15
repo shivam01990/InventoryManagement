@@ -74,10 +74,14 @@ namespace DataLayer
             decimal balance = 0;
             using (InventoryEntities db = new InventoryEntities())
             {
-                balance = (from s in db.selling_history
-                           where (((s.payment_date >= StartDate) || (StartDate == null))
-                           && ((s.payment_date <= EndDate) || (EndDate == null)))
-                           select (s.credit - s.debit)).Sum();
+                try
+                {
+                    balance = (from s in db.selling_history
+                               where (((s.payment_date >= StartDate) || (StartDate == null))
+                               && ((s.payment_date <= EndDate) || (EndDate == null)))
+                               select (s.credit - s.debit)).Sum();
+                }
+                catch { }
             }
             return balance;
         }

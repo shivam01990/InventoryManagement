@@ -71,7 +71,7 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="20"/>
                                     </Grid.ColumnDefinitions>
-                                    <Image Source="{TemplateBinding Icon}" Margin="5,0,0,0" Stretch="Fill"/>
+                                    <Image Source="{TemplateBinding Icon}"   Margin="5,0,0,0" Stretch="Fill"/>
                                     <TextBlock  Grid.Column="1" Text="{TemplateBinding Title}" TextWrapping="Wrap" Margin="15,5,10,5" Foreground="{DynamicResource HeaderFontColor}" FontSize="18" VerticalAlignment="Center" FontWeight="Bold" x:Name="HeaderTitle"/>
                                     <Button  Grid.Column="2" Content="-" Style="{DynamicResource RedButtonStyle}" Width="20" Margin="-50,0,0,0" x:Name="btnMinimize" Command="{x:Static SystemCommands.MinimizeWindowCommand}" />
                                     <Button  Grid.Column="2" Content="X" Style="{DynamicResource RedButtonStyle}" Width="20" Margin="-5,0,0,0" x:Name="btnClose1" Command="Close" />

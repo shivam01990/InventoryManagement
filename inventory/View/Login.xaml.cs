@@ -28,7 +28,9 @@ namespace inventory.View
 
         private void CloseCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
+            InventoryHelper.growlNotifications.Close();
             this.Close();
+            
         }
 
         //protected override void OnClosed(System.EventArgs e)

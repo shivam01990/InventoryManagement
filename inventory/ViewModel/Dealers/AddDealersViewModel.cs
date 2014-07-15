@@ -82,14 +82,16 @@ namespace inventory.ViewModel
                 int temp_dealerid = DelarServices.AddUpdateDealer(ob);
                 if (temp_dealerid > 0)
                 {
-                    MessageBox.Show("Dealer added successfully");
+                   // MessageBox.Show("Dealer added successfully");
+                    InventoryHelper.SuccessAlert("Success", "Dealer added successfully");
                     DealerAddress = "";
                     DealerName = "";
                 }
             }
             else
             {
-                MessageBox.Show("Dealer Name already Exist");
+                InventoryHelper.SimpleAlert("Warning", "Dealer Name already Exist");                   
+                //MessageBox.Show("Dealer Name already Exist");
             }
 
         }

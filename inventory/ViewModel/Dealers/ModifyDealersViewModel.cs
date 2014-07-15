@@ -92,15 +92,22 @@ namespace inventory.ViewModel
             int delar_id = 0;
             TextBox tb = (TextBox)parameter;
             int.TryParse(tb.Text, out delar_id);
-            if (delar_id > 0)
+            try
             {
-                flag = DelarServices.DeleteDealer(delar_id);
+                if (delar_id > 0)
+                {
+                    flag = DelarServices.DeleteDealer(delar_id);
+                }
+                if (flag == true)
+                {
+                    BindGrid();
+                    RaisedPropertyChanged("Delars");
+                    InventoryHelper.SuccessAlert("Success", "Delar Deleted");
+                }
             }
-            if (flag == true)
+            catch
             {
-                BindGrid();
-                RaisedPropertyChanged("Delars");
-                MessageBox.Show("Dealer Deleted");
+                InventoryHelper.SimpleAlert("Warning", "Dealer associated with Products");
             }
         }
 
@@ -129,7 +136,8 @@ namespace inventory.ViewModel
                     int temp_delar_id = DelarServices.AddUpdateDealer(ob_dealer);
                     if (temp_delar_id == ob_dealer.id)
                     {
-                        MessageBox.Show("Dealer " + ob_dealer.dealer_name + " is Updated");
+                        //MessageBox.Show("Dealer " + ob_dealer.dealer_name + " is Updated");
+                        InventoryHelper.SuccessAlert("Success", "Dealer " + ob_dealer.dealer_name + " is Updated");
                         BindGrid();
                         RaisedPropertyChanged("Delars");
                     }
@@ -137,7 +145,8 @@ namespace inventory.ViewModel
                 else
                 {
 
-                    MessageBox.Show("Dealer Name already Exist");
+                   // MessageBox.Show("Dealer Name already Exist");
+                    InventoryHelper.SimpleAlert("Warning", "Dealer Name already Exist");
 
                 }
 
