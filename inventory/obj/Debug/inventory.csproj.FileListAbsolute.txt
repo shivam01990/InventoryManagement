@@ -115,3 +115,5 @@ G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\inventory.exe
 G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\inventory.pdb
 G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Transactions\TransactionSummary.baml
 G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\Transactions\TransactionSummary.g.cs
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\ConfigurationWindow.g.cs
+G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\View\ConfigurationWindow.baml

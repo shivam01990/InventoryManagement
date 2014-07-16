@@ -57,6 +57,26 @@ namespace inventory.ViewModel
 
         private ICommand _clickCommand;
         private ICommand _clickCancel;
+        private ICommand _ClickConfig;
+
+        public ICommand ClickConfig
+        {
+            get
+            {
+                if (_ClickConfig == null)
+                {
+                    _ClickConfig = new RelayCommand(new Action<object>(OpenConfigWindow));
+
+                     
+                }
+                return _ClickConfig;
+            }
+            set
+            {
+                _ClickConfig = value;
+                RaisedPropertyChanged("ClickConfig");
+            }
+        }
 
         public ICommand ClickCommand
         {
@@ -93,6 +113,13 @@ namespace inventory.ViewModel
 
             }
         }
+
+        public void OpenConfigWindow(object parameter)
+        {
+            ConfigurationWindow ob = new ConfigurationWindow();
+            ob.ShowDialog();
+        }
+
         public void ValidateClient(object parameter)
         {
             var passwordBox = (PasswordBox)parameter;

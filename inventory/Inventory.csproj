@@ -74,6 +74,7 @@
     <Compile Include="Helpers\InventoryHelper.cs" />
     <Compile Include="Model\SubcategoryModel.cs" />
     <Compile Include="ViewModel\Alerts\Notification.cs" />
+    <Compile Include="ViewModel\ConfigurationWindowViewModel.cs" />
     <Compile Include="ViewModel\Dealers\AddDealersViewModel.cs" />
     <Compile Include="ViewModel\Dealers\DealersViewModelBase.cs" />
     <Compile Include="ViewModel\Dealers\ModifyDealersViewModel.cs" />
@@ -93,6 +94,9 @@
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\Alerts\GrowlNotifiactions.xaml.cs">
       <DependentUpon>GrowlNotifiactions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ConfigurationWindow.xaml.cs">
+      <DependentUpon>ConfigurationWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Dealers\AddDealers.xaml.cs">
       <DependentUpon>AddDealers.xaml</DependentUpon>
@@ -147,6 +151,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Alerts\GrowlNotifiactions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ConfigurationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
