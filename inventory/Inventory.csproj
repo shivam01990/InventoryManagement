@@ -73,6 +73,11 @@
     <Compile Include="Helpers\DialogCloser.cs" />
     <Compile Include="Helpers\InventoryHelper.cs" />
     <Compile Include="Model\SubcategoryModel.cs" />
+    <Compile Include="ServerConnection.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>ServerConnection.settings</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\Alerts\Notification.cs" />
     <Compile Include="ViewModel\ConfigurationWindowViewModel.cs" />
     <Compile Include="ViewModel\Dealers\AddDealersViewModel.cs" />
@@ -230,6 +235,10 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="ServerConnection.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>ServerConnection.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

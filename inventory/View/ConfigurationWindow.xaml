@@ -1,10 +1,41 @@
 ﻿<Window x:Class="inventory.View.ConfigurationWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-         Title="Configuration Window" Height="500" Width="400" Margin="-8,0,0,0" FontFamily="Georgia" 
+         Title="Configuration Window" Height="300" Width="400" Margin="-8,0,0,0" FontFamily="Georgia" 
         xmlns:helpers="clr-namespace:inventory.Helpers" WindowStartupLocation="CenterScreen"
         helpers:DialogCloser.DialogResult="{Binding Close}" MouseLeftButtonDown="Drag_Window"  Style="{DynamicResource ModalWindowStyle}" x:Name="window" TabIndex="0" Foreground="#FFFFFFFF" Background="White" >
+    <Window.CommandBindings>
+        <CommandBinding Command="Close" Executed="CloseCommand_Executed"/>
+
+    </Window.CommandBindings>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+
+
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="115"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock HorizontalAlignment="Left" FontWeight="Bold" TextWrapping="Wrap" Text="Configure Settings" VerticalAlignment="Top" RenderTransformOrigin="2.806,1.188" Grid.Column="1" Margin="37,10,0,0"/>
+        <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Server Name" VerticalAlignment="Bottom" RenderTransformOrigin="2.806,1.188" Margin="20,0,0,6" Grid.Row="2"/>
+        <TextBox  HorizontalAlignment="Left"  Height="18" Width="150" TextWrapping="Wrap" Text="{Binding ServerName}" VerticalAlignment="Top"  Grid.Column="1" Margin="23,10,0,0"  Grid.Row="2"/>
+        <TextBox  HorizontalAlignment="Left" Height="18" Width="150" TextWrapping="Wrap" Text="{Binding DatabaseName}" VerticalAlignment="Top"  Grid.Column="1" Margin="23,10,0,0"  Grid.Row="3"/>
+
+        <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="User Name" VerticalAlignment="Bottom" RenderTransformOrigin="2.806,1.188" Margin="29,0,0,6" Grid.Row="4"/>
+        <TextBox  HorizontalAlignment="Left" Height="18" Width="150" TextWrapping="Wrap" Text="{Binding UserName}" VerticalAlignment="Top"  Grid.Column="1" Margin="23,10,0,0"  Grid.Row="4"/>
+        <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Password" VerticalAlignment="Bottom" RenderTransformOrigin="2.806,1.188" Margin="38,0,0,10" Grid.Row="5"/>
+        <TextBox  HorizontalAlignment="Left" Height="18" Width="150" TextWrapping="Wrap" Text="{Binding Password}" VerticalAlignment="Top"  Grid.Column="1" Margin="23,6,0,0"  Grid.Row="5"/>
+        <Button Content="Test Connection" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="23,10,0,0" Grid.Row="6"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Width="75" Grid.Column="1" Margin="123,10,0,0" Grid.Row="6" Height="20" VerticalAlignment="Top" Click="Button_Click"/>
+        <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Database Name" VerticalAlignment="Bottom" RenderTransformOrigin="2.806,1.188" Margin="19,0,0,10" Grid.Row="3"/>
         
     </Grid>
 </Window>
