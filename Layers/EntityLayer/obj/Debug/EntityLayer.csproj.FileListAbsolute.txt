@@ -7,4 +7,3 @@ G:\Softwares\inventory\InventoryManagement\Layers\EntityLayer\bin\Debug\EntityLa
 G:\Softwares\inventory\InventoryManagement\Layers\EntityLayer\bin\Debug\EntityLayer.pdb
 G:\Softwares\inventory\InventoryManagement\Layers\EntityLayer\obj\Debug\EntityLayer.dll
 G:\Softwares\inventory\InventoryManagement\Layers\EntityLayer\obj\Debug\EntityLayer.pdb
-G:\Softwares\inventory\InventoryManagement\Layers\EntityLayer\obj\Debug\EntityLayer.csprojResolveAssemblyReference.cache

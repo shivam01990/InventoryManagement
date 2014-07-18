@@ -122,6 +122,7 @@ namespace inventory.ViewModel
 
         public void ValidateClient(object parameter)
         {
+            DataLayer.Constants.DynamicConnectionString = InventoryHelper.DynamicConnectionString;
             var passwordBox = (PasswordBox)parameter;
             Password = passwordBox.Password;
             bool flag = UserServices.CheckLogin(UserName, Password);

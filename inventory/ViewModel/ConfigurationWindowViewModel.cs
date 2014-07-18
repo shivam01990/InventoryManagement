@@ -1,8 +1,11 @@
-﻿using System;
+﻿using inventory.Helpers;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace inventory.ViewModel
 {
@@ -12,6 +15,38 @@ namespace inventory.ViewModel
         private string _password;
         private string _DatabaseName;
         private string _ServerName;
+        private ICommand _clickCommand;
+        public ICommand ClickCommand
+        {
+            get
+            {
+                if (_clickCommand == null)
+                {
+                    _clickCommand = new RelayCommand(new Action<object>(TestConnection));
+                }
+                return _clickCommand;
+            }
+            set
+            {
+                _clickCommand = value;
+                RaisedPropertyChanged("ClickCommand");
+
+            }
+        }
+
+        protected void TestConnection(object parameter)
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection("Server=" + ServerConnection.Default.ServerName + ";Database=" + ServerConnection.Default.DatabaseName + ";User Id=" + ServerConnection.Default.UserName + ";Password=" + ServerConnection.Default.Password + ";");
+                conn.Open();
+                InventoryHelper.SuccessAlert("Success", "Connection Successful");
+            }
+            catch
+            {
+                InventoryHelper.SimpleAlert("Fail", "Connection Fails");
+            }
+        }
 
         public string UserName
         {

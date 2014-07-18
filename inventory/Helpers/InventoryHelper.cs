@@ -146,6 +146,15 @@ namespace inventory.Helpers
 
         }
 
+        public static string DynamicConnectionString
+        {
+            get
+            {
+                return @"metadata=res://*/Inventory.csdl|res://*/Inventory.ssdl|res://*/Inventory.msl;provider=System.Data.SqlClient;provider connection string=';data source=" + ServerConnection.Default.ServerName + ";initial catalog=" + ServerConnection.Default.DatabaseName + ";user id=" + ServerConnection.Default.UserName + ";password=" + ServerConnection.Default.Password + ";MultipleActiveResultSets=True;App=EntityFramework';";
+            }
+        }
+
+
 
     }
 

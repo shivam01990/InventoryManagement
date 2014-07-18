@@ -179,7 +179,8 @@ namespace inventory.ViewModel
                     int temp_SubCategory_id = SubCategoryServices.AddUpdateSubCategory(ct);
                     if (temp_SubCategory_id != 0)
                     {
-                        MessageBox.Show("Category " + sub_category_name + " is Created");
+                       // MessageBox.Show("Category " + sub_category_name + " is Created");
+                        InventoryHelper.SuccessAlert("Success", "Category " + sub_category_name + " is Created");
                         BindGrid();
 
 
@@ -207,7 +208,8 @@ namespace inventory.ViewModel
                         {
                             BindGrid();
                             //RaisedPropertyChanged("Category");
-                            MessageBox.Show("SubCategory Name alredy Exist.");
+                            //MessageBox.Show("SubCategory Name alredy Exist.");
+                            InventoryHelper.SimpleAlert("Warning", "SubCategory Name alredy Exist.");
                             return;
                         }
 
@@ -217,7 +219,8 @@ namespace inventory.ViewModel
                     int temp_sub_Category_id = SubCategoryServices.AddUpdateSubCategory(temp_ob_sub_Category);
                     if (temp_sub_Category_id == ob_sub_Category.id)
                     {
-                        MessageBox.Show("Sub-Category " + ob_sub_Category.sub_category_name + " is Updated");
+                        //MessageBox.Show("Sub-Category " + ob_sub_Category.sub_category_name + " is Updated");
+                        InventoryHelper.SuccessAlert("Success", "Sub-Category " + ob_sub_Category.sub_category_name + " is Updated");
                         BindGrid();
                         //RaisedPropertyChanged("Category");
                     }
@@ -225,7 +228,8 @@ namespace inventory.ViewModel
                 else
                 {
 
-                    MessageBox.Show("Category Name already Exist");
+                   // MessageBox.Show("Category Name already Exist");
+                    InventoryHelper.SimpleAlert("Warning", "Category Name already Exist");
 
                 }
 
@@ -245,11 +249,13 @@ namespace inventory.ViewModel
             if (flag == true)
             {
                 BindGrid();
-                MessageBox.Show("Category Deleted");
+                //MessageBox.Show("Category Deleted");
+                InventoryHelper.SuccessAlert("Success", "Category Deleted");
             }
             else
             {
-                MessageBox.Show("Sub-category are associated with Category ");
+                InventoryHelper.SimpleAlert("Warning", "Sub-category are associated with Category");
+                //MessageBox.Show("Sub-category are associated with Category ");
             }
         }
     }

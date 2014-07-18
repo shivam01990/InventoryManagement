@@ -15,17 +15,22 @@ namespace DataLayer
 
     public partial class InventoryEntities : DbContext
     {
-        public InventoryEntities()
-            : base("name=InventoryEntities")
-        {
+        #region Define Dinamic Connection String
+        //public InventoryEntities()
+        //    : base("name=InventoryEntities")
+        //{
 
-        }
+        //}
+
+        public InventoryEntities()
+            : base(Constants.DynamicConnectionString)
+        { }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-
+        #endregion
         public DbSet<category> categories { get; set; }
         public DbSet<dealer> dealers { get; set; }
         public DbSet<product> products { get; set; }
