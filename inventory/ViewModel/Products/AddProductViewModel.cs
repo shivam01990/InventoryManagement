@@ -16,6 +16,16 @@ namespace inventory.ViewModel
 {
     public class AddProductViewModel : ProductsViewModelBase, IDataErrorInfo
     {
+        public IList<category> temp_loadtime_Category;
+        private readonly BackgroundWorker worker = new BackgroundWorker();
+        private void worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            temp_loadtime_Category = CategoryServices.GetAllCategory(0);
+        }
+        private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Category = temp_loadtime_Category;
+        }
         public override string Name
         {
             get { return InventoryHelper.AddProduct; }
@@ -28,7 +38,10 @@ namespace inventory.ViewModel
 
         public AddProductViewModel()
         {
-            this._Category = CategoryServices.GetAllCategory(0);
+            worker.DoWork += worker_DoWork;
+            worker.RunWorkerCompleted += worker_RunWorkerCompleted;
+            worker.RunWorkerAsync();
+            //this._Category = CategoryServices.GetAllCategory(0);
         }
 
         private IList<category> _Category;

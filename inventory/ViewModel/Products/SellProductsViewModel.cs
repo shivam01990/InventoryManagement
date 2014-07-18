@@ -4,6 +4,7 @@ using EntityLayer;
 using inventory.Helpers;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,17 @@ namespace inventory.ViewModel
 {
     class SellProductsViewModel : ProductsViewModelBase
     {
+        private readonly BackgroundWorker worker = new BackgroundWorker();
+        public List<category> temp_loadtime_Category;
+        private void worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            temp_loadtime_Category = CategoryServices.GetAllCategory(0);
+        }
+
+        private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Category = temp_loadtime_Category;
+        }
         public override string Name
         {
             get { return InventoryHelper.SellProducts; }
@@ -27,8 +39,13 @@ namespace inventory.ViewModel
 
         public SellProductsViewModel()
         {
-            Category = CategoryServices.GetAllCategory(0);
+            worker.DoWork += worker_DoWork;
+            worker.RunWorkerCompleted += worker_RunWorkerCompleted;
+            worker.RunWorkerAsync();
+            //Category = CategoryServices.GetAllCategory(0);
         }
+
+       
 
         private List<category> _Category;
         public List<category> Category

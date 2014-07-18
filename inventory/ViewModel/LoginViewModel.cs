@@ -122,28 +122,35 @@ namespace inventory.ViewModel
 
         public void ValidateClient(object parameter)
         {
-            DataLayer.Constants.DynamicConnectionString = InventoryHelper.DynamicConnectionString;
-            var passwordBox = (PasswordBox)parameter;
-            Password = passwordBox.Password;
-            bool flag = UserServices.CheckLogin(UserName, Password);
-            if (flag == true)
+            try
             {
-                worker.DoWork += worker_DoWork;
-                worker.RunWorkerCompleted += worker_RunWorkerCompleted;
-                worker.RunWorkerAsync();
-                // MessageBox.Show("Login Successful");
-                InventoryHelper.SuccessAlert("Success", "Login Successful.");
-            
-                MainWindow ob = new MainWindow();
-                this.Close = true;
-                ob.ShowDialog();
+                DataLayer.Constants.DynamicConnectionString = InventoryHelper.DynamicConnectionString;
+                var passwordBox = (PasswordBox)parameter;
+                Password = passwordBox.Password;
+                bool flag = UserServices.CheckLogin(UserName, Password);
+                if (flag == true)
+                {
+                    worker.DoWork += worker_DoWork;
+                    worker.RunWorkerCompleted += worker_RunWorkerCompleted;
+                    worker.RunWorkerAsync();
+                    // MessageBox.Show("Login Successful");
+                    InventoryHelper.SuccessAlert("Success", "Login Successful.");
 
+                    MainWindow ob = new MainWindow();
+                    this.Close = true;
+                    ob.ShowDialog();
+
+                }
+                else
+                {
+                    //MessageBox.Show("Fails");
+                    InventoryHelper.growlNotifications.AddNotification(new Notification { Title = "Warning", ImageUrl = "pack://application:,,,/Files/notification-icon.png", Message = "Login Fails." });
+
+                }
             }
-            else
+            catch
             {
-                //MessageBox.Show("Fails");
-                InventoryHelper.growlNotifications.AddNotification(new Notification { Title = "Warning", ImageUrl = "pack://application:,,,/Files/notification-icon.png", Message = "Login Fails." });
-
+                InventoryHelper.SimpleAlert("Warning", " Please Check Configuration Settings");
             }
         }
 

@@ -9,11 +9,22 @@ using System.Windows.Input;
 using System.Windows.Controls;
 using System.Windows;
 using inventory.Helpers;
+using System.ComponentModel;
 namespace inventory.ViewModel
 {
     public class ModifyDealersViewModel : DealersViewModelBase
     {
+        private readonly BackgroundWorker worker = new BackgroundWorker();
 
+        private IList<dealer> temp_load_dealers;
+        private void worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            temp_load_dealers = DelarServices.GetAllDelars(0);
+        }
+        private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Delars = temp_load_dealers;
+        }
         public override string Name
         {
             get { return InventoryHelper.ModifyDealer; }
@@ -25,12 +36,15 @@ namespace inventory.ViewModel
         }
         public ModifyDealersViewModel()
         {
+            worker.DoWork += worker_DoWork;
+            worker.RunWorkerCompleted += worker_RunWorkerCompleted;
+            worker.RunWorkerAsync();
             BindGrid();
         }
 
         protected void BindGrid()
         {
-            this._Delars = DelarServices.GetAllDelars(0);
+            Delars = DelarServices.GetAllDelars(0);
         }
 
         private IList<dealer> _Delars;
@@ -145,7 +159,7 @@ namespace inventory.ViewModel
                 else
                 {
 
-                   // MessageBox.Show("Dealer Name already Exist");
+                    // MessageBox.Show("Dealer Name already Exist");
                     InventoryHelper.SimpleAlert("Warning", "Dealer Name already Exist");
 
                 }

@@ -9,11 +9,22 @@ using System.Windows.Input;
 using System.Windows.Controls;
 using System.Windows;
 using inventory.Helpers;
+using System.ComponentModel;
 
 namespace inventory.ViewModel
 {
     public class CategoryViewModel : ProductsViewModelBase
     {
+        public IList<category> temp_loadtime_Category;
+        private readonly BackgroundWorker worker = new BackgroundWorker();
+        private void worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            temp_loadtime_Category = CategoryServices.GetAllCategory(0);
+        }
+        private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Category = temp_loadtime_Category;
+        }
         public override string Name
         {
             get { return InventoryHelper.Category; }
@@ -26,7 +37,10 @@ namespace inventory.ViewModel
 
         public CategoryViewModel()
         {
-            BindGrid();
+            worker.DoWork += worker_DoWork;
+            worker.RunWorkerCompleted += worker_RunWorkerCompleted;
+            worker.RunWorkerAsync();
+            //BindGrid();
         }
 
         protected void BindGrid()
@@ -124,7 +138,8 @@ namespace inventory.ViewModel
             }
             else
             {
-                MessageBox.Show("Sub-category are associated with Category ");
+                //MessageBox.Show("Sub-category are associated with Category ");
+                InventoryHelper.SimpleAlert("Warning", "Sub-category are associated with Category");
             }
         }
 
@@ -146,7 +161,8 @@ namespace inventory.ViewModel
                         {
                             BindGrid();
                             RaisedPropertyChanged("Category");
-                            MessageBox.Show("Category Name alredy Exist.");
+                            //MessageBox.Show("Category Name alredy Exist.");
+                            InventoryHelper.SimpleAlert("Warning", "Category Name alredy Exist.");
                             return;
                         }
 

@@ -36,11 +36,12 @@ namespace inventory.ViewModel
 
         protected void TestConnection(object parameter)
         {
+            SqlConnection conn = new SqlConnection("Server=" + ServerConnection.Default.ServerName + ";Database=" + ServerConnection.Default.DatabaseName + ";User Id=" + ServerConnection.Default.UserName + ";Password=" + ServerConnection.Default.Password + ";");          
             try
             {
-                SqlConnection conn = new SqlConnection("Server=" + ServerConnection.Default.ServerName + ";Database=" + ServerConnection.Default.DatabaseName + ";User Id=" + ServerConnection.Default.UserName + ";Password=" + ServerConnection.Default.Password + ";");
-                conn.Open();
+               conn.Open();
                 InventoryHelper.SuccessAlert("Success", "Connection Successful");
+                conn.Close();
             }
             catch
             {

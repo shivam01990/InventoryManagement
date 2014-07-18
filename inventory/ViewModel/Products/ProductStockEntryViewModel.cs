@@ -16,6 +16,19 @@ namespace inventory.ViewModel
 {
     public class ProductStockEntryViewModel : ProductsViewModelBase, IDataErrorInfo
     {
+        public List<dealer> temp_Loadtime_Dealers;
+        public List<category> temp_loadtime_Category;
+        private readonly BackgroundWorker worker = new BackgroundWorker();
+        private void worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            temp_Loadtime_Dealers = DelarServices.GetAllDelars(0);
+            temp_loadtime_Category = CategoryServices.GetAllCategory(0);
+        }
+        private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Dealers = temp_Loadtime_Dealers;
+            Category = temp_loadtime_Category;
+        }
         public override string Name
         {
             get { return InventoryHelper.StockEntry; }
@@ -28,8 +41,11 @@ namespace inventory.ViewModel
 
         public ProductStockEntryViewModel()
         {
-            Dealers = DelarServices.GetAllDelars(0);
-            Category = CategoryServices.GetAllCategory(0);
+            worker.DoWork += worker_DoWork;
+            worker.RunWorkerCompleted += worker_RunWorkerCompleted;
+            worker.RunWorkerAsync();
+            //Dealers = DelarServices.GetAllDelars(0);
+            //Category = CategoryServices.GetAllCategory(0);
         }
 
         private List<dealer> _Dealers;
@@ -345,7 +361,7 @@ namespace inventory.ViewModel
                 ob.debit = Amount;
                 ob.transaction_type = (int)InventoryHelper.TransactionType.Debit;
                 ob.customer_info = "";
-                ob.payment_type = PaymentType == null ? "" : PaymentType.Content.ToString(); 
+                ob.payment_type = PaymentType == null ? "" : PaymentType.Content.ToString();
                 ob.payment_date = DateTime.Now;
                 ob.customer_name = "";
                 ob.remarks = Remarks;
@@ -374,7 +390,7 @@ namespace inventory.ViewModel
             Amount = 0;
             PaymentType = null;
             Quantity = 0;
-           
+
         }
 
 

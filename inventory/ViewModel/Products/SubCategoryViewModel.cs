@@ -11,11 +11,22 @@ using System.Windows.Input;
 using System.Windows.Controls;
 using System.Windows;
 using inventory.Helpers;
+using System.ComponentModel;
 
 namespace inventory.ViewModel
 {
     public class AddSubCategoryViewModel : ProductsViewModelBase
     {
+        public List<category> temp_loadtime_Categorylst;
+        private readonly BackgroundWorker worker = new BackgroundWorker();
+        private void worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            temp_loadtime_Categorylst=CategoryServices.GetAllCategory(0);
+        }
+        private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Categorylst = temp_loadtime_Categorylst;
+        }
         public override string Name
         {
             get { return InventoryHelper.SubCategory; }
@@ -27,7 +38,10 @@ namespace inventory.ViewModel
         }
         public AddSubCategoryViewModel()
         {
-            Categorylst = CategoryServices.GetAllCategory(0);
+            worker.DoWork += worker_DoWork;
+            worker.RunWorkerCompleted += worker_RunWorkerCompleted;
+            worker.RunWorkerAsync();
+           // Categorylst = CategoryServices.GetAllCategory(0);
             //this._lstSubCategory = SubcategoryModel.GetAllSubCategoryEntity(0, 0);
         }
 
