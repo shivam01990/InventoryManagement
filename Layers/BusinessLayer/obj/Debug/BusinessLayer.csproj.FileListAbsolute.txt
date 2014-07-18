@@ -29,3 +29,14 @@ G:\Softwares\inventory\InventoryManagement\Layers\BusinessLayer\bin\Debug\Entity
 G:\Softwares\inventory\InventoryManagement\Layers\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
 G:\Softwares\inventory\InventoryManagement\Layers\BusinessLayer\obj\Debug\BusinessLayer.dll
 G:\Softwares\inventory\InventoryManagement\Layers\BusinessLayer\obj\Debug\BusinessLayer.pdb
+D:\Development Area\Inventory Development\InventoryManagement\Layers\BusinessLayer\bin\Debug\BusinessLayer.dll
+D:\Development Area\Inventory Development\InventoryManagement\Layers\BusinessLayer\bin\Debug\BusinessLayer.pdb
+D:\Development Area\Inventory Development\InventoryManagement\Layers\BusinessLayer\bin\Debug\DataLayer.dll
+D:\Development Area\Inventory Development\InventoryManagement\Layers\BusinessLayer\bin\Debug\EntityLayer.dll
+D:\Development Area\Inventory Development\InventoryManagement\Layers\BusinessLayer\bin\Debug\EntityFramework.dll
+D:\Development Area\Inventory Development\InventoryManagement\Layers\BusinessLayer\bin\Debug\DataLayer.pdb
+D:\Development Area\Inventory Development\InventoryManagement\Layers\BusinessLayer\bin\Debug\EntityLayer.pdb
+D:\Development Area\Inventory Development\InventoryManagement\Layers\BusinessLayer\bin\Debug\EntityFramework.xml
+D:\Development Area\Inventory Development\InventoryManagement\Layers\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
+D:\Development Area\Inventory Development\InventoryManagement\Layers\BusinessLayer\obj\Debug\BusinessLayer.dll
+D:\Development Area\Inventory Development\InventoryManagement\Layers\BusinessLayer\obj\Debug\BusinessLayer.pdb

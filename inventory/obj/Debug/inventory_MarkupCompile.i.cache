@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-G:\Softwares\inventory\InventoryManagement\inventory\obj\Debug\
+D:\Development Area\Inventory Development\InventoryManagement\inventory\obj\Debug\
 inventory
 none
 false
 DEBUG;TRACE
-G:\Softwares\inventory\InventoryManagement\inventory\App.xaml
+D:\Development Area\Inventory Development\InventoryManagement\inventory\App.xaml
 17-1002494635
 
-481068316999
-241299175922
+48-1182723311
+24601312309
 Controls\AutoCompleteTextBox.xaml;View\Alerts\DesignTimeNotificationData.xaml;ResourceDic\MainDictionary.xaml;View\Alerts\GrowlNotifiactions.xaml;View\ConfigurationWindow.xaml;View\Dealers\AddDealers.xaml;View\Dealers\ModifyDealers.xaml;View\Login.xaml;View\MainWindow.xaml;View\Products\AddProduct.xaml;View\Products\Category.xaml;View\Products\EditProduct.xaml;View\Products\ModifyProduct.xaml;View\Products\ProductStockEntry.xaml;View\Products\SellProducts.xaml;View\Products\SubCategory.xaml;View\Transactions\TransactionSummary.xaml;
 splashscreen.png
-True
+False
 
